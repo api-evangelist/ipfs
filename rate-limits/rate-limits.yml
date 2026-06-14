@@ -1,0 +1,56 @@
+rateLimits:
+  - api: IPFS Kubo RPC API
+    description: >-
+      The Kubo RPC API runs on a self-hosted node and has no externally imposed
+      rate limits. Resource constraints are determined entirely by the operator's
+      hardware (CPU, memory, disk I/O, bandwidth). The API binds to localhost
+      by default; exposing it publicly requires explicit configuration and
+      authentication.
+    limits: []
+    notes: >-
+      No rate limits imposed by the software. Operators may configure their own
+      reverse-proxy rate limiting (e.g., nginx, Caddy) if exposing the API
+      externally.
+
+  - api: IPFS HTTP Gateway API (Public - ipfs.io / dweb.link / trustless-gateway.link)
+    description: >-
+      The IPFS Foundation's public gateways are provided on a best-effort basis
+      as a community resource. No formal rate limit thresholds are published,
+      but the Foundation will throttle or ban users and applications that
+      overuse or misuse the gateways.
+    limits:
+      - type: HTTP Range Request Size
+        value: 5 GB maximum
+        scope: Per request
+        notes: >-
+          Imposed by the Cloudflare CDN layer used by ipfs.io. Files larger
+          than 5 GB cannot be retrieved via a single Range request through the
+          public gateway.
+      - type: Throughput / Abuse Throttling
+        value: Unspecified; enforced at Foundation discretion
+        scope: Per IP / per client
+        notes: >-
+          Applications relying on the public gateway for production traffic
+          are explicitly discouraged. Overuse results in throttling or IP bans
+          without prior notice.
+    statusPage: https://status.ipfs.io/
+    notes: >-
+      For production workloads, operators should run their own Kubo node or
+      use a commercial pinning/gateway provider.
+
+  - api: IPFS Delegated Routing V1 HTTP API (Public - delegated-ipfs.dev)
+    description: >-
+      The public delegated routing endpoint at delegated-ipfs.dev is a
+      community utility provided on a best-effort basis. No formal rate limits
+      are published.
+    limits:
+      - type: JSON response record limit
+        value: ~100 records per request
+        scope: Per request (JSON mode)
+        notes: >-
+          When Accept: application/json is used, responses are capped at
+          approximately 100 results. Use Accept: application/x-ndjson for
+          streaming responses with more results.
+    notes: >-
+      For high-volume routing queries, consider running or connecting to a
+      dedicated routing server (e.g., network-indexer or Helia-based router).

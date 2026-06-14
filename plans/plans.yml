@@ -1,0 +1,73 @@
+plans:
+  - name: Self-Hosted (Kubo Node)
+    description: >-
+      Run your own Kubo IPFS node to gain full access to the Kubo RPC API
+      (/api/v0/*). Free and open-source under Apache 2.0 / MIT dual license.
+      Full control over storage, pinning, and network configuration. Suitable
+      for development, production infrastructure, and power users.
+    url: https://docs.ipfs.tech/install/command-line/
+    price: Free (self-hosted)
+    features:
+      - Full Kubo RPC API access
+      - Add, cat, get, ls content operations
+      - Block and DAG management
+      - Local and remote pinning
+      - IPNS name publishing and resolution
+      - Swarm peer management
+      - Key management (gen, import, export)
+      - Repository maintenance (gc, stat, verify)
+      - Node diagnostics
+
+  - name: Public Gateway (Best-Effort)
+    description: >-
+      The IPFS Foundation provides public read-only gateways (ipfs.io,
+      dweb.link, trustless-gateway.link) on a best-effort basis as a community
+      resource. Not intended for production workloads or critical-path use.
+      Throttling or banning applied for overuse or abuse.
+    url: https://docs.ipfs.tech/concepts/public-utilities/
+    price: Free (best-effort, community resource)
+    features:
+      - Read-only HTTP Gateway access
+      - Path-based content retrieval (/ipfs/{cid}, /ipns/{name})
+      - Subdomain isolation (dweb.link)
+      - Trustless verifiable responses (trustless-gateway.link)
+      - Content negotiation (raw, CAR, TAR, JSON, CBOR)
+      - HTTP Range requests (up to 5 GB)
+    limitations:
+      - Not for production or critical infrastructure
+      - Throttling/banning for abusive usage
+      - 5 GB maximum for HTTP Range requests
+      - Content blocked via Bad Bits Denylist
+
+  - name: Public Delegated Routing (Best-Effort)
+    description: >-
+      The IPFS Foundation's public delegated routing endpoint at
+      delegated-ipfs.dev provides content provider and peer discovery as a
+      community utility. Enables lightweight clients to find content without a
+      full DHT node.
+    url: https://delegated-ipfs.dev/routing/v1
+    price: Free (best-effort, community resource)
+    features:
+      - Provider lookup by CID
+      - Peer record lookup by Peer ID
+      - IPNS name resolution and publication
+      - Optional DHT closest-peers queries
+      - JSON and NDJSON streaming responses
+    limitations:
+      - Best-effort availability
+      - Results limited to approximately 100 records in JSON mode (use NDJSON for more)
+
+  - name: Third-Party Pinning Services
+    description: >-
+      Commercial pinning services (Pinata, Web3.Storage, Filebase, Infura IPFS,
+      Lighthouse, etc.) integrate with the Kubo Remote Pinning API
+      (/api/v0/pin/remote/*) to provide persistent, replicated storage with
+      SLAs. Pricing and features vary by provider.
+    url: https://docs.ipfs.tech/how-to/work-with-pinning-services/
+    price: Varies by provider (free tiers and paid plans available)
+    features:
+      - Remote pinning via Kubo Remote Pin API
+      - Persistent content storage with SLAs
+      - Replicated across multiple nodes
+      - Dedicated gateways and CDN acceleration
+      - Dashboard and usage analytics

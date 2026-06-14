@@ -1,0 +1,90 @@
+finops:
+  overview: >-
+    IPFS itself is an open-source protocol with no licensing fees. The primary
+    cost drivers are infrastructure (self-hosted nodes or cloud VMs), storage,
+    bandwidth, and optionally commercial pinning or gateway services for
+    persistence and availability SLAs. The IPFS Foundation's public gateways
+    and delegated routing endpoint are provided free as community utilities but
+    are not suitable for production workloads.
+
+  costDrivers:
+    - name: Self-Hosted Node Infrastructure
+      description: >-
+        Running a Kubo node requires a server or VM. Costs depend on cloud
+        provider, instance size, and region. A minimal node requires at minimum
+        2 GB RAM and a fast SSD; production nodes benefit from 8+ GB RAM and
+        high-IOPS storage.
+      estimatedCost: $5–$100+/month depending on hosting provider and node size
+
+    - name: Storage
+      description: >-
+        IPFS nodes store a local datastore (blocks) plus any pinned content.
+        Storage costs are proportional to the amount of content pinned. Cloud
+        block storage (EBS, GCS Persistent Disk) or dedicated NVMe drives are
+        common choices.
+      estimatedCost: $0.08–$0.25/GB/month (cloud block storage)
+
+    - name: Bandwidth / Egress
+      description: >-
+        IPFS participates in a P2P network; nodes transfer data both to serve
+        requests and to participate in bitswap. Cloud egress fees can be
+        significant for high-traffic nodes. Inbound traffic is typically free
+        from cloud providers.
+      estimatedCost: $0.05–$0.12/GB egress (varies by cloud provider and region)
+
+    - name: Commercial Pinning Services
+      description: >-
+        Third-party pinning services (Pinata, Filebase, Web3.Storage, Infura
+        IPFS, Lighthouse) provide persistent storage with SLAs, dedicated
+        gateways, and CDN acceleration. Pricing models vary; most offer a free
+        tier.
+      providers:
+        - name: Pinata
+          url: https://pinata.cloud/pricing
+          freeTier: 1 GB storage, 100 files
+          paidPlans: From $20/month (Picante) with more storage and bandwidth
+
+        - name: Filebase
+          url: https://filebase.com/pricing
+          freeTier: 5 GB storage
+          paidPlans: From $5.99/month; $0.01/GB storage, $0.01/GB bandwidth
+
+        - name: Web3.Storage
+          url: https://web3.storage/
+          freeTier: 5 GB storage
+          paidPlans: Varies; contact for enterprise
+
+        - name: Lighthouse
+          url: https://www.lighthouse.storage/pricing
+          freeTier: Available
+          paidPlans: Pay-as-you-go model based on storage and deals
+
+    - name: Public Gateway Usage
+      description: >-
+        Using the IPFS Foundation's public gateways (ipfs.io, dweb.link,
+        trustless-gateway.link) is free but subject to throttling for heavy
+        use. Not recommended for production workloads.
+      estimatedCost: $0 (best-effort, community resource)
+
+  optimizationTips:
+    - >-
+        Use the public gateway for development and testing only; deploy your
+        own node or use a commercial provider for production.
+    - >-
+        Enable garbage collection (ipfs repo gc) on self-hosted nodes to
+        reclaim storage from unpinned content.
+    - >-
+        Use remote pinning services (/api/v0/pin/remote/*) to offload
+        persistence to providers with geo-distributed storage rather than
+        running multiple redundant nodes yourself.
+    - >-
+        Use the Delegated Routing V1 API (delegated-ipfs.dev) in lightweight
+        clients to avoid the DHT overhead of a full node when content discovery
+        is the primary need.
+    - >-
+        Use NDJSON streaming for routing queries to avoid the ~100-record
+        truncation in JSON mode.
+    - >-
+        Cache gateway responses aggressively using the Etag and Cache-Control
+        headers returned by the gateway; /ipfs/ content is immutable and can
+        be cached indefinitely (max-age=29030400, immutable).

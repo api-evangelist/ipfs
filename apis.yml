@@ -1,0 +1,144 @@
+name: IPFS
+description: >-
+  InterPlanetary File System (IPFS) is a peer-to-peer hypermedia protocol and
+  distributed content-addressed storage system. The Kubo implementation exposes
+  an HTTP RPC API (/api/v0/) for adding, pinning, and retrieving content-addressed
+  files, managing DAG (Directed Acyclic Graph) nodes, key management, and network
+  peer operations. The HTTP Gateway API provides read-only access to IPFS and IPNS
+  content over standard HTTP. The Delegated Routing V1 HTTP API enables clients
+  to discover content providers and resolve peer records without running a full
+  DHT node.
+image: https://ipfs.tech/images/ipfs-logo.svg
+tags:
+  - IPFS
+  - Distributed Storage
+  - Content-Addressed
+  - Decentralized
+  - Peer-to-Peer
+  - File Storage
+  - DAG
+  - Pinning
+  - Gateway
+url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.yml
+specificationVersion: "0.19"
+apis:
+  - name: IPFS Kubo RPC API
+    description: >-
+      The Kubo RPC API v0 provides HTTP-based remote procedure call access to a
+      running Kubo IPFS node. Every CLI command is available as an HTTP endpoint
+      under /api/v0/. Endpoints cover content operations (add, cat, get, ls),
+      block and DAG management, local and remote pinning, IPNS name publishing
+      and resolution, swarm peer management, key generation, repository
+      maintenance, and node diagnostics. The API binds to localhost by default
+      and should not be exposed to the public internet without authentication.
+    image: https://ipfs.tech/images/ipfs-logo.svg
+    humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+    baseURL: http://localhost:5001
+    tags:
+      - RPC
+      - Content Storage
+      - Pinning
+      - DAG
+      - IPNS
+      - Peer Management
+    properties:
+      - type: Documentation
+        url: https://docs.ipfs.tech/reference/kubo/rpc/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/ipfs/kubo/master/client/rpc/api/README.md
+    contact:
+      - FN: IPFS Forums
+        url: https://discuss.ipfs.tech/
+      - FN: IPFS GitHub
+        url: https://github.com/ipfs/kubo
+    meta:
+      - key: authentication
+        value: "HTTP Bearer token (Authorization: Bearer <secret>); localhost-only by default"
+
+  - name: IPFS HTTP Gateway API
+    description: >-
+      The IPFS HTTP Gateway API is an implementation-agnostic interface for
+      retrieving content-addressed data from IPFS over standard HTTP. Path
+      gateways expose /ipfs/{cid} and /ipns/{name} namespaces, supporting GET
+      and HEAD requests with content negotiation for raw blocks, CAR streams,
+      TAR archives, JSON, and CBOR. The IPFS Foundation operates public
+      gateways at ipfs.io (path), dweb.link (subdomain), and
+      trustless-gateway.link (trustless/verifiable only) on a best-effort basis.
+      HTTP Range requests are supported up to 5 GB.
+    image: https://ipfs.tech/images/ipfs-logo.svg
+    humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
+    baseURL: https://ipfs.io
+    tags:
+      - Gateway
+      - Content Retrieval
+      - IPFS
+      - IPNS
+      - Public
+      - Read-Only
+    properties:
+      - type: Documentation
+        url: https://docs.ipfs.tech/concepts/ipfs-gateway/
+      - type: Specification
+        url: https://specs.ipfs.tech/http-gateways/path-gateway/
+      - type: PublicGateway
+        url: https://ipfs.io
+      - type: SubdomainGateway
+        url: https://dweb.link
+      - type: TrustlessGateway
+        url: https://trustless-gateway.link
+    contact:
+      - FN: IPFS Abuse Contact
+        email: abuse@ipfs.io
+      - FN: IPFS Docs
+        url: https://docs.ipfs.tech/concepts/public-utilities/
+    meta:
+      - key: authentication
+        value: None required for public gateways
+      - key: rateLimit
+        value: Best-effort; throttling or banning applied for abuse
+
+  - name: IPFS Delegated Routing V1 HTTP API
+    description: >-
+      The Delegated Routing V1 HTTP API allows IPFS clients to offload content
+      routing, peer routing, and IPNS resolution to a remote server without
+      running a full DHT node. Endpoints include provider lookup by CID
+      (/routing/v1/providers/{cid}), peer record lookup by Peer ID
+      (/routing/v1/peers/{peer-id}), IPNS name resolution and publication
+      (/routing/v1/ipns/{name}), and optional DHT closest-peers queries
+      (/routing/v1/dht/closest/peers/{key}). The IPFS Foundation operates a
+      public delegated routing endpoint at delegated-ipfs.dev.
+    image: https://ipfs.tech/images/ipfs-logo.svg
+    humanURL: https://specs.ipfs.tech/routing/http-routing-v1/
+    baseURL: https://delegated-ipfs.dev
+    tags:
+      - Routing
+      - DHT
+      - Content Discovery
+      - Peer Discovery
+      - IPNS
+      - Delegated
+    properties:
+      - type: Documentation
+        url: https://specs.ipfs.tech/routing/http-routing-v1/
+      - type: Specification
+        url: https://specs.ipfs.tech/routing/http-routing-v1/
+      - type: PublicEndpoint
+        url: https://delegated-ipfs.dev/routing/v1
+    contact:
+      - FN: IPFS Forums
+        url: https://discuss.ipfs.tech/
+      - FN: IPFS GitHub Issues
+        url: https://github.com/ipfs/specs/issues
+    meta:
+      - key: authentication
+        value: None required for public endpoint
+      - key: responseFormats
+        value: application/json, application/x-ndjson (streaming), application/vnd.ipfs.ipns-record
+
+maintainers:
+  - FN: IPFS Foundation / Protocol Labs
+    url: https://ipfs.tech/
+    email: abuse@ipfs.io
+
+created: "2026-06-13"
+modified: "2026-06-13"
