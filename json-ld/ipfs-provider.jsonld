@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "ipfs": "https://ipfs.tech/vocab#"
+  },
+  "@type": "schema:WebAPI",
+  "schema:name": "IPFS APIs",
+  "schema:description": "InterPlanetary File System \u2014 a peer-to-peer hypermedia protocol for content-addressed distributed storage",
+  "schema:url": "https://ipfs.tech/",
+  "schema:documentation": "https://docs.ipfs.tech/",
+  "schema:provider": {
+    "@type": "schema:Organization",
+    "schema:name": "IPFS Foundation / Protocol Labs",
+    "schema:url": "https://ipfs.tech/"
+  },
+  "ipfs:apis": [
+    {
+      "@type": "schema:WebAPI",
+      "schema:name": "IPFS Kubo RPC API",
+      "schema:url": "https://docs.ipfs.tech/reference/kubo/rpc/",
+      "ipfs:baseURL": "http://localhost:5001",
+      "ipfs:version": "v0"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "schema:name": "IPFS HTTP Gateway API",
+      "schema:url": "https://specs.ipfs.tech/http-gateways/path-gateway/",
+      "ipfs:baseURL": "https://ipfs.io"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "schema:name": "IPFS Delegated Routing V1 HTTP API",
+      "schema:url": "https://specs.ipfs.tech/routing/http-routing-v1/",
+      "ipfs:baseURL": "https://delegated-ipfs.dev"
+    },
+    {
+      "@type": "schema:WebAPI",
+      "schema:name": "IPFS Pinning Service API",
+      "schema:url": "https://ipfs.github.io/pinning-services-api-spec/",
+      "ipfs:version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ipfs.tech/schemas/pinning/pinmeta",
+  "title": "PinMeta",
+  "description": "Optional metadata for pin object",
+  "type": "object",
+  "additionalProperties": {
+    "type": "string",
+    "minProperties": 0,
+    "maxProperties": 1000
+  },
+  "example": {
+    "app_id": "99986338-1113-4706-8302-4420da6158aa"
+  }
+}

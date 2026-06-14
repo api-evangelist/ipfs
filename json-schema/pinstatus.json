@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ipfs.tech/schemas/pinning/pinstatus",
+  "title": "PinStatus",
+  "description": "Pin object with status",
+  "type": "object",
+  "required": [
+    "requestid",
+    "status",
+    "created",
+    "pin",
+    "delegates"
+  ],
+  "properties": {
+    "requestid": {
+      "description": "Globally unique identifier of the pin request; can be used to check the status of ongoing pinning, or pin removal",
+      "type": "string",
+      "example": "UniqueIdOfPinRequest"
+    },
+    "status": {
+      "$ref": "#/components/schemas/Status"
+    },
+    "created": {
+      "description": "Immutable timestamp indicating when a pin request entered a pinning service; can be used for filtering results and pagination",
+      "type": "string",
+      "format": "date-time",
+      "example": "2020-07-27T17:32:28.276Z"
+    },
+    "pin": {
+      "$ref": "#/components/schemas/Pin"
+    },
+    "delegates": {
+      "$ref": "#/components/schemas/Delegates"
+    },
+    "info": {
+      "$ref": "#/components/schemas/StatusInfo"
+    }
+  }
+}

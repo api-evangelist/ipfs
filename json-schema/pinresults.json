@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ipfs.tech/schemas/pinning/pinresults",
+  "title": "PinResults",
+  "description": "Response used for listing pin objects matching request",
+  "type": "object",
+  "required": [
+    "count",
+    "results"
+  ],
+  "properties": {
+    "count": {
+      "description": "The total number of pin objects that exist for passed query filters",
+      "type": "integer",
+      "format": "int32",
+      "minimum": 0,
+      "example": 1
+    },
+    "results": {
+      "description": "An array of PinStatus results",
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PinStatus"
+      },
+      "uniqueItems": true,
+      "minItems": 0,
+      "maxItems": 1000
+    }
+  }
+}

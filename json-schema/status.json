@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ipfs.tech/schemas/pinning/status",
+  "title": "Status",
+  "description": "Status a pin object can have at a pinning service",
+  "type": "string",
+  "enum": [
+    "queued",
+    "pinning",
+    "pinned",
+    "failed"
+  ]
+}

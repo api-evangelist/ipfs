@@ -1,0 +1,1517 @@
+{
+  "add": {
+    "path": "/api/v0/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Bytes": "<int64>",
+      "Hash": "<string>",
+      "Name": "<string>",
+      "Size": "<string>"
+    }
+  },
+  "bitswap-ledger": {
+    "path": "/api/v0/bitswap/ledger",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Exchanged": "<uint64>",
+      "Peer": "<string>",
+      "Recv": "<uint64>",
+      "Sent": "<uint64>",
+      "Value": "<float64>"
+    }
+  },
+  "bitswap-stat": {
+    "path": "/api/v0/bitswap/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "BlocksReceived": "<uint64>",
+      "BlocksSent": "<uint64>",
+      "DataReceived": "<uint64>",
+      "DataSent": "<uint64>",
+      "DupBlksReceived": "<uint64>",
+      "DupDataReceived": "<uint64>",
+      "MessagesReceived": "<uint64>",
+      "Peers": [
+        "<string>"
+      ],
+      "ProvideBufLen": "<int>",
+      "Wantlist": [
+        {
+          "/": "<cid-string>"
+        }
+      ]
+    }
+  },
+  "bitswap-wantlist": {
+    "path": "/api/v0/bitswap/wantlist",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Keys": [
+        {
+          "/": "<cid-string>"
+        }
+      ]
+    }
+  },
+  "block-put": {
+    "path": "/api/v0/block/put",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Key": "<string>",
+      "Size": "<int>"
+    }
+  },
+  "block-rm": {
+    "path": "/api/v0/block/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Error": "<string>",
+      "Hash": "<string>"
+    }
+  },
+  "block-stat": {
+    "path": "/api/v0/block/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Key": "<string>",
+      "Size": "<int>"
+    }
+  },
+  "bootstrap": {
+    "path": "/api/v0/bootstrap",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "bootstrap-add": {
+    "path": "/api/v0/bootstrap/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "bootstrap-add-default": {
+    "path": "/api/v0/bootstrap/add/default",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "bootstrap-list": {
+    "path": "/api/v0/bootstrap/list",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "bootstrap-rm": {
+    "path": "/api/v0/bootstrap/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "bootstrap-rm-all": {
+    "path": "/api/v0/bootstrap/rm/all",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        "<string>"
+      ]
+    }
+  },
+  "cid-base32": {
+    "path": "/api/v0/cid/base32",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "CidStr": "<string>",
+      "ErrorMsg": "<string>",
+      "Formatted": "<string>"
+    }
+  },
+  "cid-bases": {
+    "path": "/api/v0/cid/bases",
+    "method": "post",
+    "status": "200",
+    "example": [
+      {
+        "Code": "<int>",
+        "Name": "<string>"
+      }
+    ]
+  },
+  "cid-codecs": {
+    "path": "/api/v0/cid/codecs",
+    "method": "post",
+    "status": "200",
+    "example": [
+      {
+        "Code": "<int>",
+        "Name": "<string>"
+      }
+    ]
+  },
+  "cid-format": {
+    "path": "/api/v0/cid/format",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "CidStr": "<string>",
+      "ErrorMsg": "<string>",
+      "Formatted": "<string>"
+    }
+  },
+  "cid-hashes": {
+    "path": "/api/v0/cid/hashes",
+    "method": "post",
+    "status": "200",
+    "example": [
+      {
+        "Code": "<int>",
+        "Name": "<string>"
+      }
+    ]
+  },
+  "commands": {
+    "path": "/api/v0/commands",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Name": "<string>",
+      "Options": [
+        {
+          "Names": [
+            "<string>"
+          ]
+        }
+      ],
+      "Subcommands": [
+        {
+          "Name": "<string>",
+          "Options": [
+            {
+              "Names": [
+                "<string>"
+              ]
+            }
+          ],
+          "Subcommands": [
+            "..."
+          ]
+        }
+      ]
+    }
+  },
+  "config": {
+    "path": "/api/v0/config",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Key": "<string>",
+      "Value": "<object>"
+    }
+  },
+  "config-profile-apply": {
+    "path": "/api/v0/config/profile/apply",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "NewCfg": {
+        "<string>": "<object>"
+      },
+      "OldCfg": {
+        "<string>": "<object>"
+      }
+    }
+  },
+  "config-show": {
+    "path": "/api/v0/config/show",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "<string>": "<object>"
+    }
+  },
+  "dag-import": {
+    "path": "/api/v0/dag/import",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Root": {
+        "Cid": {
+          "/": "<cid-string>"
+        },
+        "PinErrorMsg": "<string>"
+      },
+      "Stats": {
+        "BlockBytesCount": "<uint64>",
+        "BlockCount": "<uint64>"
+      }
+    }
+  },
+  "dag-put": {
+    "path": "/api/v0/dag/put",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": {
+        "/": "<cid-string>"
+      }
+    }
+  },
+  "dag-resolve": {
+    "path": "/api/v0/dag/resolve",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": {
+        "/": "<cid-string>"
+      },
+      "RemPath": "<string>"
+    }
+  },
+  "dag-stat": {
+    "path": "/api/v0/dag/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "NumBlocks": "<int64>",
+      "Size": "<uint64>"
+    }
+  },
+  "dht-query": {
+    "path": "/api/v0/dht/query",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "diag-cmds": {
+    "path": "/api/v0/diag/cmds",
+    "method": "post",
+    "status": "200",
+    "example": [
+      {
+        "Active": "<bool>",
+        "Args": [
+          "<string>"
+        ],
+        "Command": "<string>",
+        "EndTime": "<timestamp>",
+        "ID": "<int>",
+        "Options": {
+          "<string>": "<object>"
+        },
+        "StartTime": "<timestamp>"
+      }
+    ]
+  },
+  "files-flush": {
+    "path": "/api/v0/files/flush",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": "<string>"
+    }
+  },
+  "files-ls": {
+    "path": "/api/v0/files/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Entries": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<int64>",
+          "Type": "<int>"
+        }
+      ]
+    }
+  },
+  "files-stat": {
+    "path": "/api/v0/files/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Blocks": "<int>",
+      "CumulativeSize": "<uint64>",
+      "Hash": "<string>",
+      "Local": "<bool>",
+      "Size": "<uint64>",
+      "SizeLocal": "<uint64>",
+      "Type": "<string>",
+      "WithLocality": "<bool>"
+    }
+  },
+  "filestore-dups": {
+    "path": "/api/v0/filestore/dups",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Err": "<string>",
+      "Ref": "<string>"
+    }
+  },
+  "filestore-ls": {
+    "path": "/api/v0/filestore/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "ErrorMsg": "<string>",
+      "FilePath": "<string>",
+      "Key": {
+        "/": "<cid-string>"
+      },
+      "Offset": "<uint64>",
+      "Size": "<uint64>",
+      "Status": "<int32>"
+    }
+  },
+  "filestore-verify": {
+    "path": "/api/v0/filestore/verify",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "ErrorMsg": "<string>",
+      "FilePath": "<string>",
+      "Key": {
+        "/": "<cid-string>"
+      },
+      "Offset": "<uint64>",
+      "Size": "<uint64>",
+      "Status": "<int32>"
+    }
+  },
+  "id": {
+    "path": "/api/v0/id",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Addresses": [
+        "<string>"
+      ],
+      "AgentVersion": "<string>",
+      "ID": "<string>",
+      "ProtocolVersion": "<string>",
+      "Protocols": [
+        "<string>"
+      ],
+      "PublicKey": "<string>"
+    }
+  },
+  "key-gen": {
+    "path": "/api/v0/key/gen",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Id": "<string>",
+      "Name": "<string>"
+    }
+  },
+  "key-import": {
+    "path": "/api/v0/key/import",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Id": "<string>",
+      "Name": "<string>"
+    }
+  },
+  "key-list": {
+    "path": "/api/v0/key/list",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Keys": [
+        {
+          "Id": "<string>",
+          "Name": "<string>"
+        }
+      ]
+    }
+  },
+  "key-rename": {
+    "path": "/api/v0/key/rename",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Id": "<string>",
+      "Now": "<string>",
+      "Overwrite": "<bool>",
+      "Was": "<string>"
+    }
+  },
+  "key-rm": {
+    "path": "/api/v0/key/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Keys": [
+        {
+          "Id": "<string>",
+          "Name": "<string>"
+        }
+      ]
+    }
+  },
+  "log-level": {
+    "path": "/api/v0/log/level",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Message": "<string>"
+    }
+  },
+  "log-ls": {
+    "path": "/api/v0/log/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "ls": {
+    "path": "/api/v0/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Objects": [
+        {
+          "Hash": "<string>",
+          "Links": [
+            {
+              "Hash": "<string>",
+              "Name": "<string>",
+              "Size": "<uint64>",
+              "Target": "<string>",
+              "Type": "<int32>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "multibase-list": {
+    "path": "/api/v0/multibase/list",
+    "method": "post",
+    "status": "200",
+    "example": [
+      {
+        "Code": "<int>",
+        "Name": "<string>"
+      }
+    ]
+  },
+  "name-publish": {
+    "path": "/api/v0/name/publish",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Name": "<string>",
+      "Value": "<string>"
+    }
+  },
+  "name-resolve": {
+    "path": "/api/v0/name/resolve",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Path": "<string>"
+    }
+  },
+  "pin-add": {
+    "path": "/api/v0/pin/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Pins": [
+        "<string>"
+      ],
+      "Progress": "<int>"
+    }
+  },
+  "pin-ls": {
+    "path": "/api/v0/pin/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "PinLsList": {
+        "Keys": {
+          "<string>": {
+            "Type": "<string>"
+          }
+        }
+      },
+      "PinLsObject": {
+        "Cid": "<string>",
+        "Type": "<string>"
+      }
+    }
+  },
+  "pin-remote-add": {
+    "path": "/api/v0/pin/remote/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": "<string>",
+      "Name": "<string>",
+      "Status": "<string>"
+    }
+  },
+  "pin-remote-ls": {
+    "path": "/api/v0/pin/remote/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": "<string>",
+      "Name": "<string>",
+      "Status": "<string>"
+    }
+  },
+  "pin-remote-service-ls": {
+    "path": "/api/v0/pin/remote/service/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "RemoteServices": [
+        {
+          "ApiEndpoint": "<string>",
+          "Service": "<string>",
+          "Stat": {
+            "PinCount": {
+              "Failed": "<int>",
+              "Pinned": "<int>",
+              "Pinning": "<int>",
+              "Queued": "<int>"
+            },
+            "Status": "<string>"
+          }
+        }
+      ]
+    }
+  },
+  "pin-rm": {
+    "path": "/api/v0/pin/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Pins": [
+        "<string>"
+      ]
+    }
+  },
+  "pin-update": {
+    "path": "/api/v0/pin/update",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Pins": [
+        "<string>"
+      ]
+    }
+  },
+  "pin-verify": {
+    "path": "/api/v0/pin/verify",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Cid": "<string>",
+      "PinStatus": {
+        "BadNodes": [
+          {
+            "Cid": "<string>",
+            "Err": "<string>"
+          }
+        ],
+        "Ok": "<bool>"
+      }
+    }
+  },
+  "ping": {
+    "path": "/api/v0/ping",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Success": "<bool>",
+      "Text": "<string>",
+      "Time": "<duration-ns>"
+    }
+  },
+  "refs": {
+    "path": "/api/v0/refs",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Err": "<string>",
+      "Ref": "<string>"
+    }
+  },
+  "refs-local": {
+    "path": "/api/v0/refs/local",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Err": "<string>",
+      "Ref": "<string>"
+    }
+  },
+  "repo-gc": {
+    "path": "/api/v0/repo/gc",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Error": "<string>",
+      "Key": {
+        "/": "<cid-string>"
+      }
+    }
+  },
+  "repo-ls": {
+    "path": "/api/v0/repo/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Err": "<string>",
+      "Ref": "<string>"
+    }
+  },
+  "repo-stat": {
+    "path": "/api/v0/repo/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "NumObjects": "<uint64>",
+      "RepoPath": "<string>",
+      "SizeStat": {
+        "RepoSize": "<uint64>",
+        "StorageMax": "<uint64>"
+      },
+      "Version": "<string>"
+    }
+  },
+  "repo-verify": {
+    "path": "/api/v0/repo/verify",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Msg": "<string>",
+      "Progress": "<int>"
+    }
+  },
+  "repo-version": {
+    "path": "/api/v0/repo/version",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Version": "<string>"
+    }
+  },
+  "resolve": {
+    "path": "/api/v0/resolve",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Path": "<string>"
+    }
+  },
+  "routing-findpeer": {
+    "path": "/api/v0/routing/findpeer",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "routing-findprovs": {
+    "path": "/api/v0/routing/findprovs",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "stats-bitswap": {
+    "path": "/api/v0/stats/bitswap",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "BlocksReceived": "<uint64>",
+      "BlocksSent": "<uint64>",
+      "DataReceived": "<uint64>",
+      "DataSent": "<uint64>",
+      "DupBlksReceived": "<uint64>",
+      "DupDataReceived": "<uint64>",
+      "MessagesReceived": "<uint64>",
+      "Peers": [
+        "<string>"
+      ],
+      "ProvideBufLen": "<int>",
+      "Wantlist": [
+        {
+          "/": "<cid-string>"
+        }
+      ]
+    }
+  },
+  "stats-bw": {
+    "path": "/api/v0/stats/bw",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "RateIn": "<float64>",
+      "RateOut": "<float64>",
+      "TotalIn": "<int64>",
+      "TotalOut": "<int64>"
+    }
+  },
+  "stats-dht": {
+    "path": "/api/v0/stats/dht",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Buckets": [
+        {
+          "LastRefresh": "<string>",
+          "Peers": [
+            {
+              "AgentVersion": "<string>",
+              "Connected": "<bool>",
+              "ID": "<string>",
+              "LastQueriedAt": "<string>",
+              "LastUsefulAt": "<string>"
+            }
+          ]
+        }
+      ],
+      "Name": "<string>"
+    }
+  },
+  "stats-provide": {
+    "path": "/api/v0/stats/provide",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "AvgProvideDuration": "<duration-ns>",
+      "LastReprovideBatchSize": "<int>",
+      "LastReprovideDuration": "<duration-ns>",
+      "TotalProvides": "<int>"
+    }
+  },
+  "stats-repo": {
+    "path": "/api/v0/stats/repo",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "NumObjects": "<uint64>",
+      "RepoPath": "<string>",
+      "SizeStat": {
+        "RepoSize": "<uint64>",
+        "StorageMax": "<uint64>"
+      },
+      "Version": "<string>"
+    }
+  },
+  "swarm-addrs": {
+    "path": "/api/v0/swarm/addrs",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Addrs": {
+        "<string>": [
+          "<string>"
+        ]
+      }
+    }
+  },
+  "swarm-addrs-listen": {
+    "path": "/api/v0/swarm/addrs/listen",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-addrs-local": {
+    "path": "/api/v0/swarm/addrs/local",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-connect": {
+    "path": "/api/v0/swarm/connect",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-disconnect": {
+    "path": "/api/v0/swarm/disconnect",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-filters": {
+    "path": "/api/v0/swarm/filters",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-filters-add": {
+    "path": "/api/v0/swarm/filters/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-filters-rm": {
+    "path": "/api/v0/swarm/filters/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "swarm-peering-add": {
+    "path": "/api/v0/swarm/peering/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "ID": "<peer-id>",
+      "Status": "<string>"
+    }
+  },
+  "swarm-peering-ls": {
+    "path": "/api/v0/swarm/peering/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ]
+    }
+  },
+  "swarm-peering-rm": {
+    "path": "/api/v0/swarm/peering/rm",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "ID": "<peer-id>",
+      "Status": "<string>"
+    }
+  },
+  "swarm-peers": {
+    "path": "/api/v0/swarm/peers",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Peers": [
+        {
+          "Addr": "<string>",
+          "Direction": "<int>",
+          "Identify": {
+            "Addresses": [
+              "<string>"
+            ],
+            "AgentVersion": "<string>",
+            "ID": "<string>",
+            "ProtocolVersion": "<string>",
+            "Protocols": [
+              "<string>"
+            ],
+            "PublicKey": "<string>"
+          },
+          "Latency": "<string>",
+          "Muxer": "<string>",
+          "Peer": "<string>",
+          "Streams": [
+            {
+              "Protocol": "<string>"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "version": {
+    "path": "/api/v0/version",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Commit": "<string>",
+      "Golang": "<string>",
+      "Repo": "<string>",
+      "System": "<string>",
+      "Version": "<string>"
+    }
+  },
+  "version-deps": {
+    "path": "/api/v0/version/deps",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Path": "<string>",
+      "ReplacedBy": "<string>",
+      "Sum": "<string>",
+      "Version": "<string>"
+    }
+  },
+  "mount": {
+    "path": "/api/v0/mount",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "FuseAllowOther": "<bool>",
+      "IPFS": "<string>",
+      "IPNS": "<string>"
+    }
+  },
+  "name-inspect": {
+    "path": "/api/v0/name/inspect",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Entry": {
+        "Data": "<object>",
+        "PublicKey": "<string>",
+        "Sequence": "<uint64>",
+        "SignatureV1": "<string>",
+        "SignatureV2": "<string>",
+        "TTL": "<uint64>",
+        "Validity": "<timestamp>",
+        "ValidityType": "<int32>",
+        "Value": "<string>"
+      },
+      "Validation": {
+        "PublicKey": "<peer-id>",
+        "Reason": "<string>",
+        "Valid": "<bool>"
+      }
+    }
+  },
+  "name-pubsub-cancel": {
+    "path": "/api/v0/name/pubsub/cancel",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Canceled": "<bool>"
+    }
+  },
+  "name-pubsub-state": {
+    "path": "/api/v0/name/pubsub/state",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Enabled": "<bool>"
+    }
+  },
+  "name-pubsub-subs": {
+    "path": "/api/v0/name/pubsub/subs",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "p2p-close": {
+    "path": "/api/v0/p2p/close",
+    "method": "post",
+    "status": "200",
+    "example": "<int>"
+  },
+  "p2p-ls": {
+    "path": "/api/v0/p2p/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Listeners": [
+        {
+          "ListenAddress": "<string>",
+          "Protocol": "<string>",
+          "TargetAddress": "<string>"
+        }
+      ]
+    }
+  },
+  "p2p-stream-ls": {
+    "path": "/api/v0/p2p/stream/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Streams": [
+        {
+          "HandlerID": "<string>",
+          "OriginAddress": "<string>",
+          "Protocol": "<string>",
+          "TargetAddress": "<string>"
+        }
+      ]
+    }
+  },
+  "routing-get": {
+    "path": "/api/v0/routing/get",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "routing-provide": {
+    "path": "/api/v0/routing/provide",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "routing-put": {
+    "path": "/api/v0/routing/put",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "swarm-resources": {
+    "path": "/api/v0/swarm/resources",
+    "method": "post",
+    "status": "200",
+    "example": "<object>"
+  },
+  "dht-findpeer": {
+    "path": "/api/v0/dht/findpeer",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "dht-findprovs": {
+    "path": "/api/v0/dht/findprovs",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "dht-get": {
+    "path": "/api/v0/dht/get",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "dht-provide": {
+    "path": "/api/v0/dht/provide",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "dht-put": {
+    "path": "/api/v0/dht/put",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Extra": "<string>",
+      "ID": "<peer-id>",
+      "Responses": [
+        {
+          "Addrs": [
+            "<multiaddr-string>"
+          ],
+          "ID": "peer-id"
+        }
+      ],
+      "Type": "<int>"
+    }
+  },
+  "dns": {
+    "path": "/api/v0/dns",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Path": "<string>"
+    }
+  },
+  "file-ls": {
+    "path": "/api/v0/file/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Arguments": {
+        "<string>": "<string>"
+      },
+      "Objects": {
+        "<string>": {
+          "Hash": "<string>",
+          "Links": [
+            {
+              "Hash": "<string>",
+              "Name": "<string>",
+              "Size": "<uint64>",
+              "Type": "<string>"
+            }
+          ],
+          "Size": "<uint64>",
+          "Type": "<string>"
+        }
+      }
+    }
+  },
+  "object-diff": {
+    "path": "/api/v0/object/diff",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Changes": [
+        {
+          "After": {
+            "/": "<cid-string>"
+          },
+          "Before": {
+            "/": "<cid-string>"
+          },
+          "Path": "<string>",
+          "Type": "<int>"
+        }
+      ]
+    }
+  },
+  "object-get": {
+    "path": "/api/v0/object/get",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Data": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-links": {
+    "path": "/api/v0/object/links",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-new": {
+    "path": "/api/v0/object/new",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-patch-add-link": {
+    "path": "/api/v0/object/patch/add-link",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-patch-append-data": {
+    "path": "/api/v0/object/patch/append-data",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-patch-rm-link": {
+    "path": "/api/v0/object/patch/rm-link",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-patch-set-data": {
+    "path": "/api/v0/object/patch/set-data",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-put": {
+    "path": "/api/v0/object/put",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Hash": "<string>",
+      "Links": [
+        {
+          "Hash": "<string>",
+          "Name": "<string>",
+          "Size": "<uint64>"
+        }
+      ]
+    }
+  },
+  "object-stat": {
+    "path": "/api/v0/object/stat",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "BlockSize": "<int>",
+      "CumulativeSize": "<int>",
+      "DataSize": "<int>",
+      "Hash": "<string>",
+      "LinksSize": "<int>",
+      "NumLinks": "<int>"
+    }
+  },
+  "pubsub-ls": {
+    "path": "/api/v0/pubsub/ls",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "pubsub-peers": {
+    "path": "/api/v0/pubsub/peers",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Strings": [
+        "<string>"
+      ]
+    }
+  },
+  "pubsub-sub": {
+    "path": "/api/v0/pubsub/sub",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "data": "<string>",
+      "from": "<string>",
+      "seqno": "<string>",
+      "topicIDs": [
+        "<string>"
+      ]
+    }
+  },
+  "tar-add": {
+    "path": "/api/v0/tar/add",
+    "method": "post",
+    "status": "200",
+    "example": {
+      "Bytes": "<int64>",
+      "Hash": "<string>",
+      "Name": "<string>",
+      "Size": "<string>"
+    }
+  }
+}

@@ -45,7 +45,7 @@ apis:
       - type: Documentation
         url: https://docs.ipfs.tech/reference/kubo/rpc/
       - type: OpenAPI
-        url: https://raw.githubusercontent.com/ipfs/kubo/master/client/rpc/api/README.md
+        url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/openapi/ipfs-kubo-rpc-api.json
     contact:
       - FN: IPFS Forums
         url: https://discuss.ipfs.tech/
@@ -134,6 +134,38 @@ apis:
         value: None required for public endpoint
       - key: responseFormats
         value: application/json, application/x-ndjson (streaming), application/vnd.ipfs.ipns-record
+
+  - name: IPFS Pinning Service API
+    description: >-
+      The IPFS Pinning Service API is a vendor-agnostic HTTP API specification
+      that allows users to manage remote pin requests across compliant pinning
+      services. Endpoints cover listing, creating, replacing, and deleting pins
+      by request ID, with filtering by CID, name, match strategy, status, and
+      timestamp. Compliant implementations include Pinata, Web3.Storage, Filebase,
+      and others. Authentication uses Bearer tokens issued by each service.
+    image: https://ipfs.tech/images/ipfs-logo.svg
+    humanURL: https://ipfs.github.io/pinning-services-api-spec/
+    baseURL: https://api.pinningservice.example/
+    tags:
+      - Pinning
+      - Remote Pinning
+      - Content Persistence
+      - IPFS
+    properties:
+      - type: Documentation
+        url: https://ipfs.github.io/pinning-services-api-spec/
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/openapi/ipfs-pinning-service-api.yaml
+      - type: GitHubRepository
+        url: https://github.com/ipfs/pinning-services-api-spec
+    contact:
+      - FN: IPFS Pinning Service Spec
+        url: https://github.com/ipfs/pinning-services-api-spec
+    meta:
+      - key: authentication
+        value: "HTTP Bearer token (Authorization: Bearer <token>)"
+      - key: specVersion
+        value: "1.0.0"
 
 maintainers:
   - FN: IPFS Foundation / Protocol Labs

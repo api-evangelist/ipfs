@@ -1,0 +1,66 @@
+{
+  "title": "IPFS API Vocabulary",
+  "description": "Key terms and concepts used in IPFS APIs",
+  "terms": {
+    "CID": {
+      "label": "Content Identifier",
+      "definition": "A self-describing content-addressed identifier used to point to data stored in IPFS. CIDs are based on the content's cryptographic hash.",
+      "examples": [
+        "QmYjtig2JkZoqwiVj5NofVJCBxMKMBdGMp6JkBeFmNDi5t",
+        "bafkreigdnf5kaqbam5d4ygqktvmkqhkqsukh7o7ajflbcvxjuvicnmf"
+      ]
+    },
+    "DAG": {
+      "label": "Directed Acyclic Graph",
+      "definition": "The data structure used by IPFS to represent files and directories. DAG nodes are linked by CIDs."
+    },
+    "IPNS": {
+      "label": "InterPlanetary Name System",
+      "definition": "A mutable addressing system built on top of IPFS that allows pointing a name to a CID that can be updated over time."
+    },
+    "Pin": {
+      "label": "Pin",
+      "definition": "An operation that prevents IPFS garbage collection from removing a block or DAG from local storage."
+    },
+    "Peer": {
+      "label": "Peer",
+      "definition": "A node in the IPFS network identified by a Peer ID (multihash of its public key)."
+    },
+    "Multiaddr": {
+      "label": "Multiaddress",
+      "definition": "A self-describing network address format used in IPFS and libp2p. Example: /ip4/127.0.0.1/tcp/4001/p2p/QmPeer..."
+    },
+    "Swarm": {
+      "label": "Swarm",
+      "definition": "The network layer of IPFS responsible for peer connections and data transfer."
+    },
+    "CAR": {
+      "label": "Content Addressable aRchive",
+      "definition": "A format for packaging IPFS DAG data into a single file, used for export and import of content."
+    },
+    "MFS": {
+      "label": "Mutable File System",
+      "definition": "A virtual filesystem API in IPFS that allows working with files and directories as if IPFS had a traditional mutable filesystem."
+    },
+    "Bitswap": {
+      "label": "Bitswap",
+      "definition": "The data trading module in IPFS, responsible for requesting and sending blocks to/from other peers."
+    },
+    "DHT": {
+      "label": "Distributed Hash Table",
+      "definition": "The distributed routing table used by IPFS to discover content providers and peer addresses."
+    },
+    "Gateway": {
+      "label": "IPFS Gateway",
+      "definition": "An HTTP server that provides access to IPFS content over standard HTTP, enabling access without running a local IPFS node."
+    },
+    "PinningService": {
+      "label": "Pinning Service",
+      "definition": "A remote service that pins IPFS content on behalf of users, keeping it accessible on the network."
+    },
+    "RequestID": {
+      "label": "Request ID",
+      "definition": "A unique identifier for a pin request in the IPFS Pinning Service API. Format: UUID v4."
+    }
+  }
+}

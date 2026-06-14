@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "@vocab": "https://ipfs.tech/vocab#",
+    "schema": "https://schema.org/",
+    "ipfs": "https://ipfs.tech/vocab#",
+    "CID": "ipfs:ContentIdentifier",
+    "Hash": "ipfs:Hash",
+    "Name": "schema:name",
+    "Size": "schema:contentSize",
+    "Bytes": "ipfs:byteCount",
+    "Peer": "ipfs:Peer",
+    "PeerID": "ipfs:peerIdentifier",
+    "Addrs": "ipfs:multiaddresses",
+    "Keys": "ipfs:keys",
+    "Key": "ipfs:key",
+    "Pin": {
+      "@id": "ipfs:Pin",
+      "@type": "@id"
+    },
+    "PinStatus": "ipfs:PinStatus",
+    "Status": "ipfs:pinningStatus",
+    "Delegates": "ipfs:delegates",
+    "Origins": "ipfs:origins",
+    "Meta": "ipfs:metadata",
+    "Info": "ipfs:statusInfo",
+    "RequestID": "ipfs:requestIdentifier",
+    "Created": {
+      "@id": "schema:dateCreated",
+      "@type": "schema:DateTime"
+    },
+    "Cid": "ipfs:ContentIdentifier",
+    "BlocksReceived": "ipfs:blocksReceived",
+    "BlocksSent": "ipfs:blocksSent",
+    "DataReceived": "ipfs:dataReceived",
+    "DataSent": "ipfs:dataSent",
+    "DupBlksReceived": "ipfs:duplicateBlocksReceived",
+    "DupDataReceived": "ipfs:duplicateDataReceived",
+    "MessagesReceived": "ipfs:messagesReceived",
+    "ID": "ipfs:nodeIdentifier",
+    "AgentVersion": "ipfs:agentVersion",
+    "ProtocolVersion": "ipfs:protocolVersion",
+    "Addresses": "ipfs:multiaddresses",
+    "PublicKey": "ipfs:publicKey"
+  }
+}

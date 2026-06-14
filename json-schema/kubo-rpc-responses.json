@@ -1,0 +1,1582 @@
+{
+  "add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo add Response",
+    "type": "object",
+    "properties": {
+      "Bytes": {
+        "type": "string"
+      },
+      "Hash": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      }
+    }
+  },
+  "bitswap_ledger": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bitswap/ledger Response",
+    "type": "object",
+    "properties": {
+      "Exchanged": {
+        "type": "string"
+      },
+      "Peer": {
+        "type": "string"
+      },
+      "Recv": {
+        "type": "string"
+      },
+      "Sent": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  "bitswap_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bitswap/stat Response",
+    "type": "object",
+    "properties": {
+      "BlocksReceived": {
+        "type": "string"
+      },
+      "BlocksSent": {
+        "type": "string"
+      },
+      "DataReceived": {
+        "type": "string"
+      },
+      "DataSent": {
+        "type": "string"
+      },
+      "DupBlksReceived": {
+        "type": "string"
+      },
+      "DupDataReceived": {
+        "type": "string"
+      },
+      "MessagesReceived": {
+        "type": "string"
+      },
+      "Peers": {
+        "type": "array"
+      },
+      "ProvideBufLen": {
+        "type": "string"
+      },
+      "Wantlist": {
+        "type": "array"
+      }
+    }
+  },
+  "bitswap_wantlist": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bitswap/wantlist Response",
+    "type": "object",
+    "properties": {
+      "Keys": {
+        "type": "array"
+      }
+    }
+  },
+  "block_put": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo block/put Response",
+    "type": "object",
+    "properties": {
+      "Key": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      }
+    }
+  },
+  "block_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo block/rm Response",
+    "type": "object",
+    "properties": {
+      "Error": {
+        "type": "string"
+      },
+      "Hash": {
+        "type": "string"
+      }
+    }
+  },
+  "block_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo block/stat Response",
+    "type": "object",
+    "properties": {
+      "Key": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      }
+    }
+  },
+  "bootstrap": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "bootstrap_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap/add Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "bootstrap_add_default": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap/add/default Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "bootstrap_list": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap/list Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "bootstrap_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap/rm Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "bootstrap_rm_all": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo bootstrap/rm/all Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "cid_base32": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo cid/base32 Response",
+    "type": "object",
+    "properties": {
+      "CidStr": {
+        "type": "string"
+      },
+      "ErrorMsg": {
+        "type": "string"
+      },
+      "Formatted": {
+        "type": "string"
+      }
+    }
+  },
+  "cid_format": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo cid/format Response",
+    "type": "object",
+    "properties": {
+      "CidStr": {
+        "type": "string"
+      },
+      "ErrorMsg": {
+        "type": "string"
+      },
+      "Formatted": {
+        "type": "string"
+      }
+    }
+  },
+  "commands": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo commands Response",
+    "type": "object",
+    "properties": {
+      "Name": {
+        "type": "string"
+      },
+      "Options": {
+        "type": "array"
+      },
+      "Subcommands": {
+        "type": "array"
+      }
+    }
+  },
+  "config": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo config Response",
+    "type": "object",
+    "properties": {
+      "Key": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  "config_profile_apply": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo config/profile/apply Response",
+    "type": "object",
+    "properties": {
+      "NewCfg": {
+        "type": "object"
+      },
+      "OldCfg": {
+        "type": "object"
+      }
+    }
+  },
+  "config_show": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo config/show Response",
+    "type": "object",
+    "properties": {
+      "<string>": {
+        "type": "string"
+      }
+    }
+  },
+  "dag_import": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dag/import Response",
+    "type": "object",
+    "properties": {
+      "Root": {
+        "type": "object"
+      },
+      "Stats": {
+        "type": "object"
+      }
+    }
+  },
+  "dag_put": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dag/put Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "object"
+      }
+    }
+  },
+  "dag_resolve": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dag/resolve Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "object"
+      },
+      "RemPath": {
+        "type": "string"
+      }
+    }
+  },
+  "dag_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dag/stat Response",
+    "type": "object",
+    "properties": {
+      "NumBlocks": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_query": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/query Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "files_flush": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo files/flush Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "string"
+      }
+    }
+  },
+  "files_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo files/ls Response",
+    "type": "object",
+    "properties": {
+      "Entries": {
+        "type": "array"
+      }
+    }
+  },
+  "files_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo files/stat Response",
+    "type": "object",
+    "properties": {
+      "Blocks": {
+        "type": "string"
+      },
+      "CumulativeSize": {
+        "type": "string"
+      },
+      "Hash": {
+        "type": "string"
+      },
+      "Local": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      },
+      "SizeLocal": {
+        "type": "string"
+      },
+      "Type": {
+        "type": "string"
+      },
+      "WithLocality": {
+        "type": "string"
+      }
+    }
+  },
+  "filestore_dups": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo filestore/dups Response",
+    "type": "object",
+    "properties": {
+      "Err": {
+        "type": "string"
+      },
+      "Ref": {
+        "type": "string"
+      }
+    }
+  },
+  "filestore_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo filestore/ls Response",
+    "type": "object",
+    "properties": {
+      "ErrorMsg": {
+        "type": "string"
+      },
+      "FilePath": {
+        "type": "string"
+      },
+      "Key": {
+        "type": "object"
+      },
+      "Offset": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "filestore_verify": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo filestore/verify Response",
+    "type": "object",
+    "properties": {
+      "ErrorMsg": {
+        "type": "string"
+      },
+      "FilePath": {
+        "type": "string"
+      },
+      "Key": {
+        "type": "object"
+      },
+      "Offset": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "id": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo id Response",
+    "type": "object",
+    "properties": {
+      "Addresses": {
+        "type": "array"
+      },
+      "AgentVersion": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "ProtocolVersion": {
+        "type": "string"
+      },
+      "Protocols": {
+        "type": "array"
+      },
+      "PublicKey": {
+        "type": "string"
+      }
+    }
+  },
+  "key_gen": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo key/gen Response",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      }
+    }
+  },
+  "key_import": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo key/import Response",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      }
+    }
+  },
+  "key_list": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo key/list Response",
+    "type": "object",
+    "properties": {
+      "Keys": {
+        "type": "array"
+      }
+    }
+  },
+  "key_rename": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo key/rename Response",
+    "type": "object",
+    "properties": {
+      "Id": {
+        "type": "string"
+      },
+      "Now": {
+        "type": "string"
+      },
+      "Overwrite": {
+        "type": "string"
+      },
+      "Was": {
+        "type": "string"
+      }
+    }
+  },
+  "key_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo key/rm Response",
+    "type": "object",
+    "properties": {
+      "Keys": {
+        "type": "array"
+      }
+    }
+  },
+  "log_level": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo log/level Response",
+    "type": "object",
+    "properties": {
+      "Message": {
+        "type": "string"
+      }
+    }
+  },
+  "log_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo log/ls Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo ls Response",
+    "type": "object",
+    "properties": {
+      "Objects": {
+        "type": "array"
+      }
+    }
+  },
+  "name_publish": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/publish Response",
+    "type": "object",
+    "properties": {
+      "Name": {
+        "type": "string"
+      },
+      "Value": {
+        "type": "string"
+      }
+    }
+  },
+  "name_resolve": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/resolve Response",
+    "type": "object",
+    "properties": {
+      "Path": {
+        "type": "string"
+      }
+    }
+  },
+  "pin_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/add Response",
+    "type": "object",
+    "properties": {
+      "Pins": {
+        "type": "array"
+      },
+      "Progress": {
+        "type": "string"
+      }
+    }
+  },
+  "pin_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/ls Response",
+    "type": "object",
+    "properties": {
+      "PinLsList": {
+        "type": "object"
+      },
+      "PinLsObject": {
+        "type": "object"
+      }
+    }
+  },
+  "pin_remote_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/remote/add Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "pin_remote_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/remote/ls Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "pin_remote_service_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/remote/service/ls Response",
+    "type": "object",
+    "properties": {
+      "RemoteServices": {
+        "type": "array"
+      }
+    }
+  },
+  "pin_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/rm Response",
+    "type": "object",
+    "properties": {
+      "Pins": {
+        "type": "array"
+      }
+    }
+  },
+  "pin_update": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/update Response",
+    "type": "object",
+    "properties": {
+      "Pins": {
+        "type": "array"
+      }
+    }
+  },
+  "pin_verify": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pin/verify Response",
+    "type": "object",
+    "properties": {
+      "Cid": {
+        "type": "string"
+      },
+      "PinStatus": {
+        "type": "object"
+      }
+    }
+  },
+  "ping": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo ping Response",
+    "type": "object",
+    "properties": {
+      "Success": {
+        "type": "string"
+      },
+      "Text": {
+        "type": "string"
+      },
+      "Time": {
+        "type": "string"
+      }
+    }
+  },
+  "refs": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo refs Response",
+    "type": "object",
+    "properties": {
+      "Err": {
+        "type": "string"
+      },
+      "Ref": {
+        "type": "string"
+      }
+    }
+  },
+  "refs_local": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo refs/local Response",
+    "type": "object",
+    "properties": {
+      "Err": {
+        "type": "string"
+      },
+      "Ref": {
+        "type": "string"
+      }
+    }
+  },
+  "repo_gc": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo repo/gc Response",
+    "type": "object",
+    "properties": {
+      "Error": {
+        "type": "string"
+      },
+      "Key": {
+        "type": "object"
+      }
+    }
+  },
+  "repo_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo repo/ls Response",
+    "type": "object",
+    "properties": {
+      "Err": {
+        "type": "string"
+      },
+      "Ref": {
+        "type": "string"
+      }
+    }
+  },
+  "repo_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo repo/stat Response",
+    "type": "object",
+    "properties": {
+      "NumObjects": {
+        "type": "string"
+      },
+      "RepoPath": {
+        "type": "string"
+      },
+      "SizeStat": {
+        "type": "object"
+      },
+      "Version": {
+        "type": "string"
+      }
+    }
+  },
+  "repo_verify": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo repo/verify Response",
+    "type": "object",
+    "properties": {
+      "Msg": {
+        "type": "string"
+      },
+      "Progress": {
+        "type": "string"
+      }
+    }
+  },
+  "repo_version": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo repo/version Response",
+    "type": "object",
+    "properties": {
+      "Version": {
+        "type": "string"
+      }
+    }
+  },
+  "resolve": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo resolve Response",
+    "type": "object",
+    "properties": {
+      "Path": {
+        "type": "string"
+      }
+    }
+  },
+  "routing_findpeer": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo routing/findpeer Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "routing_findprovs": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo routing/findprovs Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "stats_bitswap": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo stats/bitswap Response",
+    "type": "object",
+    "properties": {
+      "BlocksReceived": {
+        "type": "string"
+      },
+      "BlocksSent": {
+        "type": "string"
+      },
+      "DataReceived": {
+        "type": "string"
+      },
+      "DataSent": {
+        "type": "string"
+      },
+      "DupBlksReceived": {
+        "type": "string"
+      },
+      "DupDataReceived": {
+        "type": "string"
+      },
+      "MessagesReceived": {
+        "type": "string"
+      },
+      "Peers": {
+        "type": "array"
+      },
+      "ProvideBufLen": {
+        "type": "string"
+      },
+      "Wantlist": {
+        "type": "array"
+      }
+    }
+  },
+  "stats_bw": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo stats/bw Response",
+    "type": "object",
+    "properties": {
+      "RateIn": {
+        "type": "string"
+      },
+      "RateOut": {
+        "type": "string"
+      },
+      "TotalIn": {
+        "type": "string"
+      },
+      "TotalOut": {
+        "type": "string"
+      }
+    }
+  },
+  "stats_dht": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo stats/dht Response",
+    "type": "object",
+    "properties": {
+      "Buckets": {
+        "type": "array"
+      },
+      "Name": {
+        "type": "string"
+      }
+    }
+  },
+  "stats_provide": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo stats/provide Response",
+    "type": "object",
+    "properties": {
+      "AvgProvideDuration": {
+        "type": "string"
+      },
+      "LastReprovideBatchSize": {
+        "type": "string"
+      },
+      "LastReprovideDuration": {
+        "type": "string"
+      },
+      "TotalProvides": {
+        "type": "string"
+      }
+    }
+  },
+  "stats_repo": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo stats/repo Response",
+    "type": "object",
+    "properties": {
+      "NumObjects": {
+        "type": "string"
+      },
+      "RepoPath": {
+        "type": "string"
+      },
+      "SizeStat": {
+        "type": "object"
+      },
+      "Version": {
+        "type": "string"
+      }
+    }
+  },
+  "swarm_addrs": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/addrs Response",
+    "type": "object",
+    "properties": {
+      "Addrs": {
+        "type": "object"
+      }
+    }
+  },
+  "swarm_addrs_listen": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/addrs/listen Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_addrs_local": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/addrs/local Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_connect": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/connect Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_disconnect": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/disconnect Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_filters": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/filters Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_filters_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/filters/add Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_filters_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/filters/rm Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_peering_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/peering/add Response",
+    "type": "object",
+    "properties": {
+      "ID": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "swarm_peering_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/peering/ls Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "swarm_peering_rm": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/peering/rm Response",
+    "type": "object",
+    "properties": {
+      "ID": {
+        "type": "string"
+      },
+      "Status": {
+        "type": "string"
+      }
+    }
+  },
+  "swarm_peers": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo swarm/peers Response",
+    "type": "object",
+    "properties": {
+      "Peers": {
+        "type": "array"
+      }
+    }
+  },
+  "version": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo version Response",
+    "type": "object",
+    "properties": {
+      "Commit": {
+        "type": "string"
+      },
+      "Golang": {
+        "type": "string"
+      },
+      "Repo": {
+        "type": "string"
+      },
+      "System": {
+        "type": "string"
+      },
+      "Version": {
+        "type": "string"
+      }
+    }
+  },
+  "version_deps": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo version/deps Response",
+    "type": "object",
+    "properties": {
+      "Path": {
+        "type": "string"
+      },
+      "ReplacedBy": {
+        "type": "string"
+      },
+      "Sum": {
+        "type": "string"
+      },
+      "Version": {
+        "type": "string"
+      }
+    }
+  },
+  "mount": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo mount Response",
+    "type": "object",
+    "properties": {
+      "FuseAllowOther": {
+        "type": "string"
+      },
+      "IPFS": {
+        "type": "string"
+      },
+      "IPNS": {
+        "type": "string"
+      }
+    }
+  },
+  "name_inspect": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/inspect Response",
+    "type": "object",
+    "properties": {
+      "Entry": {
+        "type": "object"
+      },
+      "Validation": {
+        "type": "object"
+      }
+    }
+  },
+  "name_pubsub_cancel": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/pubsub/cancel Response",
+    "type": "object",
+    "properties": {
+      "Canceled": {
+        "type": "string"
+      }
+    }
+  },
+  "name_pubsub_state": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/pubsub/state Response",
+    "type": "object",
+    "properties": {
+      "Enabled": {
+        "type": "string"
+      }
+    }
+  },
+  "name_pubsub_subs": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo name/pubsub/subs Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "p2p_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo p2p/ls Response",
+    "type": "object",
+    "properties": {
+      "Listeners": {
+        "type": "array"
+      }
+    }
+  },
+  "p2p_stream_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo p2p/stream/ls Response",
+    "type": "object",
+    "properties": {
+      "Streams": {
+        "type": "array"
+      }
+    }
+  },
+  "routing_get": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo routing/get Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "routing_provide": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo routing/provide Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "routing_put": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo routing/put Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_findpeer": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/findpeer Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_findprovs": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/findprovs Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_get": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/get Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_provide": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/provide Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dht_put": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dht/put Response",
+    "type": "object",
+    "properties": {
+      "Extra": {
+        "type": "string"
+      },
+      "ID": {
+        "type": "string"
+      },
+      "Responses": {
+        "type": "array"
+      },
+      "Type": {
+        "type": "string"
+      }
+    }
+  },
+  "dns": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo dns Response",
+    "type": "object",
+    "properties": {
+      "Path": {
+        "type": "string"
+      }
+    }
+  },
+  "file_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo file/ls Response",
+    "type": "object",
+    "properties": {
+      "Arguments": {
+        "type": "object"
+      },
+      "Objects": {
+        "type": "object"
+      }
+    }
+  },
+  "object_diff": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/diff Response",
+    "type": "object",
+    "properties": {
+      "Changes": {
+        "type": "array"
+      }
+    }
+  },
+  "object_get": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/get Response",
+    "type": "object",
+    "properties": {
+      "Data": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_links": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/links Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_new": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/new Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_patch_add_link": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/patch/add-link Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_patch_append_data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/patch/append-data Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_patch_rm_link": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/patch/rm-link Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_patch_set_data": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/patch/set-data Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_put": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/put Response",
+    "type": "object",
+    "properties": {
+      "Hash": {
+        "type": "string"
+      },
+      "Links": {
+        "type": "array"
+      }
+    }
+  },
+  "object_stat": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo object/stat Response",
+    "type": "object",
+    "properties": {
+      "BlockSize": {
+        "type": "string"
+      },
+      "CumulativeSize": {
+        "type": "string"
+      },
+      "DataSize": {
+        "type": "string"
+      },
+      "Hash": {
+        "type": "string"
+      },
+      "LinksSize": {
+        "type": "string"
+      },
+      "NumLinks": {
+        "type": "string"
+      }
+    }
+  },
+  "pubsub_ls": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pubsub/ls Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "pubsub_peers": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pubsub/peers Response",
+    "type": "object",
+    "properties": {
+      "Strings": {
+        "type": "array"
+      }
+    }
+  },
+  "pubsub_sub": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo pubsub/sub Response",
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "string"
+      },
+      "from": {
+        "type": "string"
+      },
+      "seqno": {
+        "type": "string"
+      },
+      "topicIDs": {
+        "type": "array"
+      }
+    }
+  },
+  "tar_add": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "IPFS Kubo tar/add Response",
+    "type": "object",
+    "properties": {
+      "Bytes": {
+        "type": "string"
+      },
+      "Hash": {
+        "type": "string"
+      },
+      "Name": {
+        "type": "string"
+      },
+      "Size": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ipfs.tech/schemas/pinning/origins",
+  "title": "Origins",
+  "description": "Optional list of multiaddrs known to provide the data; see Provider Hints in the docs",
+  "type": "array",
+  "items": {
+    "type": "string"
+  },
+  "uniqueItems": true,
+  "minItems": 0,
+  "maxItems": 20,
+  "example": [
+    "/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId",
+    "/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId"
+  ]
+}
