@@ -174,3 +174,11 @@ maintainers:
 
 created: "2026-06-13"
 modified: "2026-06-13"
+
+common:
+  - type: DomainSecurity
+    url: security/ipfs-domain-security.yml
+  - type: Authentication
+    url: authentication/ipfs-authentication.yml
+  - url: https://blog.ipfs.tech/index.xml
+    type: Blog

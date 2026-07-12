@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ipfs-pinning-service-api.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: accessToken
+  type: http
+  scheme: bearer
+  description: |-
+    An opaque token is required to be sent with each request in the HTTP header:
+    - `Authorization: Bearer <access-token>`
+
+    The `access-token` should be generated per device, and the user should have the ability to revoke each token separately.
+  sources:
+  - openapi/ipfs-pinning-service-api.yaml
