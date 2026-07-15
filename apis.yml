@@ -176,6 +176,8 @@ created: "2026-06-13"
 modified: "2026-06-13"
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/ipfs-agentic-access.yml
   - type: DomainSecurity
     url: security/ipfs-domain-security.yml
   - type: Authentication
