@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Shutdown API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Shutdown
+paths:
+  /api/v0/shutdown:
+    post:
+      operationId: shutdown
+      description: Shut down the IPFS daemon.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-shutdown
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Shutdown
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

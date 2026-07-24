@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Routing API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Routing
+paths:
+  /api/v0/routing/findpeer:
+    post:
+      operationId: routing/findpeer
+      description: Find the multiaddresses associated with a Peer ID.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-routing-findpeer
+      parameters:
+      - name: arg
+        in: query
+        description: The ID of the peer to search for.
+        required: true
+        schema:
+          type: string
+      - name: verbose
+        in: query
+        description: Print extra information.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Extra: <string>
+                ID: <peer-id>
+                Responses:
+                - Addrs:
+                  - <multiaddr-string>
+                  ID: peer-id
+                Type: <int>
+      tags:
+      - Routing
+  /api/v0/routing/findprovs:
+    post:
+      operationId: routing/findprovs
+      description: Find peers that can provide a specific value, given a key.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-routing-findprovs
+      parameters:
+      - name: arg
+        in: query
+        description: The key to find providers for.
+        required: true
+        schema:
+          type: string
+      - name: verbose
+        in: query
+        description: Print extra information.
+        schema:
+          type: boolean
+      - name: num-providers
+        in: query
+        description: The number of providers to find.
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Extra: <string>
+                ID: <peer-id>
+                Responses:
+                - Addrs:
+                  - <multiaddr-string>
+                  ID: peer-id
+                Type: <int>
+      tags:
+      - Routing
+  /api/v0/routing/get:
+    post:
+      operationId: routing/get
+      description: Given a key, query the routing system for its best value.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-routing-get
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: The key to find a value for.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Extra: <string>
+                ID: <peer-id>
+                Responses:
+                - Addrs:
+                  - <multiaddr-string>
+                  ID: peer-id
+                Type: <int>
+      tags:
+      - Routing
+  /api/v0/routing/provide:
+    post:
+      operationId: routing/provide
+      description: Announce to the network that you are providing given values.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-routing-provide
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: The key[s] to send provide records for.
+        required: true
+        schema:
+          type: string
+      - name: verbose
+        in: query
+        description: Print extra information.
+        schema:
+          type: boolean
+      - name: recursive
+        in: query
+        description: Recursively provide entire graph.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Extra: <string>
+                ID: <peer-id>
+                Responses:
+                - Addrs:
+                  - <multiaddr-string>
+                  ID: peer-id
+                Type: <int>
+      tags:
+      - Routing
+  /api/v0/routing/put:
+    post:
+      operationId: routing/put
+      description: Write a key/value pair to the routing system.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-routing-put
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: The key to store the value at.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Argument `value-file` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Extra: <string>
+                ID: <peer-id>
+                Responses:
+                - Addrs:
+                  - <multiaddr-string>
+                  ID: peer-id
+                Type: <int>
+      tags:
+      - Routing
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

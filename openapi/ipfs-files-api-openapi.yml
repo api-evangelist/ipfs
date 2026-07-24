@@ -1,0 +1,376 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Files API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Files
+paths:
+  /api/v0/files/chcid:
+    post:
+      operationId: files/chcid
+      description: Change the CID version or hash function of the root node of a given path.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-chcid
+      parameters:
+      - name: arg
+        in: query
+        description: Path to change.
+        schema:
+          type: string
+          default: '''/'''
+      - name: cid-version
+        in: query
+        description: Cid version to use. (experimental).
+        x-experimental: true
+        schema:
+          type: integer
+      - name: hash
+        in: query
+        description: Hash function to use. Will set Cid version to 1 if used. (experimental).
+        x-experimental: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/cp:
+    post:
+      operationId: files/cp
+      description: Add references to IPFS files and directories in MFS (or copy within MFS).
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-cp
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Source IPFS or MFS path to copy.
+
+
+          arg1: Destination within MFS.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: parents
+        in: query
+        description: Make parent directories as needed.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/flush:
+    post:
+      operationId: files/flush
+      description: Flush a given path&#39;s data to disk.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-flush
+      parameters:
+      - name: arg
+        in: query
+        description: Path to flush.
+        schema:
+          type: string
+          default: '''/'''
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid: <string>
+      tags:
+      - Files
+  /api/v0/files/ls:
+    post:
+      operationId: files/ls
+      description: List directories in the local mutable namespace.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-ls
+      parameters:
+      - name: arg
+        in: query
+        description: Path to show listing for. Defaults to '/'.
+        schema:
+          type: string
+      - name: long
+        in: query
+        description: Use long listing format.
+        schema:
+          type: boolean
+      - name: U
+        in: query
+        description: Do not sort; list entries in directory order.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Entries:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <int64>
+                  Type: <int>
+      tags:
+      - Files
+  /api/v0/files/mkdir:
+    post:
+      operationId: files/mkdir
+      description: Make directories.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-mkdir
+      parameters:
+      - name: arg
+        in: query
+        description: Path to dir to make.
+        required: true
+        schema:
+          type: string
+      - name: parents
+        in: query
+        description: No error if existing, make parent directories as needed.
+        schema:
+          type: boolean
+      - name: cid-version
+        in: query
+        description: Cid version to use. (experimental).
+        x-experimental: true
+        schema:
+          type: integer
+      - name: hash
+        in: query
+        description: Hash function to use. Will set Cid version to 1 if used. (experimental).
+        x-experimental: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/mv:
+    post:
+      operationId: files/mv
+      description: Move files.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-mv
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Source file to move.
+
+
+          arg1: Destination path for file to be moved to.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/read:
+    post:
+      operationId: files/read
+      description: Read a file from MFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-read
+      parameters:
+      - name: arg
+        in: query
+        description: Path to file to be read.
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Byte offset to begin reading from.
+        schema:
+          type: integer
+      - name: count
+        in: query
+        description: Maximum number of bytes to read.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/rm:
+    post:
+      operationId: files/rm
+      description: Remove a file from MFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-rm
+      parameters:
+      - name: arg
+        in: query
+        description: File to remove.
+        required: true
+        schema:
+          type: string
+      - name: recursive
+        in: query
+        description: Recursively remove directories.
+        schema:
+          type: boolean
+      - name: force
+        in: query
+        description: Forcibly remove target at path; implies -r for directories.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+  /api/v0/files/stat:
+    post:
+      operationId: files/stat
+      description: Display file status.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-stat
+      parameters:
+      - name: arg
+        in: query
+        description: Path to node to stat.
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: 'Print statistics in given format. Allowed tokens: <hash> <size> <cumulsize> <type> <childs>. Conflicts with other format options.'
+        schema:
+          type: string
+          default: '<hash>
+
+            Size: <size>
+
+            CumulativeSize: <cumulsize>
+
+            ChildBlocks: <childs>
+
+            Type: <type>'
+      - name: hash
+        in: query
+        description: Print only hash. Implies '--format=<hash>'. Conflicts with other format options.
+        schema:
+          type: boolean
+      - name: size
+        in: query
+        description: Print only size. Implies '--format=<cumulsize>'. Conflicts with other format options.
+        schema:
+          type: boolean
+      - name: with-local
+        in: query
+        description: Compute the amount of the dag that is local, and if possible the total size.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Blocks: <int>
+                CumulativeSize: <uint64>
+                Hash: <string>
+                Local: <bool>
+                Size: <uint64>
+                SizeLocal: <uint64>
+                Type: <string>
+                WithLocality: <bool>
+      tags:
+      - Files
+  /api/v0/files/write:
+    post:
+      operationId: files/write
+      description: Append to (modify) a file in MFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-write
+      parameters:
+      - name: arg
+        in: query
+        description: Path to write to.
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        description: Byte offset to begin writing at.
+        schema:
+          type: integer
+      - name: create
+        in: query
+        description: Create the file if it does not exist.
+        schema:
+          type: boolean
+      - name: parents
+        in: query
+        description: Make parent directories as needed.
+        schema:
+          type: boolean
+      - name: truncate
+        in: query
+        description: Truncate the file to size zero before writing.
+        schema:
+          type: boolean
+      - name: count
+        in: query
+        description: Maximum number of bytes to read.
+        schema:
+          type: integer
+      - name: raw-leaves
+        in: query
+        description: Use raw blocks for newly created leaf nodes. (experimental).
+        x-experimental: true
+        schema:
+          type: boolean
+      - name: cid-version
+        in: query
+        description: Cid version to use. (experimental).
+        x-experimental: true
+        schema:
+          type: integer
+      - name: hash
+        in: query
+        description: Hash function to use. Will set Cid version to 1 if used. (experimental).
+        x-experimental: true
+        schema:
+          type: string
+      requestBody:
+        description: Argument `data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Files
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

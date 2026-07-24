@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Pubsub API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Pubsub
+paths:
+  /api/v0/pubsub/ls:
+    post:
+      operationId: pubsub/ls
+      description: List subscribed topics by name.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pubsub-ls
+      deprecated: true
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Strings:
+                - <string>
+      tags:
+      - Pubsub
+  /api/v0/pubsub/peers:
+    post:
+      operationId: pubsub/peers
+      description: List peers we are currently pubsubbing with.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pubsub-peers
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Topic to list connected peers of.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Strings:
+                - <string>
+      tags:
+      - Pubsub
+  /api/v0/pubsub/pub:
+    post:
+      operationId: pubsub/pub
+      description: Publish data to a given pubsub topic.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pubsub-pub
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Topic to publish to (multibase encoded when sent over HTTP RPC).
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Argument `data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Pubsub
+  /api/v0/pubsub/sub:
+    post:
+      operationId: pubsub/sub
+      description: Subscribe to messages on a given topic.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pubsub-sub
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Name of topic to subscribe to (multibase encoded when sent over HTTP RPC).
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                data: <string>
+                from: <string>
+                seqno: <string>
+                topicIDs:
+                - <string>
+      tags:
+      - Pubsub
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

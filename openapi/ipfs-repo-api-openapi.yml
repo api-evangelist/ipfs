@@ -1,0 +1,142 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Repo API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Repo
+paths:
+  /api/v0/repo/gc:
+    post:
+      operationId: repo/gc
+      description: Perform a garbage collection sweep on the repo.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-repo-gc
+      parameters:
+      - name: stream-errors
+        in: query
+        description: Stream errors.
+        schema:
+          type: boolean
+      - name: quiet
+        in: query
+        description: Write minimal output.
+        schema:
+          type: boolean
+      - name: silent
+        in: query
+        description: Write no output.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Error: <string>
+                Key:
+                  /: <cid-string>
+      tags:
+      - Repo
+  /api/v0/repo/ls:
+    post:
+      operationId: repo/ls
+      description: List all local references.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-repo-ls
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Err: <string>
+                Ref: <string>
+      tags:
+      - Repo
+  /api/v0/repo/stat:
+    post:
+      operationId: repo/stat
+      description: Get stats for the currently used repo.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-repo-stat
+      parameters:
+      - name: size-only
+        in: query
+        description: Only report RepoSize and StorageMax.
+        schema:
+          type: boolean
+      - name: human
+        in: query
+        description: Print sizes in human readable format (e.g., 1K 234M 2G).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                NumObjects: <uint64>
+                RepoPath: <string>
+                SizeStat:
+                  RepoSize: <uint64>
+                  StorageMax: <uint64>
+                Version: <string>
+      tags:
+      - Repo
+  /api/v0/repo/verify:
+    post:
+      operationId: repo/verify
+      description: Verify all blocks in repo are not corrupted.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-repo-verify
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Msg: <string>
+                Progress: <int>
+      tags:
+      - Repo
+  /api/v0/repo/version:
+    post:
+      operationId: repo/version
+      description: Show the repo version.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-repo-version
+      parameters:
+      - name: quiet
+        in: query
+        description: Write minimal output.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Version: <string>
+      tags:
+      - Repo
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

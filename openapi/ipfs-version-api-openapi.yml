@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Version API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Version
+paths:
+  /api/v0/version:
+    post:
+      operationId: version
+      description: Show IPFS version information.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-version
+      parameters:
+      - name: number
+        in: query
+        description: Only show the version number.
+        schema:
+          type: boolean
+      - name: commit
+        in: query
+        description: Show the commit hash.
+        schema:
+          type: boolean
+      - name: repo
+        in: query
+        description: Show repo version.
+        schema:
+          type: boolean
+      - name: all
+        in: query
+        description: Show all version information.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Commit: <string>
+                Golang: <string>
+                Repo: <string>
+                System: <string>
+                Version: <string>
+      tags:
+      - Version
+  /api/v0/version/deps:
+    post:
+      operationId: version/deps
+      description: Shows information about dependencies used for build.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-version-deps
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Path: <string>
+                ReplacedBy: <string>
+                Sum: <string>
+                Version: <string>
+      tags:
+      - Version
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

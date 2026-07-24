@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Stats API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Stats
+paths:
+  /api/v0/stats/bitswap:
+    post:
+      operationId: stats/bitswap
+      description: Show some diagnostic information on the bitswap agent.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-bitswap
+      parameters:
+      - name: verbose
+        in: query
+        description: Print extra information.
+        schema:
+          type: boolean
+      - name: human
+        in: query
+        description: Print sizes in human readable format (e.g., 1K 234M 2G).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                BlocksReceived: <uint64>
+                BlocksSent: <uint64>
+                DataReceived: <uint64>
+                DataSent: <uint64>
+                DupBlksReceived: <uint64>
+                DupDataReceived: <uint64>
+                MessagesReceived: <uint64>
+                Peers:
+                - <string>
+                ProvideBufLen: <int>
+                Wantlist:
+                - /: <cid-string>
+      tags:
+      - Stats
+  /api/v0/stats/bw:
+    post:
+      operationId: stats/bw
+      description: Print IPFS bandwidth information.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-bw
+      parameters:
+      - name: peer
+        in: query
+        description: Specify a peer to print bandwidth for.
+        schema:
+          type: string
+      - name: proto
+        in: query
+        description: Specify a protocol to print bandwidth for.
+        schema:
+          type: string
+      - name: poll
+        in: query
+        description: Print bandwidth at an interval.
+        schema:
+          type: boolean
+      - name: interval
+        in: query
+        description: 'Time interval to wait between updating output, if ''poll'' is true.This accepts durations such as "300s", "1.5h" or "2h45m". Valid time units are:
+
+          "ns", "us" (or "µs"), "ms", "s", "m", "h".'
+        schema:
+          type: string
+          default: 1s
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                RateIn: <float64>
+                RateOut: <float64>
+                TotalIn: <int64>
+                TotalOut: <int64>
+      tags:
+      - Stats
+  /api/v0/stats/dht:
+    post:
+      operationId: stats/dht
+      description: Returns statistics about the node&#39;s DHT(s).
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-dht
+      parameters:
+      - name: arg
+        in: query
+        description: The DHT whose table should be listed (wanserver, lanserver, wan, lan). wan and lan refer to client routing tables. When using the experimental DHT client only WAN is supported. Defaults to wan and lan.
+        x-experimental: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Buckets:
+                - LastRefresh: <string>
+                  Peers:
+                  - AgentVersion: <string>
+                    Connected: <bool>
+                    ID: <string>
+                    LastQueriedAt: <string>
+                    LastUsefulAt: <string>
+                Name: <string>
+      tags:
+      - Stats
+  /api/v0/stats/provide:
+    post:
+      operationId: stats/provide
+      description: Returns statistics about the node&#39;s (re)provider system.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-provide
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                AvgProvideDuration: <duration-ns>
+                LastReprovideBatchSize: <int>
+                LastReprovideDuration: <duration-ns>
+                TotalProvides: <int>
+      tags:
+      - Stats
+  /api/v0/stats/repo:
+    post:
+      operationId: stats/repo
+      description: Get stats for the currently used repo.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-repo
+      parameters:
+      - name: size-only
+        in: query
+        description: Only report RepoSize and StorageMax.
+        schema:
+          type: boolean
+      - name: human
+        in: query
+        description: Print sizes in human readable format (e.g., 1K 234M 2G).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                NumObjects: <uint64>
+                RepoPath: <string>
+                SizeStat:
+                  RepoSize: <uint64>
+                  StorageMax: <uint64>
+                Version: <string>
+      tags:
+      - Stats
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

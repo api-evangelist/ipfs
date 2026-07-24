@@ -1,0 +1,201 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add P2p API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: P2p
+paths:
+  /api/v0/p2p/close:
+    post:
+      operationId: p2p/close
+      description: Stop listening for new connections to forward.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-close
+      x-experimental: true
+      parameters:
+      - name: all
+        in: query
+        description: Close all listeners.
+        schema:
+          type: boolean
+      - name: protocol
+        in: query
+        description: Match protocol name.
+        schema:
+          type: string
+      - name: listen-address
+        in: query
+        description: Match listen address.
+        schema:
+          type: string
+      - name: target-address
+        in: query
+        description: Match target address.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example: <int>
+      tags:
+      - P2p
+  /api/v0/p2p/forward:
+    post:
+      operationId: p2p/forward
+      description: Forward connections to libp2p service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-forward
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Protocol name.
+
+
+          arg1: Listening endpoint.
+
+
+          arg2: Target endpoint.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: allow-custom-protocol
+        in: query
+        description: Don't require /x/ prefix.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - P2p
+  /api/v0/p2p/listen:
+    post:
+      operationId: p2p/listen
+      description: Create libp2p service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-listen
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Protocol name.
+
+
+          arg1: Target endpoint.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: allow-custom-protocol
+        in: query
+        description: Don't require /x/ prefix.
+        schema:
+          type: boolean
+      - name: report-peer-id
+        in: query
+        description: Send remote base58 peerid to target when a new connection is established.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - P2p
+  /api/v0/p2p/ls:
+    post:
+      operationId: p2p/ls
+      description: List active p2p listeners.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-ls
+      x-experimental: true
+      parameters:
+      - name: headers
+        in: query
+        description: Print table headers (Protocol, Listen, Target).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Listeners:
+                - ListenAddress: <string>
+                  Protocol: <string>
+                  TargetAddress: <string>
+      tags:
+      - P2p
+  /api/v0/p2p/stream/close:
+    post:
+      operationId: p2p/stream/close
+      description: Close active p2p stream.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-stream-close
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: Stream identifier
+        schema:
+          type: string
+      - name: all
+        in: query
+        description: Close all streams.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - P2p
+  /api/v0/p2p/stream/ls:
+    post:
+      operationId: p2p/stream/ls
+      description: List active p2p streams.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-p2p-stream-ls
+      x-experimental: true
+      parameters:
+      - name: headers
+        in: query
+        description: Print table headers (ID, Protocol, Local, Remote).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Streams:
+                - HandlerID: <string>
+                  OriginAddress: <string>
+                  Protocol: <string>
+                  TargetAddress: <string>
+      tags:
+      - P2p
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

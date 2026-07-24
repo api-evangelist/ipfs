@@ -1,0 +1,219 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Dag API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Dag
+paths:
+  /api/v0/dag/export:
+    post:
+      operationId: dag/export
+      description: Streams the selected DAG as a .car stream on stdout.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-export
+      parameters:
+      - name: arg
+        in: query
+        description: CID of a root to recursively export
+        required: true
+        schema:
+          type: string
+      - name: progress
+        in: query
+        description: Display progress on CLI. Defaults to true when STDERR is a TTY.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Dag
+  /api/v0/dag/get:
+    post:
+      operationId: dag/get
+      description: Get a DAG node from IPFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-get
+      parameters:
+      - name: arg
+        in: query
+        description: The object to get
+        required: true
+        schema:
+          type: string
+      - name: output-codec
+        in: query
+        description: Format that the object will be encoded as.
+        schema:
+          type: string
+          default: dag-json
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Dag
+  /api/v0/dag/import:
+    post:
+      operationId: dag/import
+      description: Import the contents of .car files
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-import
+      parameters:
+      - name: pin-roots
+        in: query
+        description: Pin optional roots listed in the .car headers after importing.
+        schema:
+          type: boolean
+          default: true
+      - name: silent
+        in: query
+        description: No output.
+        schema:
+          type: boolean
+      - name: stats
+        in: query
+        description: Output stats.
+        schema:
+          type: boolean
+      - name: allow-big-block
+        in: query
+        description: 'Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won''t be transferable over the standard bitswap.'
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        description: Argument `path` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Root:
+                  Cid:
+                    /: <cid-string>
+                  PinErrorMsg: <string>
+                Stats:
+                  BlockBytesCount: <uint64>
+                  BlockCount: <uint64>
+      tags:
+      - Dag
+  /api/v0/dag/put:
+    post:
+      operationId: dag/put
+      description: Add a DAG node to IPFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-put
+      parameters:
+      - name: store-codec
+        in: query
+        description: Codec that the stored object will be encoded with.
+        schema:
+          type: string
+          default: dag-cbor
+      - name: input-codec
+        in: query
+        description: Codec that the input object is encoded in.
+        schema:
+          type: string
+          default: dag-json
+      - name: pin
+        in: query
+        description: Pin this object when adding.
+        schema:
+          type: boolean
+      - name: hash
+        in: query
+        description: Hash function to use.
+        schema:
+          type: string
+          default: sha2-256
+      - name: allow-big-block
+        in: query
+        description: 'Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won''t be transferable over the standard bitswap.'
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        description: Argument `object data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid:
+                  /: <cid-string>
+      tags:
+      - Dag
+  /api/v0/dag/resolve:
+    post:
+      operationId: dag/resolve
+      description: Resolve IPLD block.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-resolve
+      parameters:
+      - name: arg
+        in: query
+        description: The path to resolve
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid:
+                  /: <cid-string>
+                RemPath: <string>
+      tags:
+      - Dag
+  /api/v0/dag/stat:
+    post:
+      operationId: dag/stat
+      description: Gets stats for a DAG.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-dag-stat
+      parameters:
+      - name: arg
+        in: query
+        description: CID of a DAG root to get statistics for
+        required: true
+        schema:
+          type: string
+      - name: progress
+        in: query
+        description: Return progressive data while reading through the DAG.
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                NumBlocks: <int64>
+                Size: <uint64>
+      tags:
+      - Dag
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

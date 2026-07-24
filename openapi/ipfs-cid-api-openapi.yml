@@ -1,0 +1,173 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Cid API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Cid
+paths:
+  /api/v0/cid/base32:
+    post:
+      operationId: cid/base32
+      description: Convert CIDs to Base32 CID version 1.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cid-base32
+      parameters:
+      - name: arg
+        in: query
+        description: CIDs to convert.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                CidStr: <string>
+                ErrorMsg: <string>
+                Formatted: <string>
+      tags:
+      - Cid
+  /api/v0/cid/bases:
+    post:
+      operationId: cid/bases
+      description: List available multibase encodings.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cid-bases
+      parameters:
+      - name: prefix
+        in: query
+        description: also include the single letter prefixes in addition to the code.
+        schema:
+          type: boolean
+      - name: numeric
+        in: query
+        description: also include numeric codes.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - Code: <int>
+                Name: <string>
+      tags:
+      - Cid
+  /api/v0/cid/codecs:
+    post:
+      operationId: cid/codecs
+      description: List available CID multicodecs.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cid-codecs
+      parameters:
+      - name: numeric
+        in: query
+        description: also include numeric codes.
+        schema:
+          type: boolean
+      - name: supported
+        in: query
+        description: list only codecs supported by go-ipfs commands.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - Code: <int>
+                Name: <string>
+      tags:
+      - Cid
+  /api/v0/cid/format:
+    post:
+      operationId: cid/format
+      description: Format and convert a CID in various useful ways.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cid-format
+      parameters:
+      - name: arg
+        in: query
+        description: CIDs to format.
+        required: true
+        schema:
+          type: string
+      - name: f
+        in: query
+        description: Printf style format string.
+        schema:
+          type: string
+          default: '%s'
+      - name: v
+        in: query
+        description: CID version to convert to.
+        schema:
+          type: string
+      - name: mc
+        in: query
+        description: CID multicodec to convert to.
+        schema:
+          type: string
+      - name: b
+        in: query
+        description: Multibase to display CID in.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                CidStr: <string>
+                ErrorMsg: <string>
+                Formatted: <string>
+      tags:
+      - Cid
+  /api/v0/cid/hashes:
+    post:
+      operationId: cid/hashes
+      description: List available multihashes.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-cid-hashes
+      parameters:
+      - name: numeric
+        in: query
+        description: also include numeric codes.
+        schema:
+          type: boolean
+      - name: supported
+        in: query
+        description: list only codecs supported by go-ipfs commands.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+              - Code: <int>
+                Name: <string>
+      tags:
+      - Cid
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

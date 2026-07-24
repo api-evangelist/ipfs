@@ -1,0 +1,239 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Name API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Name
+paths:
+  /api/v0/name/publish:
+    post:
+      operationId: name/publish
+      description: Publish IPNS names.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-publish
+      parameters:
+      - name: arg
+        in: query
+        description: ipfs path of the object to be published.
+        required: true
+        schema:
+          type: string
+      - name: resolve
+        in: query
+        description: Check if the given path can be resolved before publishing.
+        schema:
+          type: boolean
+          default: true
+      - name: lifetime
+        in: query
+        description: 'Time duration that the record will be valid for.
+
+          This accepts durations such as "300s", "1.5h" or "2h45m". Valid time units are
+
+          "ns", "us" (or "µs"), "ms", "s", "m", "h".'
+        schema:
+          type: string
+          default: 24h
+      - name: allow-offline
+        in: query
+        description: When offline, save the IPNS record to the the local datastore without broadcasting to the network instead of simply failing.
+        schema:
+          type: boolean
+      - name: ttl
+        in: query
+        description: 'Time duration this record should be cached for. Uses the same syntax as the lifetime option. (caution: experimental).'
+        x-experimental: true
+        schema:
+          type: string
+      - name: key
+        in: query
+        description: Name of the key to be used or a valid PeerID, as listed by 'ipfs key list -l'.
+        schema:
+          type: string
+          default: self
+      - name: quieter
+        in: query
+        description: Write only final hash.
+        schema:
+          type: boolean
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Name: <string>
+                Value: <string>
+      tags:
+      - Name
+  /api/v0/name/resolve:
+    post:
+      operationId: name/resolve
+      description: Resolve IPNS names.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-resolve
+      parameters:
+      - name: arg
+        in: query
+        description: The IPNS name to resolve. Defaults to your node's peerID.
+        schema:
+          type: string
+      - name: recursive
+        in: query
+        description: Resolve until the result is not an IPNS name.
+        schema:
+          type: boolean
+          default: true
+      - name: nocache
+        in: query
+        description: Do not use cached entries.
+        schema:
+          type: boolean
+      - name: dht-record-count
+        in: query
+        description: Number of records to request for DHT resolution.
+        schema:
+          type: integer
+      - name: dht-timeout
+        in: query
+        description: Max time to collect values during DHT resolution eg "30s". Pass 0 for no timeout.
+        schema:
+          type: string
+      - name: stream
+        in: query
+        description: Stream entries as they are found.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Path: <string>
+      tags:
+      - Name
+  /api/v0/name/inspect:
+    post:
+      operationId: name/inspect
+      description: Inspects an IPNS Record
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-inspect
+      x-experimental: true
+      parameters:
+      - name: verify
+        in: query
+        description: CID of the public IPNS key to validate against.
+        schema:
+          type: string
+      requestBody:
+        description: Argument `record` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Entry:
+                  Data: <object>
+                  PublicKey: <string>
+                  Sequence: <uint64>
+                  SignatureV1: <string>
+                  SignatureV2: <string>
+                  TTL: <uint64>
+                  Validity: <timestamp>
+                  ValidityType: <int32>
+                  Value: <string>
+                Validation:
+                  PublicKey: <peer-id>
+                  Reason: <string>
+                  Valid: <bool>
+      tags:
+      - Name
+  /api/v0/name/pubsub/cancel:
+    post:
+      operationId: name/pubsub/cancel
+      description: Cancel a name subscription.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-pubsub-cancel
+      x-experimental: true
+      parameters:
+      - name: arg
+        in: query
+        description: Name to cancel the subscription for.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Canceled: <bool>
+      tags:
+      - Name
+  /api/v0/name/pubsub/state:
+    post:
+      operationId: name/pubsub/state
+      description: Query the state of IPNS pubsub.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-pubsub-state
+      x-experimental: true
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Enabled: <bool>
+      tags:
+      - Name
+  /api/v0/name/pubsub/subs:
+    post:
+      operationId: name/pubsub/subs
+      description: Show current name subscriptions.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-name-pubsub-subs
+      x-experimental: true
+      parameters:
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Strings:
+                - <string>
+      tags:
+      - Name
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

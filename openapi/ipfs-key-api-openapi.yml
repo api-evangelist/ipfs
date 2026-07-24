@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Key API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Key
+paths:
+  /api/v0/key/gen:
+    post:
+      operationId: key/gen
+      description: Create a new keypair
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-key-gen
+      parameters:
+      - name: arg
+        in: query
+        description: name of key to create
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: 'type of the key to create: rsa, ed25519.'
+        schema:
+          type: string
+          default: ed25519
+      - name: size
+        in: query
+        description: size of the key to generate.
+        schema:
+          type: integer
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Id: <string>
+                Name: <string>
+      tags:
+      - Key
+  /api/v0/key/import:
+    post:
+      operationId: key/import
+      description: Import a key and prints imported key id
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-key-import
+      parameters:
+      - name: arg
+        in: query
+        description: name to associate with key in keychain
+        required: true
+        schema:
+          type: string
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      - name: format
+        in: query
+        description: The format of the private key to import, libp2p-protobuf-cleartext or pem-pkcs8-cleartext.
+        schema:
+          type: string
+          default: libp2p-protobuf-cleartext
+      - name: allow-any-key-type
+        in: query
+        description: Allow importing any key type.
+        schema:
+          type: boolean
+          default: false
+      requestBody:
+        description: Argument `key` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Id: <string>
+                Name: <string>
+      tags:
+      - Key
+  /api/v0/key/list:
+    post:
+      operationId: key/list
+      description: List all local keypairs.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-key-list
+      parameters:
+      - name: l
+        in: query
+        description: Show extra information about keys.
+        schema:
+          type: boolean
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Keys:
+                - Id: <string>
+                  Name: <string>
+      tags:
+      - Key
+  /api/v0/key/rename:
+    post:
+      operationId: key/rename
+      description: Rename a keypair.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-key-rename
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: name of key to rename
+
+
+          arg1: new name of the key'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: force
+        in: query
+        description: Allow to overwrite an existing key.
+        schema:
+          type: boolean
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Id: <string>
+                Now: <string>
+                Overwrite: <bool>
+                Was: <string>
+      tags:
+      - Key
+  /api/v0/key/rm:
+    post:
+      operationId: key/rm
+      description: Remove a keypair.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-key-rm
+      parameters:
+      - name: arg
+        in: query
+        description: names of keys to remove
+        required: true
+        schema:
+          type: string
+      - name: l
+        in: query
+        description: Show extra information about keys.
+        schema:
+          type: boolean
+      - name: ipns-base
+        in: query
+        description: 'Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}.'
+        schema:
+          type: string
+          default: base36
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Keys:
+                - Id: <string>
+                  Name: <string>
+      tags:
+      - Key
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

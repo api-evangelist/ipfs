@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Bootstrap API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Bootstrap
+paths:
+  /api/v0/bootstrap:
+    post:
+      operationId: bootstrap
+      description: Show or edit the list of bootstrap peers.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+  /api/v0/bootstrap/add:
+    post:
+      operationId: bootstrap/add
+      description: Add peers to the bootstrap list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap-add
+      parameters:
+      - name: arg
+        in: query
+        description: A peer to add to the bootstrap list (in the format '<multiaddr>/<peerID>')
+        schema:
+          type: string
+      - name: default
+        in: query
+        description: Add default bootstrap nodes. (Deprecated, use 'default' subcommand instead).
+        deprecated: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+  /api/v0/bootstrap/add/default:
+    post:
+      operationId: bootstrap/add/default
+      description: Add default peers to the bootstrap list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap-add-default
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+  /api/v0/bootstrap/list:
+    post:
+      operationId: bootstrap/list
+      description: Show peers in the bootstrap list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap-list
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+  /api/v0/bootstrap/rm:
+    post:
+      operationId: bootstrap/rm
+      description: Remove peers from the bootstrap list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap-rm
+      parameters:
+      - name: arg
+        in: query
+        description: A peer to add to the bootstrap list (in the format '<multiaddr>/<peerID>')
+        schema:
+          type: string
+      - name: all
+        in: query
+        description: Remove all bootstrap peers. (Deprecated, use 'all' subcommand).
+        deprecated: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+  /api/v0/bootstrap/rm/all:
+    post:
+      operationId: bootstrap/rm/all
+      description: Remove all peers from the bootstrap list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-bootstrap-rm-all
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Peers:
+                - <string>
+      tags:
+      - Bootstrap
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

@@ -1,0 +1,83 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Log API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Log
+paths:
+  /api/v0/log/level:
+    post:
+      operationId: log/level
+      description: Change the logging level.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-log-level
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: The subsystem logging identifier. Use ''all'' for all subsystems.
+
+
+          arg1: The log level, with ''debug'' the most verbose and ''fatal'' the least verbose.
+
+          One of: debug, info, warn, error, dpanic, panic, fatal.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Message: <string>
+      tags:
+      - Log
+  /api/v0/log/ls:
+    post:
+      operationId: log/ls
+      description: List the logging subsystems.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-log-ls
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Strings:
+                - <string>
+      tags:
+      - Log
+  /api/v0/log/tail:
+    post:
+      operationId: log/tail
+      description: Read the event log.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-log-tail
+      x-experimental: true
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Log
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

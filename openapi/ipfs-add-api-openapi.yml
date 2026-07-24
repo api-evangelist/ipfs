@@ -1,0 +1,182 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Add
+paths:
+  /api/v0/add:
+    post:
+      operationId: add
+      description: Add a file or directory to IPFS.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-add
+      parameters:
+      - name: quiet
+        in: query
+        description: Write minimal output.
+        schema:
+          type: boolean
+      - name: quieter
+        in: query
+        description: Write only final hash.
+        schema:
+          type: boolean
+      - name: silent
+        in: query
+        description: Write no output.
+        schema:
+          type: boolean
+      - name: progress
+        in: query
+        description: Stream progress data.
+        schema:
+          type: boolean
+      - name: trickle
+        in: query
+        description: Use trickle-dag format for dag generation.
+        schema:
+          type: boolean
+      - name: only-hash
+        in: query
+        description: Only chunk and hash - do not write to disk.
+        schema:
+          type: boolean
+      - name: wrap-with-directory
+        in: query
+        description: Wrap files with a directory object.
+        schema:
+          type: boolean
+      - name: chunker
+        in: query
+        description: Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash.
+        schema:
+          type: string
+          default: size-262144
+      - name: raw-leaves
+        in: query
+        description: Use raw blocks for leaf nodes.
+        schema:
+          type: boolean
+      - name: nocopy
+        in: query
+        description: Add the file using filestore. Implies raw-leaves. (experimental).
+        x-experimental: true
+        schema:
+          type: boolean
+      - name: fscache
+        in: query
+        description: Check the filestore for pre-existing blocks. (experimental).
+        x-experimental: true
+        schema:
+          type: boolean
+      - name: cid-version
+        in: query
+        description: CID version. Defaults to 0 unless an option that depends on CIDv1 is passed. Passing version 1 will cause the raw-leaves option to default to true.
+        schema:
+          type: integer
+      - name: hash
+        in: query
+        description: Hash function to use. Implies CIDv1 if not sha2-256. (experimental).
+        x-experimental: true
+        schema:
+          type: string
+          default: sha2-256
+      - name: inline
+        in: query
+        description: Inline small blocks into CIDs. (experimental).
+        x-experimental: true
+        schema:
+          type: boolean
+      - name: inline-limit
+        in: query
+        description: Maximum block size to inline. (experimental).
+        x-experimental: true
+        schema:
+          type: integer
+          default: 32
+      - name: pin
+        in: query
+        description: Pin locally to protect added files from garbage collection.
+        schema:
+          type: boolean
+          default: true
+      - name: to-files
+        in: query
+        description: Add reference to Files API (MFS) at the provided path.
+        schema:
+          type: string
+      requestBody:
+        description: 'Argument `path` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as ''multipart/form-data''.
+
+
+
+
+          The `add` command not only allows adding files, but also uploading directories and complex hierarchies.
+
+
+          This happens as follows: Every part in the multipart request is a *directory* or a *file* to be added to IPFS.
+
+
+          Directory parts have a special content type `application/x-directory`. These parts do not carry any data. The part headers look as follows:
+
+
+          ```
+
+          Content-Disposition: form-data; name="file"; filename="folderName"
+
+          Content-Type: application/x-directory
+
+          ```
+
+
+          File parts carry the file payload after the following headers:
+
+
+          ```
+
+          Abspath: /absolute/path/to/file.txt
+
+          Content-Disposition: form-data; name="file"; filename="folderName%2Ffile.txt"
+
+          Content-Type: application/octet-stream
+
+
+          ...contents...
+
+          ```
+
+
+          The above file includes its path in the "folderName/file.txt" hierarchy and IPFS will therefore be able to add it inside "folderName". The parts declaring the directories are optional when they have files inside and will be inferred from the filenames. In any case, a depth-first traversal of the directory tree is recommended to order the different parts making the request.
+
+
+          The `Abspath` header is included for filestore/urlstore features that are enabled with the `nocopy` option and it can be set to the location of the file in the filesystem (within the IPFS root), or to its full web URL.'
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Bytes: <int64>
+                Hash: <string>
+                Name: <string>
+                Size: <string>
+      tags:
+      - Add
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

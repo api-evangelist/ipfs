@@ -1,0 +1,396 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Pin API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Pin
+paths:
+  /api/v0/pin/add:
+    post:
+      operationId: pin/add
+      description: Pin objects to local storage.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-add
+      parameters:
+      - name: arg
+        in: query
+        description: Path to object(s) to be pinned.
+        required: true
+        schema:
+          type: string
+      - name: recursive
+        in: query
+        description: Recursively pin the object linked to by the specified object(s).
+        schema:
+          type: boolean
+          default: true
+      - name: progress
+        in: query
+        description: Show progress.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Pins:
+                - <string>
+                Progress: <int>
+      tags:
+      - Pin
+  /api/v0/pin/ls:
+    post:
+      operationId: pin/ls
+      description: List objects pinned to local storage.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-ls
+      parameters:
+      - name: arg
+        in: query
+        description: Path to object(s) to be listed.
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: The type of pinned keys to list. Can be "direct", "indirect", "recursive", or "all".
+        schema:
+          type: string
+          default: all
+      - name: quiet
+        in: query
+        description: Write just hashes of objects.
+        schema:
+          type: boolean
+      - name: stream
+        in: query
+        description: Enable streaming of pins as they are discovered.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                PinLsList:
+                  Keys:
+                    <string>:
+                      Type: <string>
+                PinLsObject:
+                  Cid: <string>
+                  Type: <string>
+      tags:
+      - Pin
+  /api/v0/pin/remote/add:
+    post:
+      operationId: pin/remote/add
+      description: Pin object to remote pinning service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-add
+      parameters:
+      - name: arg
+        in: query
+        description: CID or Path to be pinned.
+        required: true
+        schema:
+          type: string
+      - name: service
+        in: query
+        description: Name of the remote pinning service to use (mandatory).
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: An optional name for the pin.
+        schema:
+          type: string
+      - name: background
+        in: query
+        description: Add to the queue on the remote service and return immediately (does not wait for pinned status).
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid: <string>
+                Name: <string>
+                Status: <string>
+      tags:
+      - Pin
+  /api/v0/pin/remote/ls:
+    post:
+      operationId: pin/remote/ls
+      description: List objects pinned to remote pinning service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-ls
+      parameters:
+      - name: service
+        in: query
+        description: Name of the remote pinning service to use (mandatory).
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Return pins with names that contain the value provided (case-sensitive, exact match).
+        schema:
+          type: string
+      - name: cid
+        in: query
+        description: Return pins for the specified CIDs (comma-separated).
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        description: Return pins with the specified statuses (queued,pinning,pinned,failed).
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid: <string>
+                Name: <string>
+                Status: <string>
+      tags:
+      - Pin
+  /api/v0/pin/remote/rm:
+    post:
+      operationId: pin/remote/rm
+      description: Remove pins from remote pinning service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-rm
+      parameters:
+      - name: service
+        in: query
+        description: Name of the remote pinning service to use (mandatory).
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: Remove pins with names that contain provided value (case-sensitive, exact match).
+        schema:
+          type: string
+      - name: cid
+        in: query
+        description: Remove pins for the specified CIDs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        description: Remove pins with the specified statuses (queued,pinning,pinned,failed).
+        schema:
+          type: array
+          items:
+            type: string
+      - name: force
+        in: query
+        description: Allow removal of multiple pins matching the query without additional confirmation.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Pin
+  /api/v0/pin/remote/service/add:
+    post:
+      operationId: pin/remote/service/add
+      description: Add remote pinning service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-service-add
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Service name.
+
+
+          arg1: Service endpoint.
+
+
+          arg2: Service key.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Pin
+  /api/v0/pin/remote/service/ls:
+    post:
+      operationId: pin/remote/service/ls
+      description: List remote pinning services.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-service-ls
+      parameters:
+      - name: stat
+        in: query
+        description: Try to fetch and display current pin count on remote service (queued/pinning/pinned/failed).
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                RemoteServices:
+                - ApiEndpoint: <string>
+                  Service: <string>
+                  Stat:
+                    PinCount:
+                      Failed: <int>
+                      Pinned: <int>
+                      Pinning: <int>
+                      Queued: <int>
+                    Status: <string>
+      tags:
+      - Pin
+  /api/v0/pin/remote/service/rm:
+    post:
+      operationId: pin/remote/service/rm
+      description: Remove remote pinning service.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-remote-service-rm
+      parameters:
+      - name: arg
+        in: query
+        description: Name of remote pinning service to remove.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Pin
+  /api/v0/pin/rm:
+    post:
+      operationId: pin/rm
+      description: Remove object from pin-list.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-rm
+      parameters:
+      - name: arg
+        in: query
+        description: Path to object(s) to be unpinned.
+        required: true
+        schema:
+          type: string
+      - name: recursive
+        in: query
+        description: Recursively unpin the object linked to by the specified object(s).
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Pins:
+                - <string>
+      tags:
+      - Pin
+  /api/v0/pin/update:
+    post:
+      operationId: pin/update
+      description: Update a recursive pin.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-update
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Path to old object.
+
+
+          arg1: Path to a new object to be pinned.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: unpin
+        in: query
+        description: Remove the old pin.
+        schema:
+          type: boolean
+          default: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Pins:
+                - <string>
+      tags:
+      - Pin
+  /api/v0/pin/verify:
+    post:
+      operationId: pin/verify
+      description: Verify that recursive pins are complete.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-pin-verify
+      parameters:
+      - name: verbose
+        in: query
+        description: Also write the hashes of non-broken pins.
+        schema:
+          type: boolean
+      - name: quiet
+        in: query
+        description: Write just hashes of broken pins.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Cid: <string>
+                PinStatus:
+                  BadNodes:
+                  - Cid: <string>
+                    Err: <string>
+                  Ok: <bool>
+      tags:
+      - Pin
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/

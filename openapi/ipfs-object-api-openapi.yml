@@ -1,0 +1,386 @@
+openapi: 3.0.0
+info:
+  title: IPFS RPC Add Object API
+  version: v0
+  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
+
+
+    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  x-providerName: IPFS
+  x-logo:
+    url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
+servers:
+- description: Local IPFS node
+  url: http://localhost:5001
+- description: Local IPFS node
+  url: http://127.0.0.1:5001
+- description: Infura hosted IPFS node
+  url: https://ipfs.infura.io:5001
+tags:
+- name: Object
+paths:
+  /api/v0/object/data:
+    post:
+      operationId: object/data
+      description: 'Deprecated way to read the raw bytes of a dag-pb object: use &#39;dag get&#39; instead.'
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-data
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Key of the object to retrieve, in base58-encoded multihash format.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+      tags:
+      - Object
+  /api/v0/object/diff:
+    post:
+      operationId: object/diff
+      description: Display the diff between two IPFS objects.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-diff
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: Object to diff against.
+
+
+          arg1: Object to diff.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: verbose
+        in: query
+        description: Print extra information.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Changes:
+                - After:
+                    /: <cid-string>
+                  Before:
+                    /: <cid-string>
+                  Path: <string>
+                  Type: <int>
+      tags:
+      - Object
+  /api/v0/object/get:
+    post:
+      operationId: object/get
+      description: Deprecated way to get and serialize the dag-pb node. Use &#39;dag get&#39; instead
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-get
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Key of the dag-pb object to retrieve, in base58-encoded multihash format.
+        required: true
+        schema:
+          type: string
+      - name: data-encoding
+        in: query
+        description: Encoding type of the data field, either "text" or "base64".
+        schema:
+          type: string
+          default: text
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Data: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/links:
+    post:
+      operationId: object/links
+      description: 'Deprecated way to output links in the specified dag-pb object: use &#39;dag get&#39; instead.'
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-links
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Key of the dag-pb object to retrieve, in base58-encoded multihash format.
+        required: true
+        schema:
+          type: string
+      - name: headers
+        in: query
+        description: Print table headers (Hash, Size, Name).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/new:
+    post:
+      operationId: object/new
+      description: Deprecated way to create a new dag-pb object from a template.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-new
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Template to use. Optional.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/patch/add-link:
+    post:
+      operationId: object/patch/add-link
+      description: Deprecated way to add a link to a given dag-pb.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-patch-add-link
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: The hash of the node to modify.
+
+
+          arg1: Name of link to create.
+
+
+          arg2: IPFS object to add link to.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: create
+        in: query
+        description: Create intermediary nodes.
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/patch/append-data:
+    post:
+      operationId: object/patch/append-data
+      description: Deprecated way to append data to the data segment of a DAG node.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-patch-append-data
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: The hash of the node to modify.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Argument `data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/patch/rm-link:
+    post:
+      operationId: object/patch/rm-link
+      description: Deprecated way to remove a link from dag-pb object.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-patch-rm-link
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: 'arg0: The hash of the node to modify.
+
+
+          arg1: Name of the link to remove.'
+        required: true
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/patch/set-data:
+    post:
+      operationId: object/patch/set-data
+      description: Deprecated way to set the data field of dag-pb object.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-patch-set-data
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: The hash of the node to modify.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Argument `data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/put:
+    post:
+      operationId: object/put
+      description: Deprecated way to store input as a DAG object. Use &#39;dag put&#39; instead.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-put
+      deprecated: true
+      parameters:
+      - name: inputenc
+        in: query
+        description: 'Encoding type of input data. One of: {"protobuf", "json"}.'
+        schema:
+          type: string
+          default: json
+      - name: datafieldenc
+        in: query
+        description: Encoding type of the data field, either "text" or "base64".
+        schema:
+          type: string
+          default: text
+      - name: pin
+        in: query
+        description: Pin this object when adding.
+        schema:
+          type: boolean
+      - name: quiet
+        in: query
+        description: Write minimal output.
+        schema:
+          type: boolean
+      requestBody:
+        description: Argument `data` is of file type. This endpoint expects one or several files (depending on the command) in the body of the request as 'multipart/form-data'.
+        content: {}
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                Hash: <string>
+                Links:
+                - Hash: <string>
+                  Name: <string>
+                  Size: <uint64>
+      tags:
+      - Object
+  /api/v0/object/stat:
+    post:
+      operationId: object/stat
+      description: Deprecated way to read stats for the dag-pb node. Use &#39;files stat&#39; instead.
+      externalDocs:
+        url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-stat
+      deprecated: true
+      parameters:
+      - name: arg
+        in: query
+        description: Key of the object to retrieve, in base58-encoded multihash format.
+        required: true
+        schema:
+          type: string
+      - name: human
+        in: query
+        description: Print sizes in human readable format (e.g., 1K 234M 2G).
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              example:
+                BlockSize: <int>
+                CumulativeSize: <int>
+                DataSize: <int>
+                Hash: <string>
+                LinksSize: <int>
+                NumLinks: <int>
+      tags:
+      - Object
+externalDocs:
+  url: https://docs.ipfs.tech/reference/kubo/rpc/
