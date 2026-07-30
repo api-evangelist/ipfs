@@ -8,6 +8,19 @@ description: >-
   content over standard HTTP. The Delegated Routing V1 HTTP API enables clients
   to discover content providers and resolve peer records without running a full
   DHT node.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://ipfs.tech/images/ipfs-logo.svg
 tags:
   - IPFS
@@ -22,151 +35,687 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.yml
 specificationVersion: "0.19"
 apis:
-  - name: IPFS Kubo RPC API
-    description: >-
-      The Kubo RPC API v0 provides HTTP-based remote procedure call access to a
-      running Kubo IPFS node. Every CLI command is available as an HTTP endpoint
-      under /api/v0/. Endpoints cover content operations (add, cat, get, ls),
-      block and DAG management, local and remote pinning, IPNS name publishing
-      and resolution, swarm peer management, key generation, repository
-      maintenance, and node diagnostics. The API binds to localhost by default
-      and should not be exposed to the public internet without authentication.
-    image: https://ipfs.tech/images/ipfs-logo.svg
-    humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
-    baseURL: http://localhost:5001
-    tags:
-      - RPC
-      - Content Storage
-      - Pinning
-      - DAG
-      - IPNS
-      - Peer Management
-    properties:
-      - type: Documentation
-        url: https://docs.ipfs.tech/reference/kubo/rpc/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/openapi/ipfs-kubo-rpc-api.json
-    contact:
-      - FN: IPFS Forums
-        url: https://discuss.ipfs.tech/
-      - FN: IPFS GitHub
-        url: https://github.com/ipfs/kubo
-    meta:
-      - key: authentication
-        value: "HTTP Bearer token (Authorization: Bearer <secret>); localhost-only by default"
-
-  - name: IPFS HTTP Gateway API
-    description: >-
-      The IPFS HTTP Gateway API is an implementation-agnostic interface for
-      retrieving content-addressed data from IPFS over standard HTTP. Path
-      gateways expose /ipfs/{cid} and /ipns/{name} namespaces, supporting GET
-      and HEAD requests with content negotiation for raw blocks, CAR streams,
-      TAR archives, JSON, and CBOR. The IPFS Foundation operates public
-      gateways at ipfs.io (path), dweb.link (subdomain), and
-      trustless-gateway.link (trustless/verifiable only) on a best-effort basis.
-      HTTP Range requests are supported up to 5 GB.
-    image: https://ipfs.tech/images/ipfs-logo.svg
-    humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
-    baseURL: https://ipfs.io
-    tags:
-      - Gateway
-      - Content Retrieval
-      - IPFS
-      - IPNS
-      - Public
-      - Read-Only
-    properties:
-      - type: Documentation
-        url: https://docs.ipfs.tech/concepts/ipfs-gateway/
-      - type: Specification
-        url: https://specs.ipfs.tech/http-gateways/path-gateway/
-      - type: PublicGateway
-        url: https://ipfs.io
-      - type: SubdomainGateway
-        url: https://dweb.link
-      - type: TrustlessGateway
-        url: https://trustless-gateway.link
-    contact:
-      - FN: IPFS Abuse Contact
-        email: abuse@ipfs.io
-      - FN: IPFS Docs
-        url: https://docs.ipfs.tech/concepts/public-utilities/
-    meta:
-      - key: authentication
-        value: None required for public gateways
-      - key: rateLimit
-        value: Best-effort; throttling or banning applied for abuse
-
-  - name: IPFS Delegated Routing V1 HTTP API
-    description: >-
-      The Delegated Routing V1 HTTP API allows IPFS clients to offload content
-      routing, peer routing, and IPNS resolution to a remote server without
-      running a full DHT node. Endpoints include provider lookup by CID
-      (/routing/v1/providers/{cid}), peer record lookup by Peer ID
-      (/routing/v1/peers/{peer-id}), IPNS name resolution and publication
-      (/routing/v1/ipns/{name}), and optional DHT closest-peers queries
-      (/routing/v1/dht/closest/peers/{key}). The IPFS Foundation operates a
-      public delegated routing endpoint at delegated-ipfs.dev.
-    image: https://ipfs.tech/images/ipfs-logo.svg
-    humanURL: https://specs.ipfs.tech/routing/http-routing-v1/
-    baseURL: https://delegated-ipfs.dev
-    tags:
-      - Routing
-      - DHT
-      - Content Discovery
-      - Peer Discovery
-      - IPNS
-      - Delegated
-    properties:
-      - type: Documentation
-        url: https://specs.ipfs.tech/routing/http-routing-v1/
-      - type: Specification
-        url: https://specs.ipfs.tech/routing/http-routing-v1/
-      - type: PublicEndpoint
-        url: https://delegated-ipfs.dev/routing/v1
-    contact:
-      - FN: IPFS Forums
-        url: https://discuss.ipfs.tech/
-      - FN: IPFS GitHub Issues
-        url: https://github.com/ipfs/specs/issues
-    meta:
-      - key: authentication
-        value: None required for public endpoint
-      - key: responseFormats
-        value: application/json, application/x-ndjson (streaming), application/vnd.ipfs.ipns-record
-
-  - name: IPFS Pinning Service API
-    description: >-
-      The IPFS Pinning Service API is a vendor-agnostic HTTP API specification
-      that allows users to manage remote pin requests across compliant pinning
-      services. Endpoints cover listing, creating, replacing, and deleting pins
-      by request ID, with filtering by CID, name, match strategy, status, and
-      timestamp. Compliant implementations include Pinata, Web3.Storage, Filebase,
-      and others. Authentication uses Bearer tokens issued by each service.
-    image: https://ipfs.tech/images/ipfs-logo.svg
-    humanURL: https://ipfs.github.io/pinning-services-api-spec/
-    baseURL: https://api.pinningservice.example/
-    tags:
-      - Pinning
-      - Remote Pinning
-      - Content Persistence
-      - IPFS
-    properties:
-      - type: Documentation
-        url: https://ipfs.github.io/pinning-services-api-spec/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/openapi/ipfs-pinning-service-api.yaml
-      - type: GitHubRepository
-        url: https://github.com/ipfs/pinning-services-api-spec
-    contact:
-      - FN: IPFS Pinning Service Spec
-        url: https://github.com/ipfs/pinning-services-api-spec
-    meta:
-      - key: authentication
-        value: "HTTP Bearer token (Authorization: Bearer <token>)"
-      - key: specVersion
-        value: "1.0.0"
-
+- name: IPFS HTTP Gateway API
+  description: >-
+    The IPFS HTTP Gateway API is an implementation-agnostic interface for retrieving content-addressed
+    data from IPFS over standard HTTP. Path gateways expose /ipfs/{cid} and /ipns/{name} namespaces, supporting
+    GET and HEAD requests with content negotiation for raw blocks, CAR streams, TAR archives, JSON, and
+    CBOR. The IPFS Foundation operates public gateways at ipfs.io (path), dweb.link (subdomain), and trustless-gateway.link
+    (trustless/verifiable only) on a best-effort basis. HTTP Range requests are supported up to 5 GB.
+  image: https://ipfs.tech/images/ipfs-logo.svg
+  humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
+  baseURL: https://ipfs.io
+  tags:
+  - Gateway
+  - Content Retrieval
+  - IPFS
+  - IPNS
+  - Public
+  - Read-Only
+  properties:
+  - type: Documentation
+    url: https://docs.ipfs.tech/concepts/ipfs-gateway/
+  - type: Specification
+    url: https://specs.ipfs.tech/http-gateways/path-gateway/
+  - type: PublicGateway
+    url: https://ipfs.io
+  - type: SubdomainGateway
+    url: https://dweb.link
+  - type: TrustlessGateway
+    url: https://trustless-gateway.link
+  contact:
+  - FN: IPFS Abuse Contact
+    email: abuse@ipfs.io
+  - FN: IPFS Docs
+    url: https://docs.ipfs.tech/concepts/public-utilities/
+  meta:
+  - key: authentication
+    value: None required for public gateways
+  - key: rateLimit
+    value: Best-effort; throttling or banning applied for abuse
+- name: IPFS Delegated Routing V1 HTTP API
+  description: >-
+    The Delegated Routing V1 HTTP API allows IPFS clients to offload content routing, peer routing, and
+    IPNS resolution to a remote server without running a full DHT node. Endpoints include provider lookup
+    by CID (/routing/v1/providers/{cid}), peer record lookup by Peer ID (/routing/v1/peers/{peer-id}),
+    IPNS name resolution and publication (/routing/v1/ipns/{name}), and optional DHT closest-peers queries
+    (/routing/v1/dht/closest/peers/{key}). The IPFS Foundation operates a public delegated routing endpoint
+    at delegated-ipfs.dev.
+  image: https://ipfs.tech/images/ipfs-logo.svg
+  humanURL: https://specs.ipfs.tech/routing/http-routing-v1/
+  baseURL: https://delegated-ipfs.dev
+  tags:
+  - Routing
+  - DHT
+  - Content Discovery
+  - Peer Discovery
+  - IPNS
+  - Delegated
+  properties:
+  - type: Documentation
+    url: https://specs.ipfs.tech/routing/http-routing-v1/
+  - type: Specification
+    url: https://specs.ipfs.tech/routing/http-routing-v1/
+  - type: PublicEndpoint
+    url: https://delegated-ipfs.dev/routing/v1
+  contact:
+  - FN: IPFS Forums
+    url: https://discuss.ipfs.tech/
+  - FN: IPFS GitHub Issues
+    url: https://github.com/ipfs/specs/issues
+  meta:
+  - key: authentication
+    value: None required for public endpoint
+  - key: responseFormats
+    value: application/json, application/x-ndjson (streaming), application/vnd.ipfs.ipns-record
+- aid: ipfs:ipfs-add-api
+  name: IPFS Add API
+  description: The Add API from IPFS — 1 operation(s) for add.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Add
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-add-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-bitswap-api
+  name: IPFS Bitswap API
+  description: The Bitswap API from IPFS — 4 operation(s) for bitswap.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Bitswap
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-bitswap-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-block-api
+  name: IPFS Block API
+  description: The Block API from IPFS — 4 operation(s) for block.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Block
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-block-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-bootstrap-api
+  name: IPFS Bootstrap API
+  description: The Bootstrap API from IPFS — 6 operation(s) for bootstrap.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Bootstrap
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-bootstrap-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-cat-api
+  name: IPFS Cat API
+  description: The Cat API from IPFS — 1 operation(s) for cat.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Cat
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-cat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-cid-api
+  name: IPFS Cid API
+  description: The Cid API from IPFS — 5 operation(s) for cid.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Cid
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-cid-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-commands-api
+  name: IPFS Commands API
+  description: The Commands API from IPFS — 1 operation(s) for commands.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Commands
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-commands-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-config-api
+  name: IPFS Config API
+  description: The Config API from IPFS — 4 operation(s) for config.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Config
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-config-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-dag-api
+  name: IPFS Dag API
+  description: The Dag API from IPFS — 6 operation(s) for dag.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Dag
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-dag-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-dht-api
+  name: IPFS Dht API
+  description: The Dht API from IPFS — 6 operation(s) for dht.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Dht
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-dht-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-diag-api
+  name: IPFS Diag API
+  description: The Diag API from IPFS — 5 operation(s) for diag.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Diag
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-diag-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-dns-api
+  name: IPFS Dns API
+  description: The Dns API from IPFS — 1 operation(s) for dns.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Dns
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-dns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-file-api
+  name: IPFS File API
+  description: The File API from IPFS — 1 operation(s) for file.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - File
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-file-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-files-api
+  name: IPFS Files API
+  description: The Files API from IPFS — 10 operation(s) for files.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-files-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-filestore-api
+  name: IPFS Filestore API
+  description: The Filestore API from IPFS — 3 operation(s) for filestore.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Filestore
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-filestore-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-get-api
+  name: IPFS Get API
+  description: The Get API from IPFS — 1 operation(s) for get.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Get
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-get-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-id-api
+  name: IPFS Id API
+  description: The Id API from IPFS — 1 operation(s) for id.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Id
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-id-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-key-api
+  name: IPFS Key API
+  description: The Key API from IPFS — 5 operation(s) for key.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Key
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-key-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-log-api
+  name: IPFS Log API
+  description: The Log API from IPFS — 3 operation(s) for log.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Log
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-log-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-ls-api
+  name: IPFS Ls API
+  description: The Ls API from IPFS — 1 operation(s) for ls.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Ls
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-ls-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-mount-api
+  name: IPFS Mount API
+  description: The Mount API from IPFS — 1 operation(s) for mount.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Mount
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-mount-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-multibase-api
+  name: IPFS Multibase API
+  description: The Multibase API from IPFS — 4 operation(s) for multibase.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Multibase
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-multibase-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-name-api
+  name: IPFS Name API
+  description: The Name API from IPFS — 6 operation(s) for name.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Name
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-name-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-object-api
+  name: IPFS Object API
+  description: The Object API from IPFS — 11 operation(s) for object.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Object
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-object-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-p2p-api
+  name: IPFS P2p API
+  description: The P2p API from IPFS — 6 operation(s) for p2p.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - P2p
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-p2p-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-pin-api
+  name: IPFS Pin API
+  description: The Pin API from IPFS — 11 operation(s) for pin.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Pin
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-pin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-ping-api
+  name: IPFS Ping API
+  description: The Ping API from IPFS — 1 operation(s) for ping.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Ping
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-ping-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-pins-api
+  name: IPFS pins API
+  description: The pins API from IPFS — 2 operation(s) for pins.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - pins
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-pins-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-pubsub-api
+  name: IPFS Pubsub API
+  description: The Pubsub API from IPFS — 4 operation(s) for pubsub.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Pubsub
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-pubsub-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-refs-api
+  name: IPFS Refs API
+  description: The Refs API from IPFS — 2 operation(s) for refs.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Refs
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-refs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-repo-api
+  name: IPFS Repo API
+  description: The Repo API from IPFS — 5 operation(s) for repo.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Repo
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-repo-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-resolve-api
+  name: IPFS Resolve API
+  description: The Resolve API from IPFS — 1 operation(s) for resolve.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Resolve
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-resolve-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-routing-api
+  name: IPFS Routing API
+  description: The Routing API from IPFS — 5 operation(s) for routing.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Routing
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-routing-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-shutdown-api
+  name: IPFS Shutdown API
+  description: The Shutdown API from IPFS — 1 operation(s) for shutdown.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Shutdown
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-shutdown-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-stats-api
+  name: IPFS Stats API
+  description: The Stats API from IPFS — 5 operation(s) for stats.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-swarm-api
+  name: IPFS Swarm API
+  description: The Swarm API from IPFS — 13 operation(s) for swarm.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Swarm
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-swarm-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-tar-api
+  name: IPFS Tar API
+  description: The Tar API from IPFS — 2 operation(s) for tar.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Tar
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-tar-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-version-api
+  name: IPFS Version API
+  description: The Version API from IPFS — 2 operation(s) for version.
+  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
+  baseURL: http://localhost:5001
+  tags:
+  - Version
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-version-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
 maintainers:
   - FN: IPFS Foundation / Protocol Labs
     url: https://ipfs.tech/
