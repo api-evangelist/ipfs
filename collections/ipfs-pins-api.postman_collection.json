@@ -1,0 +1,2062 @@
+{
+  "item": [
+    {
+      "id": "702339a1-6c4b-4f08-bc6c-0103190f4b88",
+      "name": "pins",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "76599b2f-e3ba-4b94-80fd-50b4946342e9",
+          "name": "List pin objects",
+          "request": {
+            "name": "List pin objects",
+            "description": {
+              "content": "List all the pin objects, matching optional filters; when no filter is provided, only successful pins are returned",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cid",
+                  "value": "<string>",
+                  "description": "Return pin objects responsible for pinning the specified CID(s); be aware that using longer hash functions introduces further constraints on the number of CIDs that will fit under the limit of 2000 characters per URL  in browser contexts"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Return pin objects with specified name (by default a case-sensitive, exact match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "match",
+                  "value": "exact",
+                  "description": "Customize the text matching strategy applied when the name filter is present; exact (the default) is a case-sensitive exact match, partial matches anywhere in the name, iexact and ipartial are case-insensitive versions of the exact and partial strategies"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Return pin objects for pins with the specified status (when missing, service should default to pinned only)"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<dateTime>",
+                  "description": "Return results created (queued) before provided timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<dateTime>",
+                  "description": "Return results created (queued) after provided timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Max records to return"
+                },
+                {
+                  "description": {
+                    "content": "Return pin objects that match specified metadata keys passed as a string representation of a JSON object; when implementing a client library, make sure the parameter is URL-encoded to ensure safe transport",
+                    "type": "text/plain"
+                  },
+                  "key": "meta",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "efd5e6b6-4c92-4061-86dd-4d62ef4ef801",
+              "name": "Successful response (PinResults object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 1,\n  \"results\": [\n    {\n      \"requestid\": \"UniqueIdOfPinRequest\",\n      \"status\": \"<string>\",\n      \"created\": \"2020-07-27T17:32:28.276Z\",\n      \"pin\": {\n        \"cid\": \"QmCIDToBePinned\",\n        \"name\": \"PreciousData.pdf\",\n        \"origins\": [\n          \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n          \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n        ],\n        \"meta\": {\n          \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n        }\n      },\n      \"delegates\": [\n        \"/ip4/203.0.113.1/tcp/4001/p2p/QmServicePeerId\"\n      ],\n      \"info\": {\n        \"status_details\": \"Queue position: 7 of 9\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a8d2c25-74c2-4deb-8add-848d2aec2e73",
+              "name": "Error response (Bad request)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"BAD_REQUEST\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f69c9af-afe8-45e0-9dde-378801f2f94e",
+              "name": "Error response (Unauthorized; access token is missing or invalid)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"UNAUTHORIZED\",\n    \"details\": \"Access token is missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7491708-b2dc-4542-9d91-92edc61cff3f",
+              "name": "Error response (The specified resource was not found)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"NOT_FOUND\",\n    \"details\": \"The specified resource was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a6fc77b-d67a-4eb0-8020-76ae3c49c8ea",
+              "name": "Error response (Insufficient funds)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INSUFFICIENT_FUNDS\",\n    \"details\": \"Unable to process request due to the lack of funds\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b270877f-e2df-4cd6-91fc-dc3560df31bc",
+              "name": "Error response (Custom service error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"CUSTOM_ERROR_CODE_FOR_MACHINES\",\n    \"details\": \"Optional explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "618dcd59-347e-4431-bff7-a2447c1d984a",
+              "name": "Error response (Unexpected internal server error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cid",
+                      "value": "Qm1,Qm2,bafy3"
+                    },
+                    {
+                      "key": "name",
+                      "value": "PreciousData.pdf"
+                    },
+                    {
+                      "key": "match",
+                      "value": "exact"
+                    },
+                    {
+                      "key": "status",
+                      "value": "queued,pinning"
+                    },
+                    {
+                      "key": "before",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "after",
+                      "value": "2020-07-27T17:32:28.276Z"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "meta",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INTERNAL_SERVER_ERROR\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd7e5fc1-2c3a-4c48-b1d0-a42c819db2db",
+          "name": "Add pin object",
+          "request": {
+            "name": "Add pin object",
+            "description": {
+              "content": "Add a new pin object for the current access token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pins"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origins\": [\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0421e76a-6d82-4eb2-85bf-5705f44a3bcc",
+              "name": "Successful response (PinStatus object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestid\": \"UniqueIdOfPinRequest\",\n  \"status\": \"<string>\",\n  \"created\": \"2020-07-27T17:32:28.276Z\",\n  \"pin\": {\n    \"cid\": \"QmCIDToBePinned\",\n    \"name\": \"PreciousData.pdf\",\n    \"origins\": [\n      \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n      \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n    ],\n    \"meta\": {\n      \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n    }\n  },\n  \"delegates\": [\n    \"/ip4/203.0.113.1/tcp/4001/p2p/QmServicePeerId\"\n  ],\n  \"info\": {\n    \"status_details\": \"Queue position: 7 of 9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "626c0871-8466-4c1d-888d-b29acf156a67",
+              "name": "Error response (Bad request)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"BAD_REQUEST\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34b7ff41-e954-49ed-b073-7df3a80aafd7",
+              "name": "Error response (Unauthorized; access token is missing or invalid)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"UNAUTHORIZED\",\n    \"details\": \"Access token is missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ab20a0d-7f6c-48b7-9ac0-636c49142687",
+              "name": "Error response (The specified resource was not found)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"NOT_FOUND\",\n    \"details\": \"The specified resource was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a34bb04f-4fcc-4b2b-8423-550da5387ba1",
+              "name": "Error response (Insufficient funds)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INSUFFICIENT_FUNDS\",\n    \"details\": \"Unable to process request due to the lack of funds\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12486d13-26d2-43e0-9b73-bb4197813f25",
+              "name": "Error response (Custom service error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"CUSTOM_ERROR_CODE_FOR_MACHINES\",\n    \"details\": \"Optional explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3fc114f-7332-46f6-bb21-7e886d799d9f",
+              "name": "Error response (Unexpected internal server error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INTERNAL_SERVER_ERROR\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc0896e3-0464-424b-866c-84c8c9f589e9",
+          "name": "Get pin object",
+          "request": {
+            "name": "Get pin object",
+            "description": {
+              "content": "Get a pin object and its status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pins",
+                ":requestid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4277044b-b6f3-4998-9fb4-fba2e93cb798",
+              "name": "Successful response (PinStatus object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestid\": \"UniqueIdOfPinRequest\",\n  \"status\": \"<string>\",\n  \"created\": \"2020-07-27T17:32:28.276Z\",\n  \"pin\": {\n    \"cid\": \"QmCIDToBePinned\",\n    \"name\": \"PreciousData.pdf\",\n    \"origins\": [\n      \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n      \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n    ],\n    \"meta\": {\n      \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n    }\n  },\n  \"delegates\": [\n    \"/ip4/203.0.113.1/tcp/4001/p2p/QmServicePeerId\"\n  ],\n  \"info\": {\n    \"status_details\": \"Queue position: 7 of 9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d16f40e1-89cd-4141-b381-4e675c053c12",
+              "name": "Error response (Bad request)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"BAD_REQUEST\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3cc485d8-057d-41b5-8511-86bd8d537308",
+              "name": "Error response (Unauthorized; access token is missing or invalid)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"UNAUTHORIZED\",\n    \"details\": \"Access token is missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fa06ef6-d21a-4a99-abd7-8538b5c03a55",
+              "name": "Error response (The specified resource was not found)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"NOT_FOUND\",\n    \"details\": \"The specified resource was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88af10f6-b0fc-42fa-bc4f-b8e8fcb96933",
+              "name": "Error response (Insufficient funds)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INSUFFICIENT_FUNDS\",\n    \"details\": \"Unable to process request due to the lack of funds\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3647822c-9a0a-4b53-807d-872c9e2887d8",
+              "name": "Error response (Custom service error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"CUSTOM_ERROR_CODE_FOR_MACHINES\",\n    \"details\": \"Optional explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a841fef0-25d9-4082-b9d5-b6f7eb219038",
+              "name": "Error response (Unexpected internal server error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INTERNAL_SERVER_ERROR\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08b0836c-ca72-4628-8b17-f9936caa857a",
+          "name": "Replace pin object",
+          "request": {
+            "name": "Replace pin object",
+            "description": {
+              "content": "Replace an existing pin object (shortcut for executing remove and add operations in one step to avoid unnecessary garbage collection of blocks present in both recursive pins)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pins",
+                ":requestid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"origins\": [\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d0b4950-1934-4ed9-9f19-88a8421e049f",
+              "name": "Successful response (PinStatus object)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestid\": \"UniqueIdOfPinRequest\",\n  \"status\": \"<string>\",\n  \"created\": \"2020-07-27T17:32:28.276Z\",\n  \"pin\": {\n    \"cid\": \"QmCIDToBePinned\",\n    \"name\": \"PreciousData.pdf\",\n    \"origins\": [\n      \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n      \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n    ],\n    \"meta\": {\n      \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n    }\n  },\n  \"delegates\": [\n    \"/ip4/203.0.113.1/tcp/4001/p2p/QmServicePeerId\"\n  ],\n  \"info\": {\n    \"status_details\": \"Queue position: 7 of 9\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5435f44d-1495-405b-bb27-fbea238a1c6b",
+              "name": "Error response (Bad request)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"BAD_REQUEST\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b270a09-dbbf-463a-8ae6-60205713c048",
+              "name": "Error response (Unauthorized; access token is missing or invalid)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"UNAUTHORIZED\",\n    \"details\": \"Access token is missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a49b1c3-3504-43d2-a29a-d608b7ba1220",
+              "name": "Error response (The specified resource was not found)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"NOT_FOUND\",\n    \"details\": \"The specified resource was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c275b27-8aa4-480e-914a-ff6cf4dcaf62",
+              "name": "Error response (Insufficient funds)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INSUFFICIENT_FUNDS\",\n    \"details\": \"Unable to process request due to the lack of funds\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6302d63e-a438-4be6-8d4b-06aa470f41ca",
+              "name": "Error response (Custom service error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"CUSTOM_ERROR_CODE_FOR_MACHINES\",\n    \"details\": \"Optional explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8596c72-8eb1-46b2-9957-704776cdc885",
+              "name": "Error response (Unexpected internal server error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cid\": \"QmCIDToBePinned\",\n  \"name\": \"PreciousData.pdf\",\n  \"origins\": [\n    \"/ip4/203.0.113.142/tcp/4001/p2p/QmSourcePeerId\",\n    \"/ip4/203.0.113.114/udp/4001/quic/p2p/QmSourcePeerId\"\n  ],\n  \"meta\": {\n    \"app_id\": \"99986338-1113-4706-8302-4420da6158aa\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INTERNAL_SERVER_ERROR\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f6dc4fe7-fac8-4feb-8ab1-c587c43bee85",
+          "name": "Remove pin object",
+          "request": {
+            "name": "Remove pin object",
+            "description": {
+              "content": "Remove a pin object",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pins",
+                ":requestid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "requestid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "941e5507-5597-4497-86e9-3c648d1881d0",
+              "name": "Successful response (no body, pin removed)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c30e95a-bfcc-4abb-9a8e-cfa4f881b999",
+              "name": "Error response (Bad request)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"BAD_REQUEST\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9965c6a2-3763-4e17-b9ef-2ce5b493d359",
+              "name": "Error response (Unauthorized; access token is missing or invalid)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"UNAUTHORIZED\",\n    \"details\": \"Access token is missing or invalid\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2df989e-bae2-4303-94c7-eca4cf08ceee",
+              "name": "Error response (The specified resource was not found)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"NOT_FOUND\",\n    \"details\": \"The specified resource was not found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91832814-e555-4825-84a9-82a24cc2c121",
+              "name": "Error response (Insufficient funds)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INSUFFICIENT_FUNDS\",\n    \"details\": \"Unable to process request due to the lack of funds\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d4a781d-544f-4497-92e3-13c0af7c02fe",
+              "name": "Error response (Custom service error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"CUSTOM_ERROR_CODE_FOR_MACHINES\",\n    \"details\": \"Optional explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "313dcef5-e3de-477b-aeea-63d00638a654",
+              "name": "Error response (Unexpected internal server error)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pins",
+                    ":requestid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "requestid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"reason\": \"INTERNAL_SERVER_ERROR\",\n    \"details\": \"Explanation for humans with more details\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5909b34d-e45c-4fb4-bebf-94e208027a2d",
+    "name": "IPFS RPC Add pins API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

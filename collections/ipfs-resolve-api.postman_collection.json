@@ -1,0 +1,148 @@
+{
+  "item": [
+    {
+      "id": "f2367675-2586-4ac1-8032-e95669bfcf57",
+      "name": "Resolve",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89360898-6cc2-421b-93e9-7865b6e352ae",
+          "name": "resolve",
+          "request": {
+            "name": "resolve",
+            "description": {
+              "content": "Resolve the value of names to IPFS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) The name to resolve."
+                },
+                {
+                  "disabled": false,
+                  "key": "recursive",
+                  "value": "true",
+                  "description": "Resolve until the result is an IPFS name."
+                },
+                {
+                  "disabled": false,
+                  "key": "dht-record-count",
+                  "value": "<integer>",
+                  "description": "Number of records to request for DHT resolution."
+                },
+                {
+                  "disabled": false,
+                  "key": "dht-timeout",
+                  "value": "<string>",
+                  "description": "Max time to collect values during DHT resolution eg \"30s\". Pass 0 for no timeout."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfe3a6be-0730-4fc1-8014-b282a3c17542",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "true"
+                    },
+                    {
+                      "key": "dht-record-count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dht-timeout",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Path\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "32c83541-636e-4caf-b36b-2cfd8fd8f47f",
+    "name": "IPFS RPC Add Resolve API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Pubsub API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pubsub",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "pubsub/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pubsub/ls"
+          },
+          "docs": "List subscribed topics by name."
+        },
+        {
+          "info": {
+            "name": "pubsub/peers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pubsub/peers",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Topic to list connected peers of."
+              }
+            ]
+          },
+          "docs": "List peers we are currently pubsubbing with."
+        },
+        {
+          "info": {
+            "name": "pubsub/pub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pubsub/pub",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Topic to publish to (multibase encoded when sent over HTTP RPC)."
+              }
+            ]
+          },
+          "docs": "Publish data to a given pubsub topic."
+        },
+        {
+          "info": {
+            "name": "pubsub/sub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pubsub/sub",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Name of topic to subscribe to (multibase encoded when sent over HTTP RPC)."
+              }
+            ]
+          },
+          "docs": "Subscribe to messages on a given topic."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

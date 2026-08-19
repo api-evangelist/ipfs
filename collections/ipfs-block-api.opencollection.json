@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Block API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Block",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "block/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/block/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The CID of an existing block to get."
+              }
+            ]
+          },
+          "docs": "Get a raw IPFS block."
+        },
+        {
+          "info": {
+            "name": "block/put",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/block/put",
+            "params": [
+              {
+                "name": "cid-codec",
+                "value": "",
+                "type": "query",
+                "description": "Multicodec to use in returned CID."
+              },
+              {
+                "name": "mhtype",
+                "value": "",
+                "type": "query",
+                "description": "Multihash hash function."
+              },
+              {
+                "name": "mhlen",
+                "value": "",
+                "type": "query",
+                "description": "Multihash hash length."
+              },
+              {
+                "name": "pin",
+                "value": "",
+                "type": "query",
+                "description": "Pin added blocks recursively."
+              },
+              {
+                "name": "allow-big-block",
+                "value": "",
+                "type": "query",
+                "description": "Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won't be transferable over the standard bitswap."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Use legacy format for returned CID (DEPRECATED)."
+              }
+            ]
+          },
+          "docs": "Store input as an IPFS block."
+        },
+        {
+          "info": {
+            "name": "block/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/block/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CIDs of block(s) to remove."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Ignore nonexistent blocks."
+              },
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write minimal output."
+              }
+            ]
+          },
+          "docs": "Remove IPFS block(s) from the local datastore."
+        },
+        {
+          "info": {
+            "name": "block/stat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/block/stat",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The CID of an existing block to stat."
+              }
+            ]
+          },
+          "docs": "Print information of a raw IPFS block."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

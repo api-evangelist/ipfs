@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Stats API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "stats/bitswap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/stats/bitswap",
+            "params": [
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              },
+              {
+                "name": "human",
+                "value": "",
+                "type": "query",
+                "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+              }
+            ]
+          },
+          "docs": "Show some diagnostic information on the bitswap agent."
+        },
+        {
+          "info": {
+            "name": "stats/bw",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/stats/bw",
+            "params": [
+              {
+                "name": "peer",
+                "value": "",
+                "type": "query",
+                "description": "Specify a peer to print bandwidth for."
+              },
+              {
+                "name": "proto",
+                "value": "",
+                "type": "query",
+                "description": "Specify a protocol to print bandwidth for."
+              },
+              {
+                "name": "poll",
+                "value": "",
+                "type": "query",
+                "description": "Print bandwidth at an interval."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Time interval to wait between updating output, if 'poll' is true.This accepts durations such as \"300s\", \"1.5h\" or \"2h45m\". Valid time units are:\n\"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+              }
+            ]
+          },
+          "docs": "Print IPFS bandwidth information."
+        },
+        {
+          "info": {
+            "name": "stats/dht",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/stats/dht",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The DHT whose table should be listed (wanserver, lanserver, wan, lan). wan and lan refer to client routing tables. When using the experimental DHT client only WAN is supported. Defaults to wan and lan."
+              }
+            ]
+          },
+          "docs": "Returns statistics about the node&#39;s DHT(s)."
+        },
+        {
+          "info": {
+            "name": "stats/provide",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/stats/provide"
+          },
+          "docs": "Returns statistics about the node&#39;s (re)provider system."
+        },
+        {
+          "info": {
+            "name": "stats/repo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/stats/repo",
+            "params": [
+              {
+                "name": "size-only",
+                "value": "",
+                "type": "query",
+                "description": "Only report RepoSize and StorageMax."
+              },
+              {
+                "name": "human",
+                "value": "",
+                "type": "query",
+                "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+              }
+            ]
+          },
+          "docs": "Get stats for the currently used repo."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,370 @@
+{
+  "item": [
+    {
+      "id": "52fa5b79-5c7b-4919-802f-651a77ab783e",
+      "name": "Bitswap",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61278f33-6387-44c9-a409-a909c1759437",
+          "name": "bitswap/ledger",
+          "request": {
+            "name": "bitswap/ledger",
+            "description": {
+              "content": "Show the current ledger for a peer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "bitswap",
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) The PeerID (B58) of the ledger to inspect."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91958a82-9133-4372-b734-52722c8b6e90",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "bitswap",
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Exchanged\": \"<uint64>\",\n  \"Peer\": \"<string>\",\n  \"Recv\": \"<uint64>\",\n  \"Sent\": \"<uint64>\",\n  \"Value\": \"<float64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34ef13dc-21e3-4312-9dc0-e826cf1b3a81",
+          "name": "bitswap/reprovide",
+          "request": {
+            "name": "bitswap/reprovide",
+            "description": {
+              "content": "Trigger reprovider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "bitswap",
+                "reprovide"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5bf3242-0a4e-4de2-a725-72958fbb8611",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "bitswap",
+                    "reprovide"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "579646f0-542b-4050-b84d-7508ad2c1e9f",
+          "name": "bitswap/stat",
+          "request": {
+            "name": "bitswap/stat",
+            "description": {
+              "content": "Show some diagnostic information on the bitswap agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "bitswap",
+                "stat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "<boolean>",
+                  "description": "Print extra information."
+                },
+                {
+                  "disabled": false,
+                  "key": "human",
+                  "value": "<boolean>",
+                  "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4d3de009-8ec3-4bfc-9c3e-64392708b543",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "bitswap",
+                    "stat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verbose",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "human",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"BlocksReceived\": \"<uint64>\",\n  \"BlocksSent\": \"<uint64>\",\n  \"DataReceived\": \"<uint64>\",\n  \"DataSent\": \"<uint64>\",\n  \"DupBlksReceived\": \"<uint64>\",\n  \"DupDataReceived\": \"<uint64>\",\n  \"MessagesReceived\": \"<uint64>\",\n  \"Peers\": [\n    \"<string>\"\n  ],\n  \"ProvideBufLen\": \"<int>\",\n  \"Wantlist\": [\n    {\n      \"/\": \"<cid-string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd554c90-e6d5-4746-88d0-cf23b2557467",
+          "name": "bitswap/wantlist",
+          "request": {
+            "name": "bitswap/wantlist",
+            "description": {
+              "content": "Show blocks currently on the wantlist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "bitswap",
+                "wantlist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "peer",
+                  "value": "<string>",
+                  "description": "Specify which peer to show wantlist for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "169f9c4f-4b15-441c-96f2-5255d86adf19",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "bitswap",
+                    "wantlist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "peer",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Keys\": [\n    {\n      \"/\": \"<cid-string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "915f6c86-86a3-42f0-80b6-19705c28dd63",
+    "name": "IPFS RPC Add Bitswap API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

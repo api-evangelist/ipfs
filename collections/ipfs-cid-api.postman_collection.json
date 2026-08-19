@@ -1,0 +1,542 @@
+{
+  "item": [
+    {
+      "id": "4cc4daf6-94ad-4558-87e2-dd273889c4ba",
+      "name": "Cid",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc1d82a5-1aa3-47e3-b490-fa79fc18bb25",
+          "name": "cid/base32",
+          "request": {
+            "name": "cid/base32",
+            "description": {
+              "content": "Convert CIDs to Base32 CID version 1.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "cid",
+                "base32"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) CIDs to convert."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b580a34a-829c-416f-b8f4-b644fcac3e58",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "cid",
+                    "base32"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CidStr\": \"<string>\",\n  \"ErrorMsg\": \"<string>\",\n  \"Formatted\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92f1c8c0-4dd9-4b0d-a62d-b1dafecd1a98",
+          "name": "cid/bases",
+          "request": {
+            "name": "cid/bases",
+            "description": {
+              "content": "List available multibase encodings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "cid",
+                "bases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "prefix",
+                  "value": "<boolean>",
+                  "description": "also include the single letter prefixes in addition to the code."
+                },
+                {
+                  "disabled": false,
+                  "key": "numeric",
+                  "value": "<boolean>",
+                  "description": "also include numeric codes."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7b10bcd-62f5-4b9d-ba11-288609fdd3a9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "cid",
+                    "bases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "prefix",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "numeric",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Code\": \"<int>\",\n    \"Name\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c45e1c3f-03b8-44de-aae7-0c9074073394",
+          "name": "cid/codecs",
+          "request": {
+            "name": "cid/codecs",
+            "description": {
+              "content": "List available CID multicodecs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "cid",
+                "codecs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "numeric",
+                  "value": "<boolean>",
+                  "description": "also include numeric codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "supported",
+                  "value": "<boolean>",
+                  "description": "list only codecs supported by go-ipfs commands."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e427da7-39fe-4923-88a4-629026a5fdd3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "cid",
+                    "codecs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "numeric",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "supported",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Code\": \"<int>\",\n    \"Name\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "512c44a9-34d0-452e-bfae-e5505411d358",
+          "name": "cid/format",
+          "request": {
+            "name": "cid/format",
+            "description": {
+              "content": "Format and convert a CID in various useful ways.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "cid",
+                "format"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) CIDs to format."
+                },
+                {
+                  "disabled": false,
+                  "key": "f",
+                  "value": "%s",
+                  "description": "Printf style format string."
+                },
+                {
+                  "disabled": false,
+                  "key": "v",
+                  "value": "<string>",
+                  "description": "CID version to convert to."
+                },
+                {
+                  "disabled": false,
+                  "key": "mc",
+                  "value": "<string>",
+                  "description": "CID multicodec to convert to."
+                },
+                {
+                  "disabled": false,
+                  "key": "b",
+                  "value": "<string>",
+                  "description": "Multibase to display CID in."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a148158-6432-42aa-8acc-aa9139688a43",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "cid",
+                    "format"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "f",
+                      "value": "%s"
+                    },
+                    {
+                      "key": "v",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "b",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"CidStr\": \"<string>\",\n  \"ErrorMsg\": \"<string>\",\n  \"Formatted\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b8d320e-5be5-48ca-b92b-ab85780fa5ac",
+          "name": "cid/hashes",
+          "request": {
+            "name": "cid/hashes",
+            "description": {
+              "content": "List available multihashes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "cid",
+                "hashes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "numeric",
+                  "value": "<boolean>",
+                  "description": "also include numeric codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "supported",
+                  "value": "<boolean>",
+                  "description": "list only codecs supported by go-ipfs commands."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b716177-0e96-450d-b7a3-84ed7773f8df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "cid",
+                    "hashes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "numeric",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "supported",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Code\": \"<int>\",\n    \"Name\": \"<string>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "655b3264-9c5a-4669-9bc7-1b1b943cb7b1",
+    "name": "IPFS RPC Add Cid API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,658 @@
+{
+  "item": [
+    {
+      "id": "913c1961-2f50-4eef-9b85-096c1017a8ae",
+      "name": "Dag",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f3deea8-e213-41d2-a72b-ace3269be9f1",
+          "name": "dag/export",
+          "request": {
+            "name": "dag/export",
+            "description": {
+              "content": "Streams the selected DAG as a .car stream on stdout.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) CID of a root to recursively export"
+                },
+                {
+                  "disabled": false,
+                  "key": "progress",
+                  "value": "<boolean>",
+                  "description": "Display progress on CLI. Defaults to true when STDERR is a TTY."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11960b69-c893-4aa6-9db3-6e3fe2fe2488",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "progress",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8e9e50d-28c6-45cb-9381-d2d1fbaa7323",
+          "name": "dag/get",
+          "request": {
+            "name": "dag/get",
+            "description": {
+              "content": "Get a DAG node from IPFS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "get"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) The object to get"
+                },
+                {
+                  "disabled": false,
+                  "key": "output-codec",
+                  "value": "dag-json",
+                  "description": "Format that the object will be encoded as."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1257fe80-d568-4a4f-b29f-650fd47a3698",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "get"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "output-codec",
+                      "value": "dag-json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d5cd590-263a-4fcf-9039-c5095f4a75cd",
+          "name": "dag/import",
+          "request": {
+            "name": "dag/import",
+            "description": {
+              "content": "Import the contents of .car files",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "import"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pin-roots",
+                  "value": "true",
+                  "description": "Pin optional roots listed in the .car headers after importing."
+                },
+                {
+                  "disabled": false,
+                  "key": "silent",
+                  "value": "<boolean>",
+                  "description": "No output."
+                },
+                {
+                  "disabled": false,
+                  "key": "stats",
+                  "value": "<boolean>",
+                  "description": "Output stats."
+                },
+                {
+                  "disabled": false,
+                  "key": "allow-big-block",
+                  "value": "false",
+                  "description": "Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won't be transferable over the standard bitswap."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "e50d86f6-cf6a-4ba4-9a92-ec9934a3483c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "import"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pin-roots",
+                      "value": "true"
+                    },
+                    {
+                      "key": "silent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "stats",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "allow-big-block",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Root\": {\n    \"Cid\": {\n      \"/\": \"<cid-string>\"\n    },\n    \"PinErrorMsg\": \"<string>\"\n  },\n  \"Stats\": {\n    \"BlockBytesCount\": \"<uint64>\",\n    \"BlockCount\": \"<uint64>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a746350b-1294-43d2-af2c-01f27ff49343",
+          "name": "dag/put",
+          "request": {
+            "name": "dag/put",
+            "description": {
+              "content": "Add a DAG node to IPFS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "put"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "store-codec",
+                  "value": "dag-cbor",
+                  "description": "Codec that the stored object will be encoded with."
+                },
+                {
+                  "disabled": false,
+                  "key": "input-codec",
+                  "value": "dag-json",
+                  "description": "Codec that the input object is encoded in."
+                },
+                {
+                  "disabled": false,
+                  "key": "pin",
+                  "value": "<boolean>",
+                  "description": "Pin this object when adding."
+                },
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "sha2-256",
+                  "description": "Hash function to use."
+                },
+                {
+                  "disabled": false,
+                  "key": "allow-big-block",
+                  "value": "false",
+                  "description": "Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won't be transferable over the standard bitswap."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "6a1b6950-d7bc-443f-b2b8-7ea3a1567008",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "put"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "store-codec",
+                      "value": "dag-cbor"
+                    },
+                    {
+                      "key": "input-codec",
+                      "value": "dag-json"
+                    },
+                    {
+                      "key": "pin",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "sha2-256"
+                    },
+                    {
+                      "key": "allow-big-block",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Cid\": {\n    \"/\": \"<cid-string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b4c4172-e8ee-4cb7-84e9-28f851ce2d2d",
+          "name": "dag/resolve",
+          "request": {
+            "name": "dag/resolve",
+            "description": {
+              "content": "Resolve IPLD block.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) The path to resolve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78fa15e0-209d-4d7b-a929-d492078d1085",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Cid\": {\n    \"/\": \"<cid-string>\"\n  },\n  \"RemPath\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0704d13-62e1-4346-909d-9daa53c36d59",
+          "name": "dag/stat",
+          "request": {
+            "name": "dag/stat",
+            "description": {
+              "content": "Gets stats for a DAG.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "dag",
+                "stat"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) CID of a DAG root to get statistics for"
+                },
+                {
+                  "disabled": false,
+                  "key": "progress",
+                  "value": "true",
+                  "description": "Return progressive data while reading through the DAG."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ffc6f08-116d-40f2-97ae-d986aaa0f16d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "dag",
+                    "stat"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "progress",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"NumBlocks\": \"<int64>\",\n  \"Size\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1622bc0c-0c29-45e1-aea9-8f6792558155",
+    "name": "IPFS RPC Add Dag API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Routing API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "routing/findpeer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/routing/findpeer",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the peer to search for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              }
+            ]
+          },
+          "docs": "Find the multiaddresses associated with a Peer ID."
+        },
+        {
+          "info": {
+            "name": "routing/findprovs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/routing/findprovs",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to find providers for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              },
+              {
+                "name": "num-providers",
+                "value": "",
+                "type": "query",
+                "description": "The number of providers to find."
+              }
+            ]
+          },
+          "docs": "Find peers that can provide a specific value, given a key."
+        },
+        {
+          "info": {
+            "name": "routing/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/routing/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to find a value for."
+              }
+            ]
+          },
+          "docs": "Given a key, query the routing system for its best value."
+        },
+        {
+          "info": {
+            "name": "routing/provide",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/routing/provide",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key[s] to send provide records for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively provide entire graph."
+              }
+            ]
+          },
+          "docs": "Announce to the network that you are providing given values."
+        },
+        {
+          "info": {
+            "name": "routing/put",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/routing/put",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to store the value at."
+              }
+            ]
+          },
+          "docs": "Write a key/value pair to the routing system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

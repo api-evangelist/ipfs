@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Multibase API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Multibase",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "multibase/decode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/multibase/decode"
+          },
+          "docs": "Decode multibase string"
+        },
+        {
+          "info": {
+            "name": "multibase/encode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/multibase/encode",
+            "params": [
+              {
+                "name": "b",
+                "value": "",
+                "type": "query",
+                "description": "multibase encoding."
+              }
+            ]
+          },
+          "docs": "Encode data into multibase string"
+        },
+        {
+          "info": {
+            "name": "multibase/list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/multibase/list",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "also include the single letter prefixes in addition to the code."
+              },
+              {
+                "name": "numeric",
+                "value": "",
+                "type": "query",
+                "description": "also include numeric codes."
+              }
+            ]
+          },
+          "docs": "List available multibase encodings."
+        },
+        {
+          "info": {
+            "name": "multibase/transcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/multibase/transcode",
+            "params": [
+              {
+                "name": "b",
+                "value": "",
+                "type": "query",
+                "description": "multibase encoding."
+              }
+            ]
+          },
+          "docs": "Transcode multibase string between bases"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

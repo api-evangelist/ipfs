@@ -1,0 +1,168 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Dht API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dht",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "dht/query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/query",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The peerID to run the query against."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              }
+            ]
+          },
+          "docs": "Find the closest Peer IDs to a given Peer ID by querying the DHT."
+        },
+        {
+          "info": {
+            "name": "dht/findpeer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/findpeer",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the peer to search for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              }
+            ]
+          },
+          "docs": "Find the multiaddresses associated with a Peer ID."
+        },
+        {
+          "info": {
+            "name": "dht/findprovs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/findprovs",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to find providers for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              },
+              {
+                "name": "num-providers",
+                "value": "",
+                "type": "query",
+                "description": "The number of providers to find."
+              }
+            ]
+          },
+          "docs": "Find peers that can provide a specific value, given a key."
+        },
+        {
+          "info": {
+            "name": "dht/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to find a value for."
+              }
+            ]
+          },
+          "docs": "Given a key, query the routing system for its best value."
+        },
+        {
+          "info": {
+            "name": "dht/provide",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/provide",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key[s] to send provide records for."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively provide entire graph."
+              }
+            ]
+          },
+          "docs": "Announce to the network that you are providing given values."
+        },
+        {
+          "info": {
+            "name": "dht/put",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dht/put",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The key to store the value at."
+              }
+            ]
+          },
+          "docs": "Write a key/value pair to the routing system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

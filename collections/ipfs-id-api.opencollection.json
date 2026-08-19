@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Id API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Id",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/id",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Peer.ID of node to look up."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Optional output format."
+              },
+              {
+                "name": "peerid-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for peer IDs: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Show IPFS node id info."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

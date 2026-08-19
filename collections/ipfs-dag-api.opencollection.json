@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Dag API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "dag/export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/export",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CID of a root to recursively export"
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query",
+                "description": "Display progress on CLI. Defaults to true when STDERR is a TTY."
+              }
+            ]
+          },
+          "docs": "Streams the selected DAG as a .car stream on stdout."
+        },
+        {
+          "info": {
+            "name": "dag/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The object to get"
+              },
+              {
+                "name": "output-codec",
+                "value": "",
+                "type": "query",
+                "description": "Format that the object will be encoded as."
+              }
+            ]
+          },
+          "docs": "Get a DAG node from IPFS."
+        },
+        {
+          "info": {
+            "name": "dag/import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/import",
+            "params": [
+              {
+                "name": "pin-roots",
+                "value": "",
+                "type": "query",
+                "description": "Pin optional roots listed in the .car headers after importing."
+              },
+              {
+                "name": "silent",
+                "value": "",
+                "type": "query",
+                "description": "No output."
+              },
+              {
+                "name": "stats",
+                "value": "",
+                "type": "query",
+                "description": "Output stats."
+              },
+              {
+                "name": "allow-big-block",
+                "value": "",
+                "type": "query",
+                "description": "Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won't be transferable over the standard bitswap."
+              }
+            ]
+          },
+          "docs": "Import the contents of .car files"
+        },
+        {
+          "info": {
+            "name": "dag/put",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/put",
+            "params": [
+              {
+                "name": "store-codec",
+                "value": "",
+                "type": "query",
+                "description": "Codec that the stored object will be encoded with."
+              },
+              {
+                "name": "input-codec",
+                "value": "",
+                "type": "query",
+                "description": "Codec that the input object is encoded in."
+              },
+              {
+                "name": "pin",
+                "value": "",
+                "type": "query",
+                "description": "Pin this object when adding."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash function to use."
+              },
+              {
+                "name": "allow-big-block",
+                "value": "",
+                "type": "query",
+                "description": "Disable block size check and allow creation of blocks bigger than 1MiB. WARNING: such blocks won't be transferable over the standard bitswap."
+              }
+            ]
+          },
+          "docs": "Add a DAG node to IPFS."
+        },
+        {
+          "info": {
+            "name": "dag/resolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/resolve",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The path to resolve"
+              }
+            ]
+          },
+          "docs": "Resolve IPLD block."
+        },
+        {
+          "info": {
+            "name": "dag/stat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dag/stat",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CID of a DAG root to get statistics for"
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query",
+                "description": "Return progressive data while reading through the DAG."
+              }
+            ]
+          },
+          "docs": "Gets stats for a DAG."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

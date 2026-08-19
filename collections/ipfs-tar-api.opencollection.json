@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Tar API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "tar/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/tar/add"
+          },
+          "docs": "Import a tar file into IPFS."
+        },
+        {
+          "info": {
+            "name": "tar/cat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/tar/cat",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "ipfs path of archive to export."
+              }
+            ]
+          },
+          "docs": "Export a tar file from IPFS."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

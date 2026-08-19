@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Get API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The path to the IPFS object(s) to be outputted."
+              },
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The path where the output should be stored."
+              },
+              {
+                "name": "archive",
+                "value": "",
+                "type": "query",
+                "description": "Output a TAR archive."
+              },
+              {
+                "name": "compress",
+                "value": "",
+                "type": "query",
+                "description": "Compress the output with GZIP compression."
+              },
+              {
+                "name": "compression-level",
+                "value": "",
+                "type": "query",
+                "description": "The level of compression (1-9)."
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query",
+                "description": "Stream progress data."
+              }
+            ]
+          },
+          "docs": "Download IPFS objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

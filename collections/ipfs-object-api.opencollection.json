@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Object API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Object",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "object/data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/data",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Key of the object to retrieve, in base58-encoded multihash format."
+              }
+            ]
+          },
+          "docs": "Deprecated way to read the raw bytes of a dag-pb object: use &#39;dag get&#39; instead."
+        },
+        {
+          "info": {
+            "name": "object/diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/diff",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Object to diff against.\n\narg1: Object to diff."
+              },
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              }
+            ]
+          },
+          "docs": "Display the diff between two IPFS objects."
+        },
+        {
+          "info": {
+            "name": "object/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/get",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Key of the dag-pb object to retrieve, in base58-encoded multihash format."
+              },
+              {
+                "name": "data-encoding",
+                "value": "",
+                "type": "query",
+                "description": "Encoding type of the data field, either \"text\" or \"base64\"."
+              }
+            ]
+          },
+          "docs": "Deprecated way to get and serialize the dag-pb node. Use &#39;dag get&#39; instead"
+        },
+        {
+          "info": {
+            "name": "object/links",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/links",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Key of the dag-pb object to retrieve, in base58-encoded multihash format."
+              },
+              {
+                "name": "headers",
+                "value": "",
+                "type": "query",
+                "description": "Print table headers (Hash, Size, Name)."
+              }
+            ]
+          },
+          "docs": "Deprecated way to output links in the specified dag-pb object: use &#39;dag get&#39; instead."
+        },
+        {
+          "info": {
+            "name": "object/new",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/new",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Template to use. Optional."
+              }
+            ]
+          },
+          "docs": "Deprecated way to create a new dag-pb object from a template."
+        },
+        {
+          "info": {
+            "name": "object/patch/add-link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/patch/add-link",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: The hash of the node to modify.\n\narg1: Name of link to create.\n\narg2: IPFS object to add link to."
+              },
+              {
+                "name": "create",
+                "value": "",
+                "type": "query",
+                "description": "Create intermediary nodes."
+              }
+            ]
+          },
+          "docs": "Deprecated way to add a link to a given dag-pb."
+        },
+        {
+          "info": {
+            "name": "object/patch/append-data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/patch/append-data",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The hash of the node to modify."
+              }
+            ]
+          },
+          "docs": "Deprecated way to append data to the data segment of a DAG node."
+        },
+        {
+          "info": {
+            "name": "object/patch/rm-link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/patch/rm-link",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: The hash of the node to modify.\n\narg1: Name of the link to remove."
+              }
+            ]
+          },
+          "docs": "Deprecated way to remove a link from dag-pb object."
+        },
+        {
+          "info": {
+            "name": "object/patch/set-data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/patch/set-data",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The hash of the node to modify."
+              }
+            ]
+          },
+          "docs": "Deprecated way to set the data field of dag-pb object."
+        },
+        {
+          "info": {
+            "name": "object/put",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/put",
+            "params": [
+              {
+                "name": "inputenc",
+                "value": "",
+                "type": "query",
+                "description": "Encoding type of input data. One of: {\"protobuf\", \"json\"}."
+              },
+              {
+                "name": "datafieldenc",
+                "value": "",
+                "type": "query",
+                "description": "Encoding type of the data field, either \"text\" or \"base64\"."
+              },
+              {
+                "name": "pin",
+                "value": "",
+                "type": "query",
+                "description": "Pin this object when adding."
+              },
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write minimal output."
+              }
+            ]
+          },
+          "docs": "Deprecated way to store input as a DAG object. Use &#39;dag put&#39; instead."
+        },
+        {
+          "info": {
+            "name": "object/stat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/object/stat",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Key of the object to retrieve, in base58-encoded multihash format."
+              },
+              {
+                "name": "human",
+                "value": "",
+                "type": "query",
+                "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+              }
+            ]
+          },
+          "docs": "Deprecated way to read stats for the dag-pb node. Use &#39;files stat&#39; instead."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

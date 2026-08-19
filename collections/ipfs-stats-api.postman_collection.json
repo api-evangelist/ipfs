@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "b26460a6-88b4-4583-a959-cc198c57ed2d",
+      "name": "Stats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ce804b9-5b43-4c77-aa9a-a784500bccfe",
+          "name": "stats/bitswap",
+          "request": {
+            "name": "stats/bitswap",
+            "description": {
+              "content": "Show some diagnostic information on the bitswap agent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "stats",
+                "bitswap"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "<boolean>",
+                  "description": "Print extra information."
+                },
+                {
+                  "disabled": false,
+                  "key": "human",
+                  "value": "<boolean>",
+                  "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c35fff36-0a5e-478e-bef3-09fca3847681",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "stats",
+                    "bitswap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verbose",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "human",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"BlocksReceived\": \"<uint64>\",\n  \"BlocksSent\": \"<uint64>\",\n  \"DataReceived\": \"<uint64>\",\n  \"DataSent\": \"<uint64>\",\n  \"DupBlksReceived\": \"<uint64>\",\n  \"DupDataReceived\": \"<uint64>\",\n  \"MessagesReceived\": \"<uint64>\",\n  \"Peers\": [\n    \"<string>\"\n  ],\n  \"ProvideBufLen\": \"<int>\",\n  \"Wantlist\": [\n    {\n      \"/\": \"<cid-string>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5f66f85-8bc2-4967-838b-e6858c5813be",
+          "name": "stats/bw",
+          "request": {
+            "name": "stats/bw",
+            "description": {
+              "content": "Print IPFS bandwidth information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "stats",
+                "bw"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "peer",
+                  "value": "<string>",
+                  "description": "Specify a peer to print bandwidth for."
+                },
+                {
+                  "disabled": false,
+                  "key": "proto",
+                  "value": "<string>",
+                  "description": "Specify a protocol to print bandwidth for."
+                },
+                {
+                  "disabled": false,
+                  "key": "poll",
+                  "value": "<boolean>",
+                  "description": "Print bandwidth at an interval."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "1s",
+                  "description": "Time interval to wait between updating output, if 'poll' is true.This accepts durations such as \"300s\", \"1.5h\" or \"2h45m\". Valid time units are:\n\"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36d2c16c-a8b1-43a6-8bf1-a815ab6199f9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "stats",
+                    "bw"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "peer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "proto",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "poll",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "1s"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RateIn\": \"<float64>\",\n  \"RateOut\": \"<float64>\",\n  \"TotalIn\": \"<int64>\",\n  \"TotalOut\": \"<int64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0e607e6-4842-49a5-a4e7-762282faf69a",
+          "name": "stats/dht",
+          "request": {
+            "name": "stats/dht",
+            "description": {
+              "content": "Returns statistics about the node&#39;s DHT(s).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "stats",
+                "dht"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "The DHT whose table should be listed (wanserver, lanserver, wan, lan). wan and lan refer to client routing tables. When using the experimental DHT client only WAN is supported. Defaults to wan and lan."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe5b5ff3-8981-4db4-9c94-56bc79ded616",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "stats",
+                    "dht"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Buckets\": [\n    {\n      \"LastRefresh\": \"<string>\",\n      \"Peers\": [\n        {\n          \"AgentVersion\": \"<string>\",\n          \"Connected\": \"<bool>\",\n          \"ID\": \"<string>\",\n          \"LastQueriedAt\": \"<string>\",\n          \"LastUsefulAt\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"Name\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4161c71d-48fb-4d7b-9dea-4949553a5a97",
+          "name": "stats/provide",
+          "request": {
+            "name": "stats/provide",
+            "description": {
+              "content": "Returns statistics about the node&#39;s (re)provider system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "stats",
+                "provide"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a68e2a5d-43d2-4692-8c9f-b052ebd6bf2e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "stats",
+                    "provide"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AvgProvideDuration\": \"<duration-ns>\",\n  \"LastReprovideBatchSize\": \"<int>\",\n  \"LastReprovideDuration\": \"<duration-ns>\",\n  \"TotalProvides\": \"<int>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41d1743c-f821-4c0c-8c37-8338262eba9c",
+          "name": "stats/repo",
+          "request": {
+            "name": "stats/repo",
+            "description": {
+              "content": "Get stats for the currently used repo.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "stats",
+                "repo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size-only",
+                  "value": "<boolean>",
+                  "description": "Only report RepoSize and StorageMax."
+                },
+                {
+                  "disabled": false,
+                  "key": "human",
+                  "value": "<boolean>",
+                  "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "337c9439-ddbd-487e-b6eb-7bc538f5e8c1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "stats",
+                    "repo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size-only",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "human",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"NumObjects\": \"<uint64>\",\n  \"RepoPath\": \"<string>\",\n  \"SizeStat\": {\n    \"RepoSize\": \"<uint64>\",\n    \"StorageMax\": \"<uint64>\"\n  },\n  \"Version\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f68aa7f-b574-431c-960d-064991ec9774",
+    "name": "IPFS RPC Add Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

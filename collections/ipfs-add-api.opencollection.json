@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/add",
+            "params": [
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write minimal output."
+              },
+              {
+                "name": "quieter",
+                "value": "",
+                "type": "query",
+                "description": "Write only final hash."
+              },
+              {
+                "name": "silent",
+                "value": "",
+                "type": "query",
+                "description": "Write no output."
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query",
+                "description": "Stream progress data."
+              },
+              {
+                "name": "trickle",
+                "value": "",
+                "type": "query",
+                "description": "Use trickle-dag format for dag generation."
+              },
+              {
+                "name": "only-hash",
+                "value": "",
+                "type": "query",
+                "description": "Only chunk and hash - do not write to disk."
+              },
+              {
+                "name": "wrap-with-directory",
+                "value": "",
+                "type": "query",
+                "description": "Wrap files with a directory object."
+              },
+              {
+                "name": "chunker",
+                "value": "",
+                "type": "query",
+                "description": "Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash."
+              },
+              {
+                "name": "raw-leaves",
+                "value": "",
+                "type": "query",
+                "description": "Use raw blocks for leaf nodes."
+              },
+              {
+                "name": "nocopy",
+                "value": "",
+                "type": "query",
+                "description": "Add the file using filestore. Implies raw-leaves. (experimental)."
+              },
+              {
+                "name": "fscache",
+                "value": "",
+                "type": "query",
+                "description": "Check the filestore for pre-existing blocks. (experimental)."
+              },
+              {
+                "name": "cid-version",
+                "value": "",
+                "type": "query",
+                "description": "CID version. Defaults to 0 unless an option that depends on CIDv1 is passed. Passing version 1 will cause the raw-leaves option to default to true."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash function to use. Implies CIDv1 if not sha2-256. (experimental)."
+              },
+              {
+                "name": "inline",
+                "value": "",
+                "type": "query",
+                "description": "Inline small blocks into CIDs. (experimental)."
+              },
+              {
+                "name": "inline-limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum block size to inline. (experimental)."
+              },
+              {
+                "name": "pin",
+                "value": "",
+                "type": "query",
+                "description": "Pin locally to protect added files from garbage collection."
+              },
+              {
+                "name": "to-files",
+                "value": "",
+                "type": "query",
+                "description": "Add reference to Files API (MFS) at the provided path."
+              }
+            ]
+          },
+          "docs": "Add a file or directory to IPFS."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

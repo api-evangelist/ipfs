@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Version API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Version",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/version",
+            "params": [
+              {
+                "name": "number",
+                "value": "",
+                "type": "query",
+                "description": "Only show the version number."
+              },
+              {
+                "name": "commit",
+                "value": "",
+                "type": "query",
+                "description": "Show the commit hash."
+              },
+              {
+                "name": "repo",
+                "value": "",
+                "type": "query",
+                "description": "Show repo version."
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "Show all version information."
+              }
+            ]
+          },
+          "docs": "Show IPFS version information."
+        },
+        {
+          "info": {
+            "name": "version/deps",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/version/deps"
+          },
+          "docs": "Shows information about dependencies used for build."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

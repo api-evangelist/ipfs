@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add P2p API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "P2p",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "p2p/close",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/close",
+            "params": [
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "Close all listeners."
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "query",
+                "description": "Match protocol name."
+              },
+              {
+                "name": "listen-address",
+                "value": "",
+                "type": "query",
+                "description": "Match listen address."
+              },
+              {
+                "name": "target-address",
+                "value": "",
+                "type": "query",
+                "description": "Match target address."
+              }
+            ]
+          },
+          "docs": "Stop listening for new connections to forward."
+        },
+        {
+          "info": {
+            "name": "p2p/forward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/forward",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Protocol name.\n\narg1: Listening endpoint.\n\narg2: Target endpoint."
+              },
+              {
+                "name": "allow-custom-protocol",
+                "value": "",
+                "type": "query",
+                "description": "Don't require /x/ prefix."
+              }
+            ]
+          },
+          "docs": "Forward connections to libp2p service."
+        },
+        {
+          "info": {
+            "name": "p2p/listen",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/listen",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Protocol name.\n\narg1: Target endpoint."
+              },
+              {
+                "name": "allow-custom-protocol",
+                "value": "",
+                "type": "query",
+                "description": "Don't require /x/ prefix."
+              },
+              {
+                "name": "report-peer-id",
+                "value": "",
+                "type": "query",
+                "description": "Send remote base58 peerid to target when a new connection is established."
+              }
+            ]
+          },
+          "docs": "Create libp2p service."
+        },
+        {
+          "info": {
+            "name": "p2p/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/ls",
+            "params": [
+              {
+                "name": "headers",
+                "value": "",
+                "type": "query",
+                "description": "Print table headers (Protocol, Listen, Target)."
+              }
+            ]
+          },
+          "docs": "List active p2p listeners."
+        },
+        {
+          "info": {
+            "name": "p2p/stream/close",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/stream/close",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Stream identifier"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "Close all streams."
+              }
+            ]
+          },
+          "docs": "Close active p2p stream."
+        },
+        {
+          "info": {
+            "name": "p2p/stream/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/p2p/stream/ls",
+            "params": [
+              {
+                "name": "headers",
+                "value": "",
+                "type": "query",
+                "description": "Print table headers (ID, Protocol, Local, Remote)."
+              }
+            ]
+          },
+          "docs": "List active p2p streams."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

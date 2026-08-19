@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Cid API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "cid/base32",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/cid/base32",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CIDs to convert."
+              }
+            ]
+          },
+          "docs": "Convert CIDs to Base32 CID version 1."
+        },
+        {
+          "info": {
+            "name": "cid/bases",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/cid/bases",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "also include the single letter prefixes in addition to the code."
+              },
+              {
+                "name": "numeric",
+                "value": "",
+                "type": "query",
+                "description": "also include numeric codes."
+              }
+            ]
+          },
+          "docs": "List available multibase encodings."
+        },
+        {
+          "info": {
+            "name": "cid/codecs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/cid/codecs",
+            "params": [
+              {
+                "name": "numeric",
+                "value": "",
+                "type": "query",
+                "description": "also include numeric codes."
+              },
+              {
+                "name": "supported",
+                "value": "",
+                "type": "query",
+                "description": "list only codecs supported by go-ipfs commands."
+              }
+            ]
+          },
+          "docs": "List available CID multicodecs."
+        },
+        {
+          "info": {
+            "name": "cid/format",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/cid/format",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CIDs to format."
+              },
+              {
+                "name": "f",
+                "value": "",
+                "type": "query",
+                "description": "Printf style format string."
+              },
+              {
+                "name": "v",
+                "value": "",
+                "type": "query",
+                "description": "CID version to convert to."
+              },
+              {
+                "name": "mc",
+                "value": "",
+                "type": "query",
+                "description": "CID multicodec to convert to."
+              },
+              {
+                "name": "b",
+                "value": "",
+                "type": "query",
+                "description": "Multibase to display CID in."
+              }
+            ]
+          },
+          "docs": "Format and convert a CID in various useful ways."
+        },
+        {
+          "info": {
+            "name": "cid/hashes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/cid/hashes",
+            "params": [
+              {
+                "name": "numeric",
+                "value": "",
+                "type": "query",
+                "description": "also include numeric codes."
+              },
+              {
+                "name": "supported",
+                "value": "",
+                "type": "query",
+                "description": "list only codecs supported by go-ipfs commands."
+              }
+            ]
+          },
+          "docs": "List available multihashes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

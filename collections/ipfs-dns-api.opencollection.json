@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Dns API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "dns",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/dns",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The domain-name name to resolve."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Resolve until the result is not a DNS link."
+              }
+            ]
+          },
+          "docs": "Resolve DNSLink records."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

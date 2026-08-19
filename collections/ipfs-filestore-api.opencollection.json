@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Filestore API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Filestore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "filestore/dups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/filestore/dups"
+          },
+          "docs": "List blocks that are both in the filestore and standard block storage."
+        },
+        {
+          "info": {
+            "name": "filestore/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/filestore/ls",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Cid of objects to list."
+              },
+              {
+                "name": "file-order",
+                "value": "",
+                "type": "query",
+                "description": "sort the results based on the path of the backing file."
+              }
+            ]
+          },
+          "docs": "List objects in filestore."
+        },
+        {
+          "info": {
+            "name": "filestore/verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/filestore/verify",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Cid of objects to verify."
+              },
+              {
+                "name": "file-order",
+                "value": "",
+                "type": "query",
+                "description": "verify the objects based on the order of the backing file."
+              }
+            ]
+          },
+          "docs": "Verify objects in filestore."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

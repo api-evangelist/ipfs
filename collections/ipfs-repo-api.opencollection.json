@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Repo API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repo",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "repo/gc",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/repo/gc",
+            "params": [
+              {
+                "name": "stream-errors",
+                "value": "",
+                "type": "query",
+                "description": "Stream errors."
+              },
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write minimal output."
+              },
+              {
+                "name": "silent",
+                "value": "",
+                "type": "query",
+                "description": "Write no output."
+              }
+            ]
+          },
+          "docs": "Perform a garbage collection sweep on the repo."
+        },
+        {
+          "info": {
+            "name": "repo/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/repo/ls"
+          },
+          "docs": "List all local references."
+        },
+        {
+          "info": {
+            "name": "repo/stat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/repo/stat",
+            "params": [
+              {
+                "name": "size-only",
+                "value": "",
+                "type": "query",
+                "description": "Only report RepoSize and StorageMax."
+              },
+              {
+                "name": "human",
+                "value": "",
+                "type": "query",
+                "description": "Print sizes in human readable format (e.g., 1K 234M 2G)."
+              }
+            ]
+          },
+          "docs": "Get stats for the currently used repo."
+        },
+        {
+          "info": {
+            "name": "repo/verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/repo/verify"
+          },
+          "docs": "Verify all blocks in repo are not corrupted."
+        },
+        {
+          "info": {
+            "name": "repo/version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/repo/version",
+            "params": [
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write minimal output."
+              }
+            ]
+          },
+          "docs": "Show the repo version."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

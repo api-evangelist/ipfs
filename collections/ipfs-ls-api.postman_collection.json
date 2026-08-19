@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "56db7bf8-7397-4d3d-88c7-53db6e1b366f",
+      "name": "Ls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad58309d-23fe-46ba-9823-fb16b15c2cf1",
+          "name": "ls",
+          "request": {
+            "name": "ls",
+            "description": {
+              "content": "List directory contents for Unix filesystem objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "ls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) The path to the IPFS object(s) to list links from."
+                },
+                {
+                  "disabled": false,
+                  "key": "headers",
+                  "value": "<boolean>",
+                  "description": "Print table headers (Hash, Size, Name)."
+                },
+                {
+                  "disabled": false,
+                  "key": "resolve-type",
+                  "value": "true",
+                  "description": "Resolve linked objects to find out their types."
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "true",
+                  "description": "Resolve linked objects to find out their file size."
+                },
+                {
+                  "disabled": false,
+                  "key": "stream",
+                  "value": "<boolean>",
+                  "description": "Enable experimental streaming of directory entries as they are traversed."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79d7d3dd-5b0f-4161-85ba-34d65634ca8a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "ls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "headers",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "resolve-type",
+                      "value": "true"
+                    },
+                    {
+                      "key": "size",
+                      "value": "true"
+                    },
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Objects\": [\n    {\n      \"Hash\": \"<string>\",\n      \"Links\": [\n        {\n          \"Hash\": \"<string>\",\n          \"Name\": \"<string>\",\n          \"Size\": \"<uint64>\",\n          \"Target\": \"<string>\",\n          \"Type\": \"<int32>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3eb91d2c-5674-4a1e-94a8-0aa6d0da967a",
+    "name": "IPFS RPC Add Ls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

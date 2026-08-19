@@ -1,0 +1,289 @@
+{
+  "item": [
+    {
+      "id": "a4621776-1283-4d6b-89da-b77860de4174",
+      "name": "Add",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3272ed27-7dec-4507-addb-7469a22879ae",
+          "name": "add",
+          "request": {
+            "name": "add",
+            "description": {
+              "content": "Add a file or directory to IPFS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "add"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "quiet",
+                  "value": "<boolean>",
+                  "description": "Write minimal output."
+                },
+                {
+                  "disabled": false,
+                  "key": "quieter",
+                  "value": "<boolean>",
+                  "description": "Write only final hash."
+                },
+                {
+                  "disabled": false,
+                  "key": "silent",
+                  "value": "<boolean>",
+                  "description": "Write no output."
+                },
+                {
+                  "disabled": false,
+                  "key": "progress",
+                  "value": "<boolean>",
+                  "description": "Stream progress data."
+                },
+                {
+                  "disabled": false,
+                  "key": "trickle",
+                  "value": "<boolean>",
+                  "description": "Use trickle-dag format for dag generation."
+                },
+                {
+                  "disabled": false,
+                  "key": "only-hash",
+                  "value": "<boolean>",
+                  "description": "Only chunk and hash - do not write to disk."
+                },
+                {
+                  "disabled": false,
+                  "key": "wrap-with-directory",
+                  "value": "<boolean>",
+                  "description": "Wrap files with a directory object."
+                },
+                {
+                  "disabled": false,
+                  "key": "chunker",
+                  "value": "size-262144",
+                  "description": "Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash."
+                },
+                {
+                  "disabled": false,
+                  "key": "raw-leaves",
+                  "value": "<boolean>",
+                  "description": "Use raw blocks for leaf nodes."
+                },
+                {
+                  "disabled": false,
+                  "key": "nocopy",
+                  "value": "<boolean>",
+                  "description": "Add the file using filestore. Implies raw-leaves. (experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "fscache",
+                  "value": "<boolean>",
+                  "description": "Check the filestore for pre-existing blocks. (experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "cid-version",
+                  "value": "<integer>",
+                  "description": "CID version. Defaults to 0 unless an option that depends on CIDv1 is passed. Passing version 1 will cause the raw-leaves option to default to true."
+                },
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "sha2-256",
+                  "description": "Hash function to use. Implies CIDv1 if not sha2-256. (experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "inline",
+                  "value": "<boolean>",
+                  "description": "Inline small blocks into CIDs. (experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "inline-limit",
+                  "value": "32",
+                  "description": "Maximum block size to inline. (experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "pin",
+                  "value": "true",
+                  "description": "Pin locally to protect added files from garbage collection."
+                },
+                {
+                  "disabled": false,
+                  "key": "to-files",
+                  "value": "<string>",
+                  "description": "Add reference to Files API (MFS) at the provided path."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "b7df203b-5709-4d7b-be5e-e753c538c9b7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "add"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "quiet",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "quieter",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "silent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "progress",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "trickle",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "only-hash",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "wrap-with-directory",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "chunker",
+                      "value": "size-262144"
+                    },
+                    {
+                      "key": "raw-leaves",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "nocopy",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fscache",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "cid-version",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "sha2-256"
+                    },
+                    {
+                      "key": "inline",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "inline-limit",
+                      "value": "32"
+                    },
+                    {
+                      "key": "pin",
+                      "value": "true"
+                    },
+                    {
+                      "key": "to-files",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Bytes\": \"<int64>\",\n  \"Hash\": \"<string>\",\n  \"Name\": \"<string>\",\n  \"Size\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a354ffa7-9dca-4a32-9bbe-4ddd8a9d0809",
+    "name": "IPFS RPC Add API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

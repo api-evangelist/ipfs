@@ -1,0 +1,352 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Files API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "files/chcid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/chcid",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to change."
+              },
+              {
+                "name": "cid-version",
+                "value": "",
+                "type": "query",
+                "description": "Cid version to use. (experimental)."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash function to use. Will set Cid version to 1 if used. (experimental)."
+              }
+            ]
+          },
+          "docs": "Change the CID version or hash function of the root node of a given path."
+        },
+        {
+          "info": {
+            "name": "files/cp",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/cp",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Source IPFS or MFS path to copy.\n\narg1: Destination within MFS."
+              },
+              {
+                "name": "parents",
+                "value": "",
+                "type": "query",
+                "description": "Make parent directories as needed."
+              }
+            ]
+          },
+          "docs": "Add references to IPFS files and directories in MFS (or copy within MFS)."
+        },
+        {
+          "info": {
+            "name": "files/flush",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/flush",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to flush."
+              }
+            ]
+          },
+          "docs": "Flush a given path&#39;s data to disk."
+        },
+        {
+          "info": {
+            "name": "files/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/ls",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to show listing for. Defaults to '/'."
+              },
+              {
+                "name": "long",
+                "value": "",
+                "type": "query",
+                "description": "Use long listing format."
+              },
+              {
+                "name": "U",
+                "value": "",
+                "type": "query",
+                "description": "Do not sort; list entries in directory order."
+              }
+            ]
+          },
+          "docs": "List directories in the local mutable namespace."
+        },
+        {
+          "info": {
+            "name": "files/mkdir",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/mkdir",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to dir to make."
+              },
+              {
+                "name": "parents",
+                "value": "",
+                "type": "query",
+                "description": "No error if existing, make parent directories as needed."
+              },
+              {
+                "name": "cid-version",
+                "value": "",
+                "type": "query",
+                "description": "Cid version to use. (experimental)."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash function to use. Will set Cid version to 1 if used. (experimental)."
+              }
+            ]
+          },
+          "docs": "Make directories."
+        },
+        {
+          "info": {
+            "name": "files/mv",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/mv",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Source file to move.\n\narg1: Destination path for file to be moved to."
+              }
+            ]
+          },
+          "docs": "Move files."
+        },
+        {
+          "info": {
+            "name": "files/read",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/read",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to file to be read."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Byte offset to begin reading from."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of bytes to read."
+              }
+            ]
+          },
+          "docs": "Read a file from MFS."
+        },
+        {
+          "info": {
+            "name": "files/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "File to remove."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively remove directories."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Forcibly remove target at path; implies -r for directories."
+              }
+            ]
+          },
+          "docs": "Remove a file from MFS."
+        },
+        {
+          "info": {
+            "name": "files/stat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/stat",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to node to stat."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Print statistics in given format. Allowed tokens: <hash> <size> <cumulsize> <type> <childs>. Conflicts with other format options."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Print only hash. Implies '--format=<hash>'. Conflicts with other format options."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Print only size. Implies '--format=<cumulsize>'. Conflicts with other format options."
+              },
+              {
+                "name": "with-local",
+                "value": "",
+                "type": "query",
+                "description": "Compute the amount of the dag that is local, and if possible the total size."
+              }
+            ]
+          },
+          "docs": "Display file status."
+        },
+        {
+          "info": {
+            "name": "files/write",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/files/write",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to write to."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Byte offset to begin writing at."
+              },
+              {
+                "name": "create",
+                "value": "",
+                "type": "query",
+                "description": "Create the file if it does not exist."
+              },
+              {
+                "name": "parents",
+                "value": "",
+                "type": "query",
+                "description": "Make parent directories as needed."
+              },
+              {
+                "name": "truncate",
+                "value": "",
+                "type": "query",
+                "description": "Truncate the file to size zero before writing."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of bytes to read."
+              },
+              {
+                "name": "raw-leaves",
+                "value": "",
+                "type": "query",
+                "description": "Use raw blocks for newly created leaf nodes. (experimental)."
+              },
+              {
+                "name": "cid-version",
+                "value": "",
+                "type": "query",
+                "description": "Cid version to use. (experimental)."
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "Hash function to use. Will set Cid version to 1 if used. (experimental)."
+              }
+            ]
+          },
+          "docs": "Append to (modify) a file in MFS."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

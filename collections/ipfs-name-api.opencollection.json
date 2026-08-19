@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Name API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Name",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "name/publish",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/publish",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "ipfs path of the object to be published."
+              },
+              {
+                "name": "resolve",
+                "value": "",
+                "type": "query",
+                "description": "Check if the given path can be resolved before publishing."
+              },
+              {
+                "name": "lifetime",
+                "value": "",
+                "type": "query",
+                "description": "Time duration that the record will be valid for.\nThis accepts durations such as \"300s\", \"1.5h\" or \"2h45m\". Valid time units are\n\"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+              },
+              {
+                "name": "allow-offline",
+                "value": "",
+                "type": "query",
+                "description": "When offline, save the IPNS record to the the local datastore without broadcasting to the network instead of simply failing."
+              },
+              {
+                "name": "ttl",
+                "value": "",
+                "type": "query",
+                "description": "Time duration this record should be cached for. Uses the same syntax as the lifetime option. (caution: experimental)."
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query",
+                "description": "Name of the key to be used or a valid PeerID, as listed by 'ipfs key list -l'."
+              },
+              {
+                "name": "quieter",
+                "value": "",
+                "type": "query",
+                "description": "Write only final hash."
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Publish IPNS names."
+        },
+        {
+          "info": {
+            "name": "name/resolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/resolve",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The IPNS name to resolve. Defaults to your node's peerID."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Resolve until the result is not an IPNS name."
+              },
+              {
+                "name": "nocache",
+                "value": "",
+                "type": "query",
+                "description": "Do not use cached entries."
+              },
+              {
+                "name": "dht-record-count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to request for DHT resolution."
+              },
+              {
+                "name": "dht-timeout",
+                "value": "",
+                "type": "query",
+                "description": "Max time to collect values during DHT resolution eg \"30s\". Pass 0 for no timeout."
+              },
+              {
+                "name": "stream",
+                "value": "",
+                "type": "query",
+                "description": "Stream entries as they are found."
+              }
+            ]
+          },
+          "docs": "Resolve IPNS names."
+        },
+        {
+          "info": {
+            "name": "name/inspect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/inspect",
+            "params": [
+              {
+                "name": "verify",
+                "value": "",
+                "type": "query",
+                "description": "CID of the public IPNS key to validate against."
+              }
+            ]
+          },
+          "docs": "Inspects an IPNS Record"
+        },
+        {
+          "info": {
+            "name": "name/pubsub/cancel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/pubsub/cancel",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Name to cancel the subscription for."
+              }
+            ]
+          },
+          "docs": "Cancel a name subscription."
+        },
+        {
+          "info": {
+            "name": "name/pubsub/state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/pubsub/state"
+          },
+          "docs": "Query the state of IPNS pubsub."
+        },
+        {
+          "info": {
+            "name": "name/pubsub/subs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/name/pubsub/subs",
+            "params": [
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Show current name subscriptions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

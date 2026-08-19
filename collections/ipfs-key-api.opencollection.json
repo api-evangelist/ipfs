@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Key API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Key",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "key/gen",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/key/gen",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "name of key to create"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "type of the key to create: rsa, ed25519."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "size of the key to generate."
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Create a new keypair"
+        },
+        {
+          "info": {
+            "name": "key/import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/key/import",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "name to associate with key in keychain"
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format of the private key to import, libp2p-protobuf-cleartext or pem-pkcs8-cleartext."
+              },
+              {
+                "name": "allow-any-key-type",
+                "value": "",
+                "type": "query",
+                "description": "Allow importing any key type."
+              }
+            ]
+          },
+          "docs": "Import a key and prints imported key id"
+        },
+        {
+          "info": {
+            "name": "key/list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/key/list",
+            "params": [
+              {
+                "name": "l",
+                "value": "",
+                "type": "query",
+                "description": "Show extra information about keys."
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "List all local keypairs."
+        },
+        {
+          "info": {
+            "name": "key/rename",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/key/rename",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: name of key to rename\n\narg1: new name of the key"
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Allow to overwrite an existing key."
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Rename a keypair."
+        },
+        {
+          "info": {
+            "name": "key/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/key/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "names of keys to remove"
+              },
+              {
+                "name": "l",
+                "value": "",
+                "type": "query",
+                "description": "Show extra information about keys."
+              },
+              {
+                "name": "ipns-base",
+                "value": "",
+                "type": "query",
+                "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+              }
+            ]
+          },
+          "docs": "Remove a keypair."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

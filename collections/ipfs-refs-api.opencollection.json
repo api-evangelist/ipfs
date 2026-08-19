@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Refs API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Refs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "refs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/refs",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to the object(s) to list refs from."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Emit edges with given format. Available tokens: <src> <dst> <linkname>."
+              },
+              {
+                "name": "edges",
+                "value": "",
+                "type": "query",
+                "description": "Emit edge format: &lt;from&gt; -&gt; &lt;to&gt;."
+              },
+              {
+                "name": "unique",
+                "value": "",
+                "type": "query",
+                "description": "Omit duplicate refs from output."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively list links of child nodes."
+              },
+              {
+                "name": "max-depth",
+                "value": "",
+                "type": "query",
+                "description": "Only for recursive refs, limits fetch and listing to the given depth."
+              }
+            ]
+          },
+          "docs": "List links (references) from an object."
+        },
+        {
+          "info": {
+            "name": "refs/local",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/refs/local"
+          },
+          "docs": "List all local references."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

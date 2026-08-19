@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Mount API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mount",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "mount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/mount",
+            "params": [
+              {
+                "name": "ipfs-path",
+                "value": "",
+                "type": "query",
+                "description": "The path where IPFS should be mounted."
+              },
+              {
+                "name": "ipns-path",
+                "value": "",
+                "type": "query",
+                "description": "The path where IPNS should be mounted."
+              }
+            ]
+          },
+          "docs": "Mounts IPFS to the filesystem (read-only)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

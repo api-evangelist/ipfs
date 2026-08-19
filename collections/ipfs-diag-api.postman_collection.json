@@ -1,0 +1,454 @@
+{
+  "item": [
+    {
+      "id": "e8e57ee0-f28b-4610-bdb2-4edbea7c0ddd",
+      "name": "Diag",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "19e41987-4501-4c06-adbe-1ac22cb15727",
+          "name": "diag/cmds",
+          "request": {
+            "name": "diag/cmds",
+            "description": {
+              "content": "List commands run on this IPFS node.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "diag",
+                "cmds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verbose",
+                  "value": "<boolean>",
+                  "description": "Print extra information."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc56304e-e7ad-4da2-bf6f-24d3e6e1e0fd",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "diag",
+                    "cmds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verbose",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Active\": \"<bool>\",\n    \"Args\": [\n      \"<string>\"\n    ],\n    \"Command\": \"<string>\",\n    \"EndTime\": \"<timestamp>\",\n    \"ID\": \"<int>\",\n    \"Options\": {\n      \"<string>\": \"<object>\"\n    },\n    \"StartTime\": \"<timestamp>\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48f21037-13fe-4b7c-abde-29f1af60c2f0",
+          "name": "diag/cmds/clear",
+          "request": {
+            "name": "diag/cmds/clear",
+            "description": {
+              "content": "Clear inactive requests from the log.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "diag",
+                "cmds",
+                "clear"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48123517-8ea5-4b7c-a1eb-441b2a98d6b7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "diag",
+                    "cmds",
+                    "clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0948b28c-6946-4965-9695-ef16e1e91125",
+          "name": "diag/cmds/set-time",
+          "request": {
+            "name": "diag/cmds/set-time",
+            "description": {
+              "content": "Set how long to keep inactive requests in the log.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "diag",
+                "cmds",
+                "set-time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) Time to keep inactive requests in log."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a09d2749-c2dc-424c-8f11-97f509a6adc8",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "diag",
+                    "cmds",
+                    "set-time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6215f0e6-6f36-42fc-8665-90786af20d9d",
+          "name": "diag/profile",
+          "request": {
+            "name": "diag/profile",
+            "description": {
+              "content": "Collect a performance profile for debugging.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "diag",
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "output",
+                  "value": "./ipfs-profile-[timestamp].zip",
+                  "description": "The path where the output .zip should be stored."
+                },
+                {
+                  "disabled": false,
+                  "key": "collectors",
+                  "value": "<string>",
+                  "description": "The list of collectors to use for collecting diagnostic data."
+                },
+                {
+                  "disabled": false,
+                  "key": "collectors",
+                  "value": "<string>",
+                  "description": "The list of collectors to use for collecting diagnostic data."
+                },
+                {
+                  "disabled": false,
+                  "key": "profile-time",
+                  "value": "30s",
+                  "description": "The amount of time spent profiling. If this is set to 0, then sampling profiles are skipped."
+                },
+                {
+                  "disabled": false,
+                  "key": "mutex-profile-fraction",
+                  "value": "4",
+                  "description": "The fraction 1/n of mutex contention events that are reported in the mutex profile."
+                },
+                {
+                  "disabled": false,
+                  "key": "block-profile-rate",
+                  "value": "1ms",
+                  "description": "The duration to wait between sampling goroutine-blocking events for the blocking profile."
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6a454ee-71c1-4c0d-a129-eca7b3ea640d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "diag",
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "output",
+                      "value": "./ipfs-profile-[timestamp].zip"
+                    },
+                    {
+                      "key": "collectors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "profile-time",
+                      "value": "30s"
+                    },
+                    {
+                      "key": "mutex-profile-fraction",
+                      "value": "4"
+                    },
+                    {
+                      "key": "block-profile-rate",
+                      "value": "1ms"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "165c6130-cf77-4b40-98cb-aefade136c69",
+          "name": "diag/sys",
+          "request": {
+            "name": "diag/sys",
+            "description": {
+              "content": "Print system diagnostic information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "diag",
+                "sys"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f4479fd-29d9-4d6c-8e75-7f7e5c16710a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "diag",
+                    "sys"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da49cab0-a448-40f1-9dcf-16fc1a25e954",
+    "name": "IPFS RPC Add Diag API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Log API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Log",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "log/level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/log/level",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: The subsystem logging identifier. Use 'all' for all subsystems.\n\narg1: The log level, with 'debug' the most verbose and 'fatal' the least verbose.\nOne of: debug, info, warn, error, dpanic, panic, fatal."
+              }
+            ]
+          },
+          "docs": "Change the logging level."
+        },
+        {
+          "info": {
+            "name": "log/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/log/ls"
+          },
+          "docs": "List the logging subsystems."
+        },
+        {
+          "info": {
+            "name": "log/tail",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/log/tail"
+          },
+          "docs": "Read the event log."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

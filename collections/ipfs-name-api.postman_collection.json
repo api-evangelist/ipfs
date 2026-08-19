@@ -1,0 +1,685 @@
+{
+  "item": [
+    {
+      "id": "5c621be3-b00f-41bc-96f2-ef3b735190a0",
+      "name": "Name",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26fc8dd3-50ea-408d-965e-a9e7de8fe4bc",
+          "name": "name/publish",
+          "request": {
+            "name": "name/publish",
+            "description": {
+              "content": "Publish IPNS names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) ipfs path of the object to be published."
+                },
+                {
+                  "disabled": false,
+                  "key": "resolve",
+                  "value": "true",
+                  "description": "Check if the given path can be resolved before publishing."
+                },
+                {
+                  "disabled": false,
+                  "key": "lifetime",
+                  "value": "24h",
+                  "description": "Time duration that the record will be valid for.\nThis accepts durations such as \"300s\", \"1.5h\" or \"2h45m\". Valid time units are\n\"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "allow-offline",
+                  "value": "<boolean>",
+                  "description": "When offline, save the IPNS record to the the local datastore without broadcasting to the network instead of simply failing."
+                },
+                {
+                  "disabled": false,
+                  "key": "ttl",
+                  "value": "<string>",
+                  "description": "Time duration this record should be cached for. Uses the same syntax as the lifetime option. (caution: experimental)."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "self",
+                  "description": "Name of the key to be used or a valid PeerID, as listed by 'ipfs key list -l'."
+                },
+                {
+                  "disabled": false,
+                  "key": "quieter",
+                  "value": "<boolean>",
+                  "description": "Write only final hash."
+                },
+                {
+                  "disabled": false,
+                  "key": "ipns-base",
+                  "value": "base36",
+                  "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b68babd7-36c4-4057-8578-2cf6c5d5984b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "resolve",
+                      "value": "true"
+                    },
+                    {
+                      "key": "lifetime",
+                      "value": "24h"
+                    },
+                    {
+                      "key": "allow-offline",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ttl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "self"
+                    },
+                    {
+                      "key": "quieter",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ipns-base",
+                      "value": "base36"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Name\": \"<string>\",\n  \"Value\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca1f999e-40ba-4b3e-916f-d055e12ee5e8",
+          "name": "name/resolve",
+          "request": {
+            "name": "name/resolve",
+            "description": {
+              "content": "Resolve IPNS names.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "resolve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "The IPNS name to resolve. Defaults to your node's peerID."
+                },
+                {
+                  "disabled": false,
+                  "key": "recursive",
+                  "value": "true",
+                  "description": "Resolve until the result is not an IPNS name."
+                },
+                {
+                  "disabled": false,
+                  "key": "nocache",
+                  "value": "<boolean>",
+                  "description": "Do not use cached entries."
+                },
+                {
+                  "disabled": false,
+                  "key": "dht-record-count",
+                  "value": "<integer>",
+                  "description": "Number of records to request for DHT resolution."
+                },
+                {
+                  "disabled": false,
+                  "key": "dht-timeout",
+                  "value": "<string>",
+                  "description": "Max time to collect values during DHT resolution eg \"30s\". Pass 0 for no timeout."
+                },
+                {
+                  "disabled": false,
+                  "key": "stream",
+                  "value": "<boolean>",
+                  "description": "Stream entries as they are found."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cbf2facc-27dc-4446-bf49-9d3667127268",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "resolve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recursive",
+                      "value": "true"
+                    },
+                    {
+                      "key": "nocache",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dht-record-count",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "dht-timeout",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "stream",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Path\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07da2015-171e-4255-ae62-622ea6f7b754",
+          "name": "name/inspect",
+          "request": {
+            "name": "name/inspect",
+            "description": {
+              "content": "Inspects an IPNS Record",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "inspect"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "verify",
+                  "value": "<string>",
+                  "description": "CID of the public IPNS key to validate against."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "id": "dbf3123a-aee9-476c-ad25-fa84b578c057",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "inspect"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "verify",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Entry\": {\n    \"Data\": \"<object>\",\n    \"PublicKey\": \"<string>\",\n    \"Sequence\": \"<uint64>\",\n    \"SignatureV1\": \"<string>\",\n    \"SignatureV2\": \"<string>\",\n    \"TTL\": \"<uint64>\",\n    \"Validity\": \"<timestamp>\",\n    \"ValidityType\": \"<int32>\",\n    \"Value\": \"<string>\"\n  },\n  \"Validation\": {\n    \"PublicKey\": \"<peer-id>\",\n    \"Reason\": \"<string>\",\n    \"Valid\": \"<bool>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67d3db91-6c7d-408c-a53e-7fe8ea8844c9",
+          "name": "name/pubsub/cancel",
+          "request": {
+            "name": "name/pubsub/cancel",
+            "description": {
+              "content": "Cancel a name subscription.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "pubsub",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "arg",
+                  "value": "<string>",
+                  "description": "(Required) Name to cancel the subscription for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c7ccf93-1f7a-4bc8-957f-ee601c74c554",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "pubsub",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "arg",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Canceled\": \"<bool>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd139c61-e4b7-422f-8c72-13d35768709c",
+          "name": "name/pubsub/state",
+          "request": {
+            "name": "name/pubsub/state",
+            "description": {
+              "content": "Query the state of IPNS pubsub.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "pubsub",
+                "state"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a8a96f8-d769-49b8-8d15-2e6a844ef58c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "pubsub",
+                    "state"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Enabled\": \"<bool>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9784f742-a313-4efd-9406-3c7f10f5a3bf",
+          "name": "name/pubsub/subs",
+          "request": {
+            "name": "name/pubsub/subs",
+            "description": {
+              "content": "Show current name subscriptions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v0",
+                "name",
+                "pubsub",
+                "subs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ipns-base",
+                  "value": "base36",
+                  "description": "Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash. Takes {b58mh|base36|k|base32|b...}."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e55eff9-9246-4c71-93b2-bbeac45cf60e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v0",
+                    "name",
+                    "pubsub",
+                    "subs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ipns-base",
+                      "value": "base36"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Strings\": [\n    \"<string>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:5001",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5e0a4760-f11b-43e5-98bb-4aaaa727a0a1",
+    "name": "IPFS RPC Add Name API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.\n\nIn many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.",
+      "type": "text/plain"
+    }
+  }
+}

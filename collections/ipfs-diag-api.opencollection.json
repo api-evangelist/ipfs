@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Diag API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diag",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "diag/cmds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/diag/cmds",
+            "params": [
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Print extra information."
+              }
+            ]
+          },
+          "docs": "List commands run on this IPFS node."
+        },
+        {
+          "info": {
+            "name": "diag/cmds/clear",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/diag/cmds/clear"
+          },
+          "docs": "Clear inactive requests from the log."
+        },
+        {
+          "info": {
+            "name": "diag/cmds/set-time",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/diag/cmds/set-time",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Time to keep inactive requests in log."
+              }
+            ]
+          },
+          "docs": "Set how long to keep inactive requests in the log."
+        },
+        {
+          "info": {
+            "name": "diag/profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/diag/profile",
+            "params": [
+              {
+                "name": "output",
+                "value": "",
+                "type": "query",
+                "description": "The path where the output .zip should be stored."
+              },
+              {
+                "name": "collectors",
+                "value": "",
+                "type": "query",
+                "description": "The list of collectors to use for collecting diagnostic data."
+              },
+              {
+                "name": "profile-time",
+                "value": "",
+                "type": "query",
+                "description": "The amount of time spent profiling. If this is set to 0, then sampling profiles are skipped."
+              },
+              {
+                "name": "mutex-profile-fraction",
+                "value": "",
+                "type": "query",
+                "description": "The fraction 1/n of mutex contention events that are reported in the mutex profile."
+              },
+              {
+                "name": "block-profile-rate",
+                "value": "",
+                "type": "query",
+                "description": "The duration to wait between sampling goroutine-blocking events for the blocking profile."
+              }
+            ]
+          },
+          "docs": "Collect a performance profile for debugging."
+        },
+        {
+          "info": {
+            "name": "diag/sys",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/diag/sys"
+          },
+          "docs": "Print system diagnostic information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

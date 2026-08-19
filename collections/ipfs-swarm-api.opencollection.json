@@ -1,0 +1,249 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Swarm API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Swarm",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "swarm/addrs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/addrs"
+          },
+          "docs": "List known addresses. Useful for debugging."
+        },
+        {
+          "info": {
+            "name": "swarm/addrs/listen",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/addrs/listen"
+          },
+          "docs": "List interface listening addresses."
+        },
+        {
+          "info": {
+            "name": "swarm/addrs/local",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/addrs/local",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Show peer ID in addresses."
+              }
+            ]
+          },
+          "docs": "List local addresses."
+        },
+        {
+          "info": {
+            "name": "swarm/connect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/connect",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Address of peer to connect to."
+              }
+            ]
+          },
+          "docs": "Open connection to a given address."
+        },
+        {
+          "info": {
+            "name": "swarm/disconnect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/disconnect",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Address of peer to disconnect from."
+              }
+            ]
+          },
+          "docs": "Close connection to a given address."
+        },
+        {
+          "info": {
+            "name": "swarm/filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/filters"
+          },
+          "docs": "Manipulate address filters."
+        },
+        {
+          "info": {
+            "name": "swarm/filters/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/filters/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Multiaddr to filter."
+              }
+            ]
+          },
+          "docs": "Add an address filter."
+        },
+        {
+          "info": {
+            "name": "swarm/filters/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/filters/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Multiaddr filter to remove."
+              }
+            ]
+          },
+          "docs": "Remove an address filter."
+        },
+        {
+          "info": {
+            "name": "swarm/peering/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/peering/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "address of peer to add into the peering subsystem"
+              }
+            ]
+          },
+          "docs": "Add peers into the peering subsystem."
+        },
+        {
+          "info": {
+            "name": "swarm/peering/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/peering/ls"
+          },
+          "docs": "List peers registered in the peering subsystem."
+        },
+        {
+          "info": {
+            "name": "swarm/peering/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/peering/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "ID of peer to remove from the peering subsystem"
+              }
+            ]
+          },
+          "docs": "Remove a peer from the peering subsystem."
+        },
+        {
+          "info": {
+            "name": "swarm/peers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/peers",
+            "params": [
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "display all extra information."
+              },
+              {
+                "name": "streams",
+                "value": "",
+                "type": "query",
+                "description": "Also list information about open streams for each peer."
+              },
+              {
+                "name": "latency",
+                "value": "",
+                "type": "query",
+                "description": "Also list information about latency to each peer."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Also list information about the direction of connection."
+              },
+              {
+                "name": "identify",
+                "value": "",
+                "type": "query",
+                "description": "Also list information about peers identify."
+              }
+            ]
+          },
+          "docs": "List peers with open connections."
+        },
+        {
+          "info": {
+            "name": "swarm/resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/swarm/resources"
+          },
+          "docs": "Get a summary of all resources accounted for by the libp2p Resource Manager."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

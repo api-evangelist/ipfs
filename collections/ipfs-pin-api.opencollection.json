@@ -1,0 +1,335 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Pin API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "pin/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to object(s) to be pinned."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively pin the object linked to by the specified object(s)."
+              },
+              {
+                "name": "progress",
+                "value": "",
+                "type": "query",
+                "description": "Show progress."
+              }
+            ]
+          },
+          "docs": "Pin objects to local storage."
+        },
+        {
+          "info": {
+            "name": "pin/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/ls",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to object(s) to be listed."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of pinned keys to list. Can be \"direct\", \"indirect\", \"recursive\", or \"all\"."
+              },
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write just hashes of objects."
+              },
+              {
+                "name": "stream",
+                "value": "",
+                "type": "query",
+                "description": "Enable streaming of pins as they are discovered."
+              }
+            ]
+          },
+          "docs": "List objects pinned to local storage."
+        },
+        {
+          "info": {
+            "name": "pin/remote/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "CID or Path to be pinned."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Name of the remote pinning service to use (mandatory)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "An optional name for the pin."
+              },
+              {
+                "name": "background",
+                "value": "",
+                "type": "query",
+                "description": "Add to the queue on the remote service and return immediately (does not wait for pinned status)."
+              }
+            ]
+          },
+          "docs": "Pin object to remote pinning service."
+        },
+        {
+          "info": {
+            "name": "pin/remote/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/ls",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Name of the remote pinning service to use (mandatory)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Return pins with names that contain the value provided (case-sensitive, exact match)."
+              },
+              {
+                "name": "cid",
+                "value": "",
+                "type": "query",
+                "description": "Return pins for the specified CIDs (comma-separated)."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Return pins with the specified statuses (queued,pinning,pinned,failed)."
+              }
+            ]
+          },
+          "docs": "List objects pinned to remote pinning service."
+        },
+        {
+          "info": {
+            "name": "pin/remote/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/rm",
+            "params": [
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Name of the remote pinning service to use (mandatory)."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Remove pins with names that contain provided value (case-sensitive, exact match)."
+              },
+              {
+                "name": "cid",
+                "value": "",
+                "type": "query",
+                "description": "Remove pins for the specified CIDs."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Remove pins with the specified statuses (queued,pinning,pinned,failed)."
+              },
+              {
+                "name": "force",
+                "value": "",
+                "type": "query",
+                "description": "Allow removal of multiple pins matching the query without additional confirmation."
+              }
+            ]
+          },
+          "docs": "Remove pins from remote pinning service."
+        },
+        {
+          "info": {
+            "name": "pin/remote/service/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/service/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Service name.\n\narg1: Service endpoint.\n\narg2: Service key."
+              }
+            ]
+          },
+          "docs": "Add remote pinning service."
+        },
+        {
+          "info": {
+            "name": "pin/remote/service/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/service/ls",
+            "params": [
+              {
+                "name": "stat",
+                "value": "",
+                "type": "query",
+                "description": "Try to fetch and display current pin count on remote service (queued/pinning/pinned/failed)."
+              }
+            ]
+          },
+          "docs": "List remote pinning services."
+        },
+        {
+          "info": {
+            "name": "pin/remote/service/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/remote/service/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Name of remote pinning service to remove."
+              }
+            ]
+          },
+          "docs": "Remove remote pinning service."
+        },
+        {
+          "info": {
+            "name": "pin/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "Path to object(s) to be unpinned."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Recursively unpin the object linked to by the specified object(s)."
+              }
+            ]
+          },
+          "docs": "Remove object from pin-list."
+        },
+        {
+          "info": {
+            "name": "pin/update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/update",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: Path to old object.\n\narg1: Path to a new object to be pinned."
+              },
+              {
+                "name": "unpin",
+                "value": "",
+                "type": "query",
+                "description": "Remove the old pin."
+              }
+            ]
+          },
+          "docs": "Update a recursive pin."
+        },
+        {
+          "info": {
+            "name": "pin/verify",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/pin/verify",
+            "params": [
+              {
+                "name": "verbose",
+                "value": "",
+                "type": "query",
+                "description": "Also write the hashes of non-broken pins."
+              },
+              {
+                "name": "quiet",
+                "value": "",
+                "type": "query",
+                "description": "Write just hashes of broken pins."
+              }
+            ]
+          },
+          "docs": "Verify that recursive pins are complete."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

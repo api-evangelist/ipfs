@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Config API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/config",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "arg0: The key of the config entry (e.g. \"Addresses.API\").\n\narg1: The value to set the config entry to."
+              },
+              {
+                "name": "bool",
+                "value": "",
+                "type": "query",
+                "description": "Set a boolean value."
+              },
+              {
+                "name": "json",
+                "value": "",
+                "type": "query",
+                "description": "Parse stringified JSON."
+              }
+            ]
+          },
+          "docs": "Get and set IPFS config values."
+        },
+        {
+          "info": {
+            "name": "config/profile/apply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/config/profile/apply",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The profile to apply to the config."
+              },
+              {
+                "name": "dry-run",
+                "value": "",
+                "type": "query",
+                "description": "print difference between the current config and the config that would be generated."
+              }
+            ]
+          },
+          "docs": "Apply profile to config."
+        },
+        {
+          "info": {
+            "name": "config/replace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/config/replace"
+          },
+          "docs": "Replace the config with &lt;file&gt;."
+        },
+        {
+          "info": {
+            "name": "config/show",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/config/show"
+          },
+          "docs": "Output config file contents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

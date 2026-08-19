@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Bootstrap API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bootstrap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "bootstrap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap"
+          },
+          "docs": "Show or edit the list of bootstrap peers."
+        },
+        {
+          "info": {
+            "name": "bootstrap/add",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap/add",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "A peer to add to the bootstrap list (in the format '<multiaddr>/<peerID>')"
+              },
+              {
+                "name": "default",
+                "value": "",
+                "type": "query",
+                "description": "Add default bootstrap nodes. (Deprecated, use 'default' subcommand instead)."
+              }
+            ]
+          },
+          "docs": "Add peers to the bootstrap list."
+        },
+        {
+          "info": {
+            "name": "bootstrap/add/default",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap/add/default"
+          },
+          "docs": "Add default peers to the bootstrap list."
+        },
+        {
+          "info": {
+            "name": "bootstrap/list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap/list"
+          },
+          "docs": "Show peers in the bootstrap list."
+        },
+        {
+          "info": {
+            "name": "bootstrap/rm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap/rm",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "A peer to add to the bootstrap list (in the format '<multiaddr>/<peerID>')"
+              },
+              {
+                "name": "all",
+                "value": "",
+                "type": "query",
+                "description": "Remove all bootstrap peers. (Deprecated, use 'all' subcommand)."
+              }
+            ]
+          },
+          "docs": "Remove peers from the bootstrap list."
+        },
+        {
+          "info": {
+            "name": "bootstrap/rm/all",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/bootstrap/rm/all"
+          },
+          "docs": "Remove all peers from the bootstrap list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add File API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "file/ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/file/ls",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The path to the IPFS object(s) to list links from."
+              }
+            ]
+          },
+          "docs": "List directory contents for Unix filesystem objects. Deprecated: Use &#39;ipfs ls&#39; and &#39;ipfs files ls&#39; instead."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

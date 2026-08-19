@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Ls API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/ls",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The path to the IPFS object(s) to list links from."
+              },
+              {
+                "name": "headers",
+                "value": "",
+                "type": "query",
+                "description": "Print table headers (Hash, Size, Name)."
+              },
+              {
+                "name": "resolve-type",
+                "value": "",
+                "type": "query",
+                "description": "Resolve linked objects to find out their types."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Resolve linked objects to find out their file size."
+              },
+              {
+                "name": "stream",
+                "value": "",
+                "type": "query",
+                "description": "Enable experimental streaming of directory entries as they are traversed."
+              }
+            ]
+          },
+          "docs": "List directory contents for Unix filesystem objects."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

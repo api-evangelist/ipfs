@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IPFS RPC Add Resolve API",
+    "version": "v0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resolve",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "resolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:5001/api/v0/resolve",
+            "params": [
+              {
+                "name": "arg",
+                "value": "",
+                "type": "query",
+                "description": "The name to resolve."
+              },
+              {
+                "name": "recursive",
+                "value": "",
+                "type": "query",
+                "description": "Resolve until the result is an IPFS name."
+              },
+              {
+                "name": "dht-record-count",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to request for DHT resolution."
+              },
+              {
+                "name": "dht-timeout",
+                "value": "",
+                "type": "query",
+                "description": "Max time to collect values during DHT resolution eg \"30s\". Pass 0 for no timeout."
+              }
+            ]
+          },
+          "docs": "Resolve the value of names to IPFS."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
