@@ -33,7 +33,7 @@ tags:
   - Pinning
   - Gateway
 url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.yml
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 apis:
 - name: IPFS HTTP Gateway API
   description: >-
