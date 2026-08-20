@@ -51,6 +51,13 @@ apis:
   - IPFS
   - IPNS
   - Public
+  - Read Only
+  tags_raw:
+  - Gateway
+  - Content Retrieval
+  - IPFS
+  - IPNS
+  - Public
   - Read-Only
   properties:
   - type: Documentation
@@ -113,7 +120,8 @@ apis:
   description: The Add API from IPFS — 1 operation(s) for add.
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
-  tags:
+  tags: []
+  tags_raw:
   - Add
   properties:
   - type: OpenAPI
@@ -194,6 +202,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - CID
+  tags_raw:
   - Cid
   properties:
   - type: OpenAPI
@@ -242,6 +252,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - DAG
+  tags_raw:
   - Dag
   properties:
   - type: OpenAPI
@@ -258,6 +270,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - DHT
+  tags_raw:
   - Dht
   properties:
   - type: OpenAPI
@@ -290,6 +304,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - DNS
+  tags_raw:
   - Dns
   properties:
   - type: OpenAPI
@@ -322,6 +338,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -353,7 +371,8 @@ apis:
   description: The Get API from IPFS — 1 operation(s) for get.
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
-  tags:
+  tags: []
+  tags_raw:
   - Get
   properties:
   - type: OpenAPI
@@ -498,6 +517,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - P2P
+  tags_raw:
   - P2p
   properties:
   - type: OpenAPI
@@ -514,6 +535,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - PIN
+  tags_raw:
   - Pin
   properties:
   - type: OpenAPI
@@ -546,6 +569,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - Pins
+  tags_raw:
   - pins
   properties:
   - type: OpenAPI
@@ -562,6 +587,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - Pub-Sub
+  tags_raw:
   - Pubsub
   properties:
   - type: OpenAPI
