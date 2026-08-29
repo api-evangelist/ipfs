@@ -8,6 +8,19 @@ description: >-
   content over standard HTTP. The Delegated Routing V1 HTTP API enables clients
   to discover content providers and resolve peer records without running a full
   DHT node.
+deliveryModel:
+  model: unknown
+  license: CC0-1.0
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
