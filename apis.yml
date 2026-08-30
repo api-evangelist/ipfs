@@ -64,7 +64,7 @@ apis:
   - IPFS
   - IPNS
   - Public
-  - Read Only
+  - Read-Only
   tags_raw:
   - Gateway
   - Content Retrieval
@@ -215,7 +215,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - CID
+  - Cid
   tags_raw:
   - Cid
   properties:
@@ -265,7 +265,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - DAG
+  - Dag
   tags_raw:
   - Dag
   properties:
@@ -283,7 +283,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - DHT
+  - Dht
   tags_raw:
   - Dht
   properties:
@@ -317,7 +317,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - DNS
+  - Dns
   tags_raw:
   - Dns
   properties:
@@ -369,6 +369,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - File Store
+  tags_raw:
   - Filestore
   properties:
   - type: OpenAPI
@@ -530,7 +532,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - P2P
+  - P2p
   tags_raw:
   - P2p
   properties:
@@ -548,7 +550,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - PIN
+  - Pin
   tags_raw:
   - Pin
   properties:
@@ -582,7 +584,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - Pins
+  - pins
   tags_raw:
   - pins
   properties:
@@ -600,7 +602,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - Pub-Sub
+  - Pubsub
   tags_raw:
   - Pubsub
   properties:
