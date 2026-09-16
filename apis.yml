@@ -1,13 +1,10 @@
 name: IPFS
-description: >-
-  InterPlanetary File System (IPFS) is a peer-to-peer hypermedia protocol and
-  distributed content-addressed storage system. The Kubo implementation exposes
-  an HTTP RPC API (/api/v0/) for adding, pinning, and retrieving content-addressed
-  files, managing DAG (Directed Acyclic Graph) nodes, key management, and network
-  peer operations. The HTTP Gateway API provides read-only access to IPFS and IPNS
-  content over standard HTTP. The Delegated Routing V1 HTTP API enables clients
-  to discover content providers and resolve peer records without running a full
-  DHT node.
+description: InterPlanetary File System (IPFS) is a peer-to-peer hypermedia protocol and distributed content-addressed
+  storage system. The Kubo implementation exposes an HTTP RPC API (/api/v0/) for adding, pinning, and
+  retrieving content-addressed files, managing DAG (Directed Acyclic Graph) nodes, key management, and
+  network peer operations. The HTTP Gateway API provides read-only access to IPFS and IPNS content over
+  standard HTTP. The Delegated Routing V1 HTTP API enables clients to discover content providers and resolve
+  peer records without running a full DHT node.
 deliveryModel:
   model: unknown
   license: CC0-1.0
@@ -37,21 +34,20 @@ accessModel:
   method: derived
 image: https://ipfs.tech/images/ipfs-logo.svg
 tags:
-  - IPFS
-  - Distributed Storage
-  - Content-Addressed
-  - Decentralized
-  - Peer-to-Peer
-  - File Storage
-  - DAG
-  - Pinning
-  - Gateway
+- IPFS
+- Distributed Storage
+- Content-Addressed
+- Decentralized
+- Peer-to-Peer
+- File Storage
+- DAG
+- Pinning
+- Gateway
 url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
 - name: IPFS HTTP Gateway API
-  description: >-
-    The IPFS HTTP Gateway API is an implementation-agnostic interface for retrieving content-addressed
+  description: The IPFS HTTP Gateway API is an implementation-agnostic interface for retrieving content-addressed
     data from IPFS over standard HTTP. Path gateways expose /ipfs/{cid} and /ipns/{name} namespaces, supporting
     GET and HEAD requests with content negotiation for raw blocks, CAR streams, TAR archives, JSON, and
     CBOR. The IPFS Foundation operates public gateways at ipfs.io (path), dweb.link (subdomain), and trustless-gateway.link
@@ -95,10 +91,9 @@ apis:
   - key: rateLimit
     value: Best-effort; throttling or banning applied for abuse
 - name: IPFS Delegated Routing V1 HTTP API
-  description: >-
-    The Delegated Routing V1 HTTP API allows IPFS clients to offload content routing, peer routing, and
-    IPNS resolution to a remote server without running a full DHT node. Endpoints include provider lookup
-    by CID (/routing/v1/providers/{cid}), peer record lookup by Peer ID (/routing/v1/peers/{peer-id}),
+  description: The Delegated Routing V1 HTTP API allows IPFS clients to offload content routing, peer
+    routing, and IPNS resolution to a remote server without running a full DHT node. Endpoints include
+    provider lookup by CID (/routing/v1/providers/{cid}), peer record lookup by Peer ID (/routing/v1/peers/{peer-id}),
     IPNS name resolution and publication (/routing/v1/ipns/{name}), and optional DHT closest-peers queries
     (/routing/v1/dht/closest/peers/{key}). The IPFS Foundation operates a public delegated routing endpoint
     at delegated-ipfs.dev.
@@ -760,26 +755,26 @@ apis:
   - type: GitHubRepository
     url: https://github.com/ipfs/pinning-services-api-spec
 maintainers:
-  - FN: IPFS Foundation / Protocol Labs
-    url: https://ipfs.tech/
-    email: abuse@ipfs.io
-
-created: "2026-06-13"
-modified: "2026-06-13"
-
+- FN: IPFS Foundation / Protocol Labs
+  url: https://ipfs.tech/
+  email: abuse@ipfs.io
+created: '2026-06-13'
+modified: '2026-09-16'
 common:
-  - type: IssueTracker
-    url: https://github.com/ipfs/pinning-services-api-spec/issues
-  - type: Releases
-    url: https://github.com/ipfs/pinning-services-api-spec/releases
-  - type: License
-    name: CC0-1.0
-    url: https://github.com/ipfs/pinning-services-api-spec/blob/main/LICENSE
-  - type: AgenticAccess
-    url: agentic-access/ipfs-agentic-access.yml
-  - type: DomainSecurity
-    url: security/ipfs-domain-security.yml
-  - type: Authentication
-    url: authentication/ipfs-authentication.yml
-  - url: https://blog.ipfs.tech/index.xml
-    type: Blog
+- type: Website
+  url: https://ipfs.tech
+- type: IssueTracker
+  url: https://github.com/ipfs/pinning-services-api-spec/issues
+- type: Releases
+  url: https://github.com/ipfs/pinning-services-api-spec/releases
+- type: License
+  name: CC0-1.0
+  url: https://github.com/ipfs/pinning-services-api-spec/blob/main/LICENSE
+- type: AgenticAccess
+  url: agentic-access/ipfs-agentic-access.yml
+- type: DomainSecurity
+  url: security/ipfs-domain-security.yml
+- type: Authentication
+  url: authentication/ipfs-authentication.yml
+- url: https://blog.ipfs.tech/index.xml
+  type: Blog
