@@ -47,7 +47,8 @@ url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.
 specificationVersion: '0.23'
 apis:
 - name: IPFS HTTP Gateway API
-  description: The IPFS HTTP Gateway API is an implementation-agnostic interface for retrieving content-addressed
+  description: >-
+    The IPFS HTTP Gateway API is an implementation-agnostic interface for retrieving content-addressed
     data from IPFS over standard HTTP. Path gateways expose /ipfs/{cid} and /ipns/{name} namespaces, supporting
     GET and HEAD requests with content negotiation for raw blocks, CAR streams, TAR archives, JSON, and
     CBOR. The IPFS Foundation operates public gateways at ipfs.io (path), dweb.link (subdomain), and trustless-gateway.link
@@ -91,9 +92,10 @@ apis:
   - key: rateLimit
     value: Best-effort; throttling or banning applied for abuse
 - name: IPFS Delegated Routing V1 HTTP API
-  description: The Delegated Routing V1 HTTP API allows IPFS clients to offload content routing, peer
-    routing, and IPNS resolution to a remote server without running a full DHT node. Endpoints include
-    provider lookup by CID (/routing/v1/providers/{cid}), peer record lookup by Peer ID (/routing/v1/peers/{peer-id}),
+  description: >-
+    The Delegated Routing V1 HTTP API allows IPFS clients to offload content routing, peer routing, and
+    IPNS resolution to a remote server without running a full DHT node. Endpoints include provider lookup
+    by CID (/routing/v1/providers/{cid}), peer record lookup by Peer ID (/routing/v1/peers/{peer-id}),
     IPNS name resolution and publication (/routing/v1/ipns/{name}), and optional DHT closest-peers queries
     (/routing/v1/dht/closest/peers/{key}). The IPFS Foundation operates a public delegated routing endpoint
     at delegated-ipfs.dev.
@@ -359,24 +361,6 @@ apis:
     url: https://ipfs.github.io/pinning-services-api-spec/
   - type: GitHubRepository
     url: https://github.com/ipfs/pinning-services-api-spec
-- aid: ipfs:ipfs-filestore-api
-  name: IPFS Filestore API
-  description: The Filestore API from IPFS — 3 operation(s) for filestore.
-  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
-  baseURL: http://localhost:5001
-  tags:
-  - File Store
-  tags_raw:
-  - Filestore
-  properties:
-  - type: OpenAPI
-    url: openapi/ipfs-filestore-api-openapi.yml
-  - type: Documentation
-    url: https://docs.ipfs.tech/reference/kubo/rpc/
-  - type: Documentation
-    url: https://ipfs.github.io/pinning-services-api-spec/
-  - type: GitHubRepository
-    url: https://github.com/ipfs/pinning-services-api-spec
 - aid: ipfs:ipfs-get-api
   name: IPFS Get API
   description: The Get API from IPFS — 1 operation(s) for get.
@@ -516,24 +500,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ipfs-object-api-openapi.yml
-  - type: Documentation
-    url: https://docs.ipfs.tech/reference/kubo/rpc/
-  - type: Documentation
-    url: https://ipfs.github.io/pinning-services-api-spec/
-  - type: GitHubRepository
-    url: https://github.com/ipfs/pinning-services-api-spec
-- aid: ipfs:ipfs-p2p-api
-  name: IPFS P2p API
-  description: The P2p API from IPFS — 6 operation(s) for p2p.
-  humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
-  baseURL: http://localhost:5001
-  tags:
-  - P2P
-  tags_raw:
-  - P2p
-  properties:
-  - type: OpenAPI
-    url: openapi/ipfs-p2p-api-openapi.yml
   - type: Documentation
     url: https://docs.ipfs.tech/reference/kubo/rpc/
   - type: Documentation
@@ -748,6 +714,38 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ipfs-version-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-file-store-api
+  name: IPFS File Store API
+  description: The File Store API from IPFS — 3 operation(s) for file store.
+  humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
+  baseURL: https://ipfs.io
+  tags:
+  - File Store
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-file-store-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-p2-p-api
+  name: IPFS P2 P API
+  description: The P2 P API from IPFS — 6 operation(s) for p2 p.
+  humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
+  baseURL: https://ipfs.io
+  tags:
+  - P2 P
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-p2-p-api-openapi.yml
   - type: Documentation
     url: https://docs.ipfs.tech/reference/kubo/rpc/
   - type: Documentation
