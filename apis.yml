@@ -42,6 +42,16 @@ tags:
 - File Storage
 - DAG
 - Pinning
+- Gateways
+tags_raw:
+- IPFS
+- Distributed Storage
+- Content-Addressed
+- Decentralized
+- Peer-to-Peer
+- File Storage
+- DAG
+- Pinning
 - Gateway
 url: https://raw.githubusercontent.com/api-evangelist/ipfs/refs/heads/main/apis.yml
 specificationVersion: '0.23'
@@ -57,7 +67,7 @@ apis:
   humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
   baseURL: https://ipfs.io
   tags:
-  - Gateway
+  - Gateways
   - Content Retrieval
   - IPFS
   - IPNS
@@ -197,6 +207,8 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
+  - Cats
+  tags_raw:
   - Cat
   properties:
   - type: OpenAPI
@@ -742,6 +754,8 @@ apis:
   humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
   baseURL: https://ipfs.io
   tags:
+  - P2P
+  tags_raw:
   - P2 P
   properties:
   - type: OpenAPI
