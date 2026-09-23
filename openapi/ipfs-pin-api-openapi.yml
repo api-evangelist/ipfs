@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Pin API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -17,7 +14,7 @@ servers:
 - description: Infura hosted IPFS node
   url: https://ipfs.infura.io:5001
 tags:
-- name: Pin
+- name: PIN
 paths:
   /api/v0/pin/add:
     post:
@@ -53,7 +50,9 @@ paths:
                 - <string>
                 Progress: <int>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/add
+      x-summary-source: derived
   /api/v0/pin/ls:
     post:
       operationId: pin/ls
@@ -96,7 +95,9 @@ paths:
                   Cid: <string>
                   Type: <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/ls
+      x-summary-source: derived
   /api/v0/pin/remote/add:
     post:
       operationId: pin/remote/add
@@ -136,7 +137,9 @@ paths:
                 Name: <string>
                 Status: <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/add
+      x-summary-source: derived
   /api/v0/pin/remote/ls:
     post:
       operationId: pin/remote/ls
@@ -178,7 +181,9 @@ paths:
                 Name: <string>
                 Status: <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/ls
+      x-summary-source: derived
   /api/v0/pin/remote/rm:
     post:
       operationId: pin/remote/rm
@@ -220,7 +225,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/rm
+      x-summary-source: derived
   /api/v0/pin/remote/service/add:
     post:
       operationId: pin/remote/service/add
@@ -247,7 +254,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/service/add
+      x-summary-source: derived
   /api/v0/pin/remote/service/ls:
     post:
       operationId: pin/remote/service/ls
@@ -278,7 +287,9 @@ paths:
                       Queued: <int>
                     Status: <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/service/ls
+      x-summary-source: derived
   /api/v0/pin/remote/service/rm:
     post:
       operationId: pin/remote/service/rm
@@ -296,7 +307,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - Pin
+      - PIN
+      summary: Pin/remote/service/rm
+      x-summary-source: derived
   /api/v0/pin/rm:
     post:
       operationId: pin/rm
@@ -325,7 +338,9 @@ paths:
                 Pins:
                 - <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/rm
+      x-summary-source: derived
   /api/v0/pin/update:
     post:
       operationId: pin/update
@@ -360,7 +375,9 @@ paths:
                 Pins:
                 - <string>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/update
+      x-summary-source: derived
   /api/v0/pin/verify:
     post:
       operationId: pin/verify
@@ -391,6 +408,8 @@ paths:
                     Err: <string>
                   Ok: <bool>
       tags:
-      - Pin
+      - PIN
+      summary: Pin/verify
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

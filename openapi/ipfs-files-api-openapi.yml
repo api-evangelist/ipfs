@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Files API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -49,6 +46,8 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/chcid
+      x-summary-source: derived
   /api/v0/files/cp:
     post:
       operationId: files/cp
@@ -78,10 +77,12 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/cp
+      x-summary-source: derived
   /api/v0/files/flush:
     post:
       operationId: files/flush
-      description: Flush a given path&#39;s data to disk.
+      description: Flush a given path's data to disk.
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-files-flush
       parameters:
@@ -100,6 +101,8 @@ paths:
                 Cid: <string>
       tags:
       - Files
+      summary: Files/flush
+      x-summary-source: derived
   /api/v0/files/ls:
     post:
       operationId: files/ls
@@ -135,6 +138,8 @@ paths:
                   Type: <int>
       tags:
       - Files
+      summary: Files/ls
+      x-summary-source: derived
   /api/v0/files/mkdir:
     post:
       operationId: files/mkdir
@@ -170,6 +175,8 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/mkdir
+      x-summary-source: derived
   /api/v0/files/mv:
     post:
       operationId: files/mv
@@ -194,6 +201,8 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/mv
+      x-summary-source: derived
   /api/v0/files/read:
     post:
       operationId: files/read
@@ -222,6 +231,8 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/read
+      x-summary-source: derived
   /api/v0/files/rm:
     post:
       operationId: files/rm
@@ -250,6 +261,8 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/rm
+      x-summary-source: derived
   /api/v0/files/stat:
     post:
       operationId: files/stat
@@ -308,6 +321,8 @@ paths:
                 WithLocality: <bool>
       tags:
       - Files
+      summary: Files/stat
+      x-summary-source: derived
   /api/v0/files/write:
     post:
       operationId: files/write
@@ -372,5 +387,7 @@ paths:
           description: Successful response
       tags:
       - Files
+      summary: Files/write
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

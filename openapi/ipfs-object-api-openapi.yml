@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Object API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -22,7 +19,7 @@ paths:
   /api/v0/object/data:
     post:
       operationId: object/data
-      description: 'Deprecated way to read the raw bytes of a dag-pb object: use &#39;dag get&#39; instead.'
+      description: 'Deprecated way to read the raw bytes of a dag-pb object: use ''dag get'' instead.'
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-data
       deprecated: true
@@ -38,6 +35,8 @@ paths:
           description: Successful response
       tags:
       - Object
+      summary: Object/data
+      x-summary-source: derived
   /api/v0/object/diff:
     post:
       operationId: object/diff
@@ -78,10 +77,12 @@ paths:
                   Type: <int>
       tags:
       - Object
+      summary: Object/diff
+      x-summary-source: derived
   /api/v0/object/get:
     post:
       operationId: object/get
-      description: Deprecated way to get and serialize the dag-pb node. Use &#39;dag get&#39; instead
+      description: Deprecated way to get and serialize the dag-pb node. Use 'dag get' instead
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-get
       deprecated: true
@@ -111,10 +112,12 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/get
+      x-summary-source: derived
   /api/v0/object/links:
     post:
       operationId: object/links
-      description: 'Deprecated way to output links in the specified dag-pb object: use &#39;dag get&#39; instead.'
+      description: 'Deprecated way to output links in the specified dag-pb object: use ''dag get'' instead.'
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-links
       deprecated: true
@@ -143,6 +146,8 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/links
+      x-summary-source: derived
   /api/v0/object/new:
     post:
       operationId: object/new
@@ -169,6 +174,8 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/new
+      x-summary-source: derived
   /api/v0/object/patch/add-link:
     post:
       operationId: object/patch/add-link
@@ -210,6 +217,8 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/patch/add link
+      x-summary-source: derived
   /api/v0/object/patch/append-data:
     post:
       operationId: object/patch/append-data
@@ -240,6 +249,8 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/patch/append data
+      x-summary-source: derived
   /api/v0/object/patch/rm-link:
     post:
       operationId: object/patch/rm-link
@@ -273,6 +284,8 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/patch/rm link
+      x-summary-source: derived
   /api/v0/object/patch/set-data:
     post:
       operationId: object/patch/set-data
@@ -303,10 +316,12 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/patch/set data
+      x-summary-source: derived
   /api/v0/object/put:
     post:
       operationId: object/put
-      description: Deprecated way to store input as a DAG object. Use &#39;dag put&#39; instead.
+      description: Deprecated way to store input as a DAG object. Use 'dag put' instead.
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-put
       deprecated: true
@@ -349,10 +364,12 @@ paths:
                   Size: <uint64>
       tags:
       - Object
+      summary: Object/put
+      x-summary-source: derived
   /api/v0/object/stat:
     post:
       operationId: object/stat
-      description: Deprecated way to read stats for the dag-pb node. Use &#39;files stat&#39; instead.
+      description: Deprecated way to read stats for the dag-pb node. Use 'files stat' instead.
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-object-stat
       deprecated: true
@@ -382,5 +399,7 @@ paths:
                 NumLinks: <int>
       tags:
       - Object
+      summary: Object/stat
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

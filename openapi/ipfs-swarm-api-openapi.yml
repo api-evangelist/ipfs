@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Swarm API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -37,6 +34,8 @@ paths:
                   - <string>
       tags:
       - Swarm
+      summary: Swarm/addrs
+      x-summary-source: derived
   /api/v0/swarm/addrs/listen:
     post:
       operationId: swarm/addrs/listen
@@ -54,6 +53,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/addrs/listen
+      x-summary-source: derived
   /api/v0/swarm/addrs/local:
     post:
       operationId: swarm/addrs/local
@@ -76,6 +77,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/addrs/local
+      x-summary-source: derived
   /api/v0/swarm/connect:
     post:
       operationId: swarm/connect
@@ -99,6 +102,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/connect
+      x-summary-source: derived
   /api/v0/swarm/disconnect:
     post:
       operationId: swarm/disconnect
@@ -122,6 +127,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/disconnect
+      x-summary-source: derived
   /api/v0/swarm/filters:
     post:
       operationId: swarm/filters
@@ -139,6 +146,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/filters
+      x-summary-source: derived
   /api/v0/swarm/filters/add:
     post:
       operationId: swarm/filters/add
@@ -162,6 +171,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/filters/add
+      x-summary-source: derived
   /api/v0/swarm/filters/rm:
     post:
       operationId: swarm/filters/rm
@@ -185,6 +196,8 @@ paths:
                 - <string>
       tags:
       - Swarm
+      summary: Swarm/filters/rm
+      x-summary-source: derived
   /api/v0/swarm/peering/add:
     post:
       operationId: swarm/peering/add
@@ -208,6 +221,8 @@ paths:
                 Status: <string>
       tags:
       - Swarm
+      summary: Swarm/peering/add
+      x-summary-source: derived
   /api/v0/swarm/peering/ls:
     post:
       operationId: swarm/peering/ls
@@ -227,6 +242,8 @@ paths:
                   ID: peer-id
       tags:
       - Swarm
+      summary: Swarm/peering/ls
+      x-summary-source: derived
   /api/v0/swarm/peering/rm:
     post:
       operationId: swarm/peering/rm
@@ -250,6 +267,8 @@ paths:
                 Status: <string>
       tags:
       - Swarm
+      summary: Swarm/peering/rm
+      x-summary-source: derived
   /api/v0/swarm/peers:
     post:
       operationId: swarm/peers
@@ -307,6 +326,8 @@ paths:
                   - Protocol: <string>
       tags:
       - Swarm
+      summary: Swarm/peers
+      x-summary-source: derived
   /api/v0/swarm/resources:
     post:
       operationId: swarm/resources
@@ -323,5 +344,7 @@ paths:
               example: <object>
       tags:
       - Swarm
+      summary: Swarm/resources
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

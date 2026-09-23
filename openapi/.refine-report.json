@@ -44,7 +44,9 @@
     "ipfs-version-api-openapi.yml",
     "ipfs-pins-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -236,7 +238,9 @@
     "ipfs-kubo-rpc-api.json: declared missing tag: Swarm",
     "ipfs-kubo-rpc-api.json: declared missing tag: Tar",
     "ipfs-kubo-rpc-api.json: declared missing tag: Version",
-    "ipfs-pinning-service-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0"
+    "ipfs-pinning-service-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: ipfs-file-store-api-openapi.yml, ipfs-p2-p-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 40 total)"
   ],
   "skipped": [
     "ipfs-add-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -252,8 +256,8 @@
     "ipfs-diag-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-dns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-file-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ipfs-file-store-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "ipfs-filestore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-get-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-id-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-key-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -263,7 +267,7 @@
     "ipfs-multibase-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-name-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-object-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "ipfs-p2p-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "ipfs-p2-p-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-pin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-ping-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "ipfs-pins-api-openapi.yml: previously refined output, superseded by openapi/_original/",

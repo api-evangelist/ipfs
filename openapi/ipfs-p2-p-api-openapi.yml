@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC P2p API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -17,7 +14,7 @@ servers:
 - description: Infura hosted IPFS node
   url: https://ipfs.infura.io:5001
 tags:
-- name: P2p
+- name: P2 P
 paths:
   /api/v0/p2p/close:
     post:
@@ -54,7 +51,9 @@ paths:
             application/json:
               example: <int>
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/close
+      x-summary-source: derived
   /api/v0/p2p/forward:
     post:
       operationId: p2p/forward
@@ -87,7 +86,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/forward
+      x-summary-source: derived
   /api/v0/p2p/listen:
     post:
       operationId: p2p/listen
@@ -122,7 +123,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/listen
+      x-summary-source: derived
   /api/v0/p2p/ls:
     post:
       operationId: p2p/ls
@@ -147,7 +150,9 @@ paths:
                   Protocol: <string>
                   TargetAddress: <string>
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/ls
+      x-summary-source: derived
   /api/v0/p2p/stream/close:
     post:
       operationId: p2p/stream/close
@@ -170,7 +175,9 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/stream/close
+      x-summary-source: derived
   /api/v0/p2p/stream/ls:
     post:
       operationId: p2p/stream/ls
@@ -196,6 +203,8 @@ paths:
                   Protocol: <string>
                   TargetAddress: <string>
       tags:
-      - P2p
+      - P2 P
+      summary: P2p/stream/ls
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

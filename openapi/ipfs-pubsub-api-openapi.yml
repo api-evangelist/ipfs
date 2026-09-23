@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Pubsub API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -37,6 +34,8 @@ paths:
                 - <string>
       tags:
       - Pubsub
+      summary: Pubsub/ls
+      x-summary-source: derived
   /api/v0/pubsub/peers:
     post:
       operationId: pubsub/peers
@@ -60,6 +59,8 @@ paths:
                 - <string>
       tags:
       - Pubsub
+      summary: Pubsub/peers
+      x-summary-source: derived
   /api/v0/pubsub/pub:
     post:
       operationId: pubsub/pub
@@ -82,6 +83,8 @@ paths:
           description: Successful response
       tags:
       - Pubsub
+      summary: Pubsub/pub
+      x-summary-source: derived
   /api/v0/pubsub/sub:
     post:
       operationId: pubsub/sub
@@ -109,5 +112,7 @@ paths:
                 - <string>
       tags:
       - Pubsub
+      summary: Pubsub/sub
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

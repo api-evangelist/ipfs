@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Filestore API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -17,7 +14,7 @@ servers:
 - description: Infura hosted IPFS node
   url: https://ipfs.infura.io:5001
 tags:
-- name: Filestore
+- name: File Store
 paths:
   /api/v0/filestore/dups:
     post:
@@ -35,7 +32,9 @@ paths:
                 Err: <string>
                 Ref: <string>
       tags:
-      - Filestore
+      - File Store
+      summary: Filestore/dups
+      x-summary-source: derived
   /api/v0/filestore/ls:
     post:
       operationId: filestore/ls
@@ -67,7 +66,9 @@ paths:
                 Size: <uint64>
                 Status: <int32>
       tags:
-      - Filestore
+      - File Store
+      summary: Filestore/ls
+      x-summary-source: derived
   /api/v0/filestore/verify:
     post:
       operationId: filestore/verify
@@ -99,6 +100,8 @@ paths:
                 Size: <uint64>
                 Status: <int32>
       tags:
-      - Filestore
+      - File Store
+      summary: Filestore/verify
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/

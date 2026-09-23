@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: IPFS RPC Stats API
   version: v0
-  description: 'When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
-
-
-    In many cases, using this RPC API is preferable to embedding IPFS directly in your program — it allows you to maintain peer connections that are longer lived than your app and you can keep a single IPFS node running instead of several if your app can be launched multiple times. In fact, the `ipfs` CLI commands use this RPC API when operating in online mode.'
+  description: When a Kubo IPFS node is running as a daemon, it exposes an HTTP RPC API that allows you to control the node and run the same commands you can from the command line.
   x-providerName: IPFS
   x-logo:
     url: https://raw.githubusercontent.com/ipfs/ipfs-docs/55fe8bc6a53ba3b9023951fb4b432efbbc81fba5/docs/.vuepress/public/images/ipfs-logo.svg
@@ -56,6 +53,8 @@ paths:
                 - /: <cid-string>
       tags:
       - Stats
+      summary: Stats/bitswap
+      x-summary-source: derived
   /api/v0/stats/bw:
     post:
       operationId: stats/bw
@@ -98,10 +97,12 @@ paths:
                 TotalOut: <int64>
       tags:
       - Stats
+      summary: Stats/bw
+      x-summary-source: derived
   /api/v0/stats/dht:
     post:
       operationId: stats/dht
-      description: Returns statistics about the node&#39;s DHT(s).
+      description: Returns statistics about the node's DHT(s).
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-dht
       parameters:
@@ -128,10 +129,12 @@ paths:
                 Name: <string>
       tags:
       - Stats
+      summary: Stats/dht
+      x-summary-source: derived
   /api/v0/stats/provide:
     post:
       operationId: stats/provide
-      description: Returns statistics about the node&#39;s (re)provider system.
+      description: Returns statistics about the node's (re)provider system.
       externalDocs:
         url: https://docs.ipfs.tech/reference/kubo/rpc/#api-v0-stats-provide
       parameters: []
@@ -147,6 +150,8 @@ paths:
                 TotalProvides: <int>
       tags:
       - Stats
+      summary: Stats/provide
+      x-summary-source: derived
   /api/v0/stats/repo:
     post:
       operationId: stats/repo
@@ -178,5 +183,7 @@ paths:
                 Version: <string>
       tags:
       - Stats
+      summary: Stats/repo
+      x-summary-source: derived
 externalDocs:
   url: https://docs.ipfs.tech/reference/kubo/rpc/
