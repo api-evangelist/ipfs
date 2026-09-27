@@ -553,7 +553,7 @@ apis:
   - type: GitHubRepository
     url: https://github.com/ipfs/pinning-services-api-spec
 - aid: ipfs:ipfs-pins-api
-  name: IPFS pins API
+  name: IPFS Pins API
   description: The pins API from IPFS — 2 operation(s) for pins.
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
@@ -754,8 +754,6 @@ apis:
   humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
   baseURL: https://ipfs.io
   tags:
-  - P2P
-  tags_raw:
   - P2 P
   properties:
   - type: OpenAPI
