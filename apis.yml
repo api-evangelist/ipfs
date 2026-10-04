@@ -754,8 +754,6 @@ apis:
   humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
   baseURL: https://ipfs.io
   tags:
-  - P2P
-  tags_raw:
   - P2 P
   properties:
   - type: OpenAPI
