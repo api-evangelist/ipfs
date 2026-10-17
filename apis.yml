@@ -732,6 +732,22 @@ apis:
     url: https://ipfs.github.io/pinning-services-api-spec/
   - type: GitHubRepository
     url: https://github.com/ipfs/pinning-services-api-spec
+- aid: ipfs:ipfs-p2p-api
+  name: IPFS P2p API
+  description: The P2p API from IPFS — 6 operation(s) for p2p.
+  humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
+  baseURL: https://ipfs.io
+  tags:
+  - P2p
+  properties:
+  - type: OpenAPI
+    url: openapi/ipfs-p2p-api-openapi.yml
+  - type: Documentation
+    url: https://docs.ipfs.tech/reference/kubo/rpc/
+  - type: Documentation
+    url: https://ipfs.github.io/pinning-services-api-spec/
+  - type: GitHubRepository
+    url: https://github.com/ipfs/pinning-services-api-spec
 - aid: ipfs:ipfs-file-store-api
   name: IPFS File Store API
   description: The File Store API from IPFS — 3 operation(s) for file store.
@@ -742,22 +758,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/ipfs-file-store-api-openapi.yml
-  - type: Documentation
-    url: https://docs.ipfs.tech/reference/kubo/rpc/
-  - type: Documentation
-    url: https://ipfs.github.io/pinning-services-api-spec/
-  - type: GitHubRepository
-    url: https://github.com/ipfs/pinning-services-api-spec
-- aid: ipfs:ipfs-p2-p-api
-  name: IPFS P2 P API
-  description: The P2 P API from IPFS — 6 operation(s) for p2 p.
-  humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
-  baseURL: https://ipfs.io
-  tags:
-  - P2 P
-  properties:
-  - type: OpenAPI
-    url: openapi/ipfs-p2-p-api-openapi.yml
   - type: Documentation
     url: https://docs.ipfs.tech/reference/kubo/rpc/
   - type: Documentation

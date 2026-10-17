@@ -14,7 +14,7 @@ servers:
 - description: Infura hosted IPFS node
   url: https://ipfs.infura.io:5001
 tags:
-- name: P2 P
+- name: P2P
 paths:
   /api/v0/p2p/close:
     post:
@@ -51,7 +51,7 @@ paths:
             application/json:
               example: <int>
       tags:
-      - P2 P
+      - P2P
       summary: P2p/close
       x-summary-source: derived
   /api/v0/p2p/forward:
@@ -86,7 +86,7 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2 P
+      - P2P
       summary: P2p/forward
       x-summary-source: derived
   /api/v0/p2p/listen:
@@ -123,7 +123,7 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2 P
+      - P2P
       summary: P2p/listen
       x-summary-source: derived
   /api/v0/p2p/ls:
@@ -150,7 +150,7 @@ paths:
                   Protocol: <string>
                   TargetAddress: <string>
       tags:
-      - P2 P
+      - P2P
       summary: P2p/ls
       x-summary-source: derived
   /api/v0/p2p/stream/close:
@@ -175,7 +175,7 @@ paths:
         '200':
           description: Successful response
       tags:
-      - P2 P
+      - P2P
       summary: P2p/stream/close
       x-summary-source: derived
   /api/v0/p2p/stream/ls:
@@ -203,7 +203,7 @@ paths:
                   Protocol: <string>
                   TargetAddress: <string>
       tags:
-      - P2 P
+      - P2P
       summary: P2p/stream/ls
       x-summary-source: derived
 externalDocs:
