@@ -576,7 +576,7 @@ apis:
   humanURL: https://docs.ipfs.tech/reference/kubo/rpc/
   baseURL: http://localhost:5001
   tags:
-  - Pub-Sub
+  - Pub/Sub
   tags_raw:
   - Pubsub
   properties:
@@ -738,6 +738,8 @@ apis:
   humanURL: https://specs.ipfs.tech/http-gateways/path-gateway/
   baseURL: https://ipfs.io
   tags:
+  - P2P
+  tags_raw:
   - P2p
   properties:
   - type: OpenAPI
