@@ -512,3 +512,9 @@ components:
         The `access-token` should be generated per device, and the user should have the ability to revoke each token separately. '
       type: http
       scheme: bearer
+x-provenance:
+  method: harvested
+  publisher: IPFS
+  source: https://raw.githubusercontent.com/ipfs/pinning-services-api-spec/main/ipfs-pinning-service.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
